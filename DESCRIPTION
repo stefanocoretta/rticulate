@@ -1,11 +1,10 @@
 Package: rticulate
 Type: Package
-Title: What the Package Does (Title Case)
+Title: A tiny package for Ultrasound Tongue Imaging in R
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Author: Stefano Coretta
+Maintainer: Stefano Coretta <stefano.coretta@manchester.ac.uk>
+Description: This is a package providing a function for processing AAA splines files and plot tongue contours.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
