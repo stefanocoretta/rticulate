@@ -1,6 +1,9 @@
 #' Read data exported from AAA
 #'
-#' It reads a file with data exported from AAA.
+#' It reads a file with data exported from AAA. The data are automatically
+#' transformed from a wide to a long format (each row has values of X or Y axes
+#' for each fan line). The imported tibble can then be used for plotting and
+#' statistical analysis.
 #'
 #' @param file A character vector.
 #' @param column.names A character vector with the names of the columns.
