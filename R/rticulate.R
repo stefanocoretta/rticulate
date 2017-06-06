@@ -10,6 +10,7 @@
 #' @param fan.lines A number vector with the number of fan lines (the default is 42).
 #' @param na.rm A boolean string (the default is `FALSE`).
 #' @importFrom magrittr "%>%"
+#' @export
 read_aaa <- function(file, column.names, fan.lines = 42, na.rm = FALSE) {
     columns <- c(
         column.names,
@@ -45,6 +46,7 @@ read_aaa <- function(file, column.names, fan.lines = 42, na.rm = FALSE) {
 #' @param palate An optional data frame with the palate spline. If provided,
 #' the palate is plotted.
 #' @param palate.col The colour of the palate spline (the default is `green`).
+#' @export
 plot_splines <- function(data, palate = NULL, palate.col = "green") {
     spline.plot <- ggplot2::ggplot(data, ggplot2::aes(X, Y)) +
         ggplot2::geom_smooth(method = "loess", se = FALSE) +
