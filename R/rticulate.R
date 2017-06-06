@@ -41,12 +41,22 @@ read_aaa <- function(file, column.names, fan.lines = 42, na.rm = FALSE) {
 #'
 #' It plots tongue contours from data imported from AAA.
 #'
-#' @param data A data frame.
-plot_splines <- function(data) {
-    ggplot2::ggplot(data, aes(X, Y)) +
-        geom_smooth(method = "loess", se = FALSE) +
-        coord_fixed(ratio = 1) +
-        labs(x = "antero-posterior",
+#' @param data A data frame with splines data.
+#' @param palate An optional data frame with the palate spline. If provided,
+#' the palate is plotted.
+#' @param palate.col The colour of the palate spline (the default is `green`).
+plot_splines <- function(data, palate = NULL, palate.col = "green") {
+    spline.plot <- ggplot2::ggplot(data, ggplot2::aes(X, Y)) +
+        ggplot2::geom_smooth(method = "loess", se = FALSE) +
+        ggplot2::coord_fixed(ratio = 1) +
+        ggplot2::labs(x = "antero-posterior",
              y = "supero-inferior"
         )
+
+    if (is.null(palate) == FALSE) {
+        spline.plot <- spline.plot +
+            ggplot2::geom_smooth(data = palate, se = F, colour = palate.col)
+    }
+
+    return(spline.plot)
 }
