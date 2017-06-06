@@ -1,0 +1,36 @@
+---
+title: "Import and plot spline data from AAA"
+author: "Stefano Coretta"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup}
+library(rticulate)
+```
+
+```{r}
+columns <- c(
+    "speaker",
+    "seconds",
+    "rec.date",
+    "prompt",
+    "label",
+    "TT.displacement.sm",
+    "TT.velocity",
+    "TT.velocity.abs",
+    "TD.displacement.sm",
+    "TD.velocity",
+    "TD.velocity.abs"
+)
+```
+
+
+```{r}
+tongue <- read_aaa(system.file("extdata", "sc01-aaa.tsv", package = "rticulate"), columns)
+```
+
