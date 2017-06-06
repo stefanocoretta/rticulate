@@ -10,7 +10,7 @@ vignette: >
 ---
 
 ```{r setup, echo=FALSE, include=FALSE}
-devtools::load_all(".")
+library(rticulate)
 ```
 
 ```{r}
