@@ -7,8 +7,8 @@
 #'
 #' @param file A character vector.
 #' @param column.names A character vector with the names of the columns.
-#' @param fan.lines A number vector with the number of fan lines (the default is 42).
-#' @param na.rm A boolean string (the default is `FALSE`).
+#' @param fan.lines A number vector with the number of fan lines (the default is \code{42}).
+#' @param na.rm A boolean string (the default is \code{FALSE}).
 #' @importFrom magrittr "%>%"
 #' @export
 read_aaa <- function(file, column.names, fan.lines = 42, na.rm = FALSE) {
@@ -45,7 +45,7 @@ read_aaa <- function(file, column.names, fan.lines = 42, na.rm = FALSE) {
 #' @param data A data frame with splines data.
 #' @param palate An optional data frame with the palate spline. If provided,
 #' the palate is plotted.
-#' @param palate.col The colour of the palate spline (the default is `green`).
+#' @param palate.col The colour of the palate spline (the default is \code{green}).
 #' @export
 plot_splines <- function(data, palate = NULL, palate.col = "green") {
     spline.plot <- ggplot2::ggplot(data, ggplot2::aes(X, Y)) +

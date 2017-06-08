@@ -11,9 +11,9 @@ read_aaa(file, column.names, fan.lines = 42, na.rm = FALSE)
 
 \item{column.names}{A character vector with the names of the columns.}
 
-\item{fan.lines}{A number vector with the number of fan lines (the default is 42).}
+\item{fan.lines}{A number vector with the number of fan lines (the default is \code{42}).}
 
-\item{na.rm}{A boolean string (the default is `FALSE`).}
+\item{na.rm}{A boolean string (the default is \code{FALSE}).}
 }
 \description{
 It reads a file with data exported from AAA. The data are automatically

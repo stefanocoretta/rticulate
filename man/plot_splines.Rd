@@ -12,7 +12,7 @@ plot_splines(data, palate = NULL, palate.col = "green")
 \item{palate}{An optional data frame with the palate spline. If provided,
 the palate is plotted.}
 
-\item{palate.col}{The colour of the palate spline (the default is `green`).}
+\item{palate.col}{The colour of the palate spline (the default is \code{green}).}
 }
 \description{
 It plots tongue contours from data imported from AAA.
