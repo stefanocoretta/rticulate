@@ -13,7 +13,15 @@ vignette: >
 library(rticulate)
 ```
 
-```{r}
+The package `rticulate` facilitates UTI data import and plotting with spline data exported from Articulate Assistant Advanced (AAA). To use the package, load it as usual.
+
+```{r load, eval=FALSE}
+library(rticulate)
+```
+
+
+
+```{r columns}
 columns <- c(
     "speaker",
     "seconds",
@@ -30,7 +38,7 @@ columns <- c(
 ```
 
 
-```{r}
+```{r read-aaa}
 tongue <- read_aaa(system.file("extdata", "sc01-aaa.tsv", package = "rticulate"), columns)
 ```
 
