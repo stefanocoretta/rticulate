@@ -10,6 +10,8 @@ vignette: >
 ---
 
 ```{r setup, echo=FALSE, include=FALSE}
+library(tidyverse)
+theme_set(theme_bw())
 library(rticulate)
 ```
 
@@ -19,7 +21,7 @@ The package `rticulate` facilitates UTI data import and plotting with spline dat
 library(rticulate)
 ```
 
-
+# Import spline data
 
 ```{r columns}
 columns <- c(
@@ -40,5 +42,21 @@ columns <- c(
 
 ```{r read-aaa}
 tongue <- read_aaa(system.file("extdata", "sc01-aaa.tsv", package = "rticulate"), columns)
+```
+
+# Plot splines
+
+```{r plot-splines}
+plot_splines(tongue)
+```
+
+```{r filter-plot}
+filter(tongue, label == "max_TD") %>%
+    plot_splines()
+```
+
+```{r plot-palate}
+filter(tongue, label == "max_TD") %>%
+    plot_splines(palate = palate) + aes(group = rec.date)
 ```
 
