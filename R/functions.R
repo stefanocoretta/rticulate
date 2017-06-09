@@ -47,9 +47,9 @@ read_aaa <- function(file, column.names, fan.lines = 42, na.rm = FALSE) {
 #' the palate is plotted.
 #' @param palate.col The colour of the palate spline (the default is \code{green}).
 #' @export
-plot_splines <- function(data, palate = NULL, palate.col = "green") {
+plot_splines <- function(data, ..., palate = NULL, palate.col = "green") {
     spline.plot <- ggplot2::ggplot(data, ggplot2::aes(X, Y)) +
-        ggplot2::geom_smooth(method = "loess", se = FALSE) +
+        ggplot2::geom_line(stat = "smooth", method = "loess", se = FALSE, ...) +
         ggplot2::coord_fixed(ratio = 1) +
         ggplot2::labs(x = "antero-posterior",
              y = "supero-inferior"
