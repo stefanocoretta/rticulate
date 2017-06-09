@@ -57,7 +57,9 @@ plot_splines <- function(data, ..., palate = NULL, palate.col = "green") {
 
     if (is.null(palate) == FALSE) {
         spline.plot <- spline.plot +
-            ggplot2::geom_smooth(data = palate, se = F, colour = palate.col)
+            ggplot2::geom_line(stat = "smooth", method = "loess",
+                               data = palate, se = F, colour = palate.col
+                               )
     }
 
     return(spline.plot)
