@@ -20,6 +20,17 @@
     \item{fan}{fan number}
     \item{X}{horizontal coordinate at time \code{seconds}}
     \item{Y}{vertical coordinate at time \code{seconds}}
+    \item{word}{words of the form CVCV}
+    \item{item}{item ID}
+    \item{ipa}{IPA transcription of the words}
+    \item{c1}{first consonant}
+    \item{c1phonation}{phonation of the first consonant, \code{voiceless}}
+    \item{vowel}{first and second vowel}
+    \item{anteropost}{backness of the vowel, \code{back} or \code{central}}
+    \item{height}{height of the vowel, \code{high}, \code{mid} or \code{low}}
+    \item{c2}{second consonant}
+    \item{c2phonation}{phonation of the second consonant, \code{voiceless} or \code{voiced}}
+    \item{c2place}{place of the second consonant, \code{coronal} or \code{velar}}
 }}
 \usage{
 tongue
