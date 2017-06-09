@@ -80,22 +80,32 @@ tongue
 
 # Plot splines
 
+To plot splines from a spline data frame, use `plot_splines()`. This function is a wrapper of a `ggplot` call (from the `ggplot2` package). The coordinates must be in two variables named `X` and `Y`. `read_aaa()` creates them automatically while importing the raw data.
+
 ```{r plot-splines}
 plot_splines(tongue)
 ```
+
+You can also easily filter the tibble with the `filter()` function from `dplyr`.
 
 ```{r filter-plot}
 filter(tongue, label == "max_TD") %>%
     plot_splines()
 ```
 
+You can specify `geom` options and aesthetics in the usual `ggplot` way (remember to load the package with `library(ggplot2)` if you need this). `geom` options are arguments of `plot_splines()`, while aesthetics can be called with `aes()`.
+
 ```{r plot-options}
-plot_splines(tongue, alpha = 0.5) + aes(group = rec.date, colour = c2place) +
+plot_splines(tongue, alpha = 0.5) +
+    aes(group = rec.date, colour = c2place) +
     theme(legend.position="bottom")
 ```
 
+Finally, if you want to plot the palate profile, you can do so by specifying a data frame with the coordinates for the palate spline.
 
 ```{r plot-palate}
+palate <- read_aaa(system.file("extdata", "sc01-palate.tsv", package = "rticulate"), columns)
+
 filter(tongue, label == "max_TD") %>%
     plot_splines(palate = palate, alpha = 0.5) + aes(group = rec.date)
 ```
