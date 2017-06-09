@@ -18,6 +18,17 @@
 #'     \item{fan}{fan number}
 #'     \item{X}{horizontal coordinate at time \code{seconds}}
 #'     \item{Y}{vertical coordinate at time \code{seconds}}
+#'     \item{word}{words of the form CVCV}
+#'     \item{item}{item ID}
+#'     \item{ipa}{IPA transcription of the words}
+#'     \item{c1}{first consonant}
+#'     \item{c1phonation}{phonation of the first consonant, \code{voiceless}}
+#'     \item{vowel}{first and second vowel}
+#'     \item{anteropost}{backness of the vowel, \code{back} or \code{central}}
+#'     \item{height}{height of the vowel, \code{high}, \code{mid} or \code{low}}
+#'     \item{c2}{second consonant}
+#'     \item{c2phonation}{phonation of the second consonant, \code{voiceless} or \code{voiced}}
+#'     \item{c2place}{place of the second consonant, \code{coronal} or \code{velar}}
 #' }
 "tongue"
 
@@ -25,7 +36,7 @@
 #'
 #' A dataset containing the palate profile of a single speaker.
 #'
-#' @format A data frame with 42 rows and 14 variables
+#' @format A data frame with 42 rows and 14 variables.
 #' \describe{
 #'     \item{speaker}{speaker ID}
 #'     \item{seconds}{time of coordinate, in seconds}
@@ -43,3 +54,23 @@
 #'     \item{Y}{vertical coordinate at time \code{seconds}}
 #' }
 "palate"
+
+#' Stimuli dataset.
+#'
+#' A dataset with linguistic information on the stimuli.
+#'
+#' @format A data frame with 12 rows and 11 variables.
+#' \describe{
+#'     \item{item}{item ID}
+#'     \item{word}{words of the form CVCV}
+#'     \item{ipa}{IPA transcription of the words}
+#'     \item{c1}{first consonant}
+#'     \item{c1phonation}{phonation of the first consonant, \code{voiceless}}
+#'     \item{vowel}{first and second vowel}
+#'     \item{anteropost}{backness of the vowel, \code{back} or \code{central}}
+#'     \item{height}{height of the vowel, \code{high}, \code{mid} or \code{low}}
+#'     \item{c2}{second consonant}
+#'     \item{c2phonation}{phonation of the second consonant, \code{voiceless} or \code{voiced}}
+#'     \item{c2place}{place of the second consonant, \code{coronal} or \code{velar}}
+#' }
+"stimuli"
