@@ -10,8 +10,10 @@ vignette: >
 ---
 
 ```{r setup, echo=FALSE, include=FALSE}
+knitr::opts_chunk$set(out.width = "600px", fig.align = "center", dpi = 300)
 library(tidyverse)
 theme_set(theme_bw())
+library(stringr)
 library(rticulate)
 ```
 
@@ -22,6 +24,10 @@ library(rticulate)
 ```
 
 # Import spline data
+
+The function `read_splines()` can quickly import spline data and transform it into the long format (where each observation is a point on a fan line and the coordinates values are two variables, `X` and `Y`, see `?tongue` for more details).
+
+To correctly import AAA data, it is required that the file exported from AAA does not contain the header. This must be supplied as an argument to the `read_aaa()` function. We thus create a character vector with a concatenation of column names as strings.
 
 ```{r columns}
 columns <- c(
@@ -39,9 +45,37 @@ columns <- c(
 )
 ```
 
+Now we can use `read_aaa()` to import the spline data as a tibble. The function requires a string with the file path and name, and a vector with the names of the columns.
 
 ```{r read-aaa}
-tongue <- read_aaa(system.file("extdata", "sc01-aaa.tsv", package = "rticulate"), columns)
+# system.file() is needed here because the example files reside in the package.
+# You can just include the file path directly in read_aaa, like 
+# read_aaa("~/Desktop/splines.tsv", columns)
+file.path <- system.file("extdata", "sc01-aaa.tsv", package = "rticulate")
+
+tongue <- read_aaa(file.path, columns)
+```
+
+To check the head of the tibble, just do:
+
+```{r tibble}
+tongue
+```
+
+Sometimes is useful to add extra information for each prompt (like vowel, consonant place, phonation, etc.). We can do so by using functions from the `dplyr` package (`word()` is from the `stringr` package).
+
+```{r join}
+nonce <- read_csv(system.file("extdata", "nonce.csv", package = "rticulate"))
+
+tongue <- mutate(tongue, word = stringr::word(prompt, 2)) %>%
+    left_join(y = nonce) %>%
+    mutate_if(is.character, as.factor)
+```
+
+Let's check `tongue` again.
+
+```{r tibble-2}
+tongue
 ```
 
 # Plot splines
@@ -55,8 +89,14 @@ filter(tongue, label == "max_TD") %>%
     plot_splines()
 ```
 
+```{r plot-options}
+plot_splines(tongue, alpha = 0.5) + aes(group = rec.date, colour = c2place) +
+    theme(legend.position="bottom")
+```
+
+
 ```{r plot-palate}
 filter(tongue, label == "max_TD") %>%
-    plot_splines(palate = palate) + aes(group = rec.date)
+    plot_splines(palate = palate, alpha = 0.5) + aes(group = rec.date)
 ```
 
