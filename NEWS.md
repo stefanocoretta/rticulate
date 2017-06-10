@@ -1,6 +1,6 @@
 # Change Log
 
-## Unreleased
+## 1.0.1
 ### Added
 - depends and imports in DESCRIPTION
 - globalVariables for data frame variables in functions 
