@@ -1,7 +1,7 @@
 Package: rticulate
 Type: Package
 Title: A small package for Ultrasound Tongue Imaging in R
-Version: 1.0.0
+Version: 1.0.0.9000
 Authors@R: person("Stefano", "Coretta", email = "stefano.coretta@gmail.com",
                   role = c("aut", "cre"))
 Description: This is a package providing a function for processing AAA splines
