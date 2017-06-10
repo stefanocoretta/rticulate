@@ -32,7 +32,7 @@ read_aaa <- function(file, column.names, fan.lines = 42, na.rm = FALSE) {
         tidyr::spread(axis, coordinate)
 
     if (na.rm == TRUE) {
-        data <- na.omit(data)
+        data <- stats::na.omit(data)
     }
 
     return(data)
@@ -43,12 +43,13 @@ read_aaa <- function(file, column.names, fan.lines = 42, na.rm = FALSE) {
 #' It plots tongue contours from data imported from AAA.
 #'
 #' @param data A data frame with splines data.
+#' @param ... List of arguments to be passed to \code{geom}.
 #' @param palate An optional data frame with the palate spline. If provided,
 #' the palate is plotted.
 #' @param palate.col The colour of the palate spline (the default is \code{green}).
 #' @export
 plot_splines <- function(data, ..., palate = NULL, palate.col = "green") {
-    spline.plot <- ggplot2::ggplot(data, ggplot2::aes(X, Y)) +
+    spline.plot <- ggplot2::ggplot(data, ggplot2::aes_(x = ~X, y = ~Y)) +
         ggplot2::geom_line(stat = "smooth", method = "loess", se = FALSE, ...) +
         ggplot2::coord_fixed(ratio = 1) +
         ggplot2::labs(x = "antero-posterior",

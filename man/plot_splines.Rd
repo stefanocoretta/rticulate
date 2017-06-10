@@ -9,6 +9,8 @@ plot_splines(data, ..., palate = NULL, palate.col = "green")
 \arguments{
 \item{data}{A data frame with splines data.}
 
+\item{...}{List of arguments to be passed to \code{geom}.}
+
 \item{palate}{An optional data frame with the palate spline. If provided,
 the palate is plotted.}
 

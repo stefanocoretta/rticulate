@@ -6,10 +6,18 @@ Authors@R: person("Stefano", "Coretta", email = "stefano.coretta@gmail.com",
                   role = c("aut", "cre"))
 Description: This is a package providing a function for processing AAA splines
     files and plot tongue contours.
+Depends: R (>= 2.10)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports: tidyverse
+Imports: dplyr,
+    ggplot2,
+    magrittr,
+    readr,
+    stats,
+    stringr,
+    tidyr,
+    tidyverse
 RoxygenNote: 6.0.1
 Suggests: knitr,
     rmarkdown
