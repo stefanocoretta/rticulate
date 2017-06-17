@@ -2,7 +2,7 @@
 
 ## Unreleased
 ### Added
-- argument in `read_aaa` to chose coordinate system
+- argument in `read_aaa` to choose coordinate system
 
 ### Changed
 - updates to `NEWS.md`
