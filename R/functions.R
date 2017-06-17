@@ -11,13 +11,22 @@
 #' @param na.rm A boolean string (the default is \code{FALSE}).
 #' @importFrom magrittr "%>%"
 #' @export
-read_aaa <- function(file, column.names, fan.lines = 42, na.rm = FALSE) {
+read_aaa <- function(file, column.names, fan.lines = 42, coordinates = "cartesian", na.rm = FALSE) {
+    if (coordinates == "cartesian") {
+        coord.names <- paste0(
+            rep(c("X_", "Y_"), fan.lines),
+            rep(1:fan.lines, each = 2)
+        )
+    } else {
+        coord.names <- paste0(
+            rep(c("X_", "Y_"), each = fan.lines),
+            rep(1:fan.lines)
+        )
+    }
+
     columns <- c(
         column.names,
-        paste0(rep(c("X", "Y"), fan.lines),
-               "_",
-               rep(1:fan.lines, each = 2)
-        )
+        coord.names
     )
 
     data <- readr::read_tsv(
