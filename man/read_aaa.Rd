@@ -4,16 +4,19 @@
 \alias{read_aaa}
 \title{Read data exported from AAA.}
 \usage{
-read_aaa(file, column.names, fan.lines = 42, na.rm = FALSE)
+read_aaa(file, column.names, fan.lines = 42, coordinates = "cartesian",
+  na.rm = FALSE)
 }
 \arguments{
-\item{file}{A character vector.}
+\item{file}{The file with AAA data.}
 
-\item{column.names}{A character vector with the names of the columns.}
+\item{column.names}{The names of the columns withouth including the splines columns.}
 
-\item{fan.lines}{A number vector with the number of fan lines (the default is \code{42}).}
+\item{fan.lines}{The number of fan lines (the default is \code{42}).}
 
-\item{na.rm}{A boolean string (the default is \code{FALSE}).}
+\item{coordinates}{A string specifying the coordinate system. Possible values are \code{"cartesian"} (the default) and \code{"polar"}.}
+
+\item{na.rm}{Remove NAs (the default is \code{FALSE}).}
 }
 \description{
 It reads a file with data exported from AAA. The data are automatically

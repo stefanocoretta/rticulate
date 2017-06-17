@@ -5,10 +5,11 @@
 #' for each fan line). The imported tibble can then be used for plotting and
 #' statistical analysis.
 #'
-#' @param file A character vector.
-#' @param column.names A character vector with the names of the columns.
-#' @param fan.lines A number vector with the number of fan lines (the default is \code{42}).
-#' @param na.rm A boolean string (the default is \code{FALSE}).
+#' @param file The file with AAA data.
+#' @param column.names The names of the columns withouth including the splines columns.
+#' @param fan.lines The number of fan lines (the default is \code{42}).
+#' @param coordinates A string specifying the coordinate system. Possible values are \code{"cartesian"} (the default) and \code{"polar"}.
+#' @param na.rm Remove NAs (the default is \code{FALSE}).
 #' @importFrom magrittr "%>%"
 #' @export
 read_aaa <- function(file, column.names, fan.lines = 42, coordinates = "cartesian", na.rm = FALSE) {

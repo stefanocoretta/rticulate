@@ -6,6 +6,7 @@
 
 ### Changed
 - updates to `NEWS.md`
+- clarified documentation of `read_aaa`
 
 ## [1.0.1] - 2017-06-10
 ### Added
