@@ -20,7 +20,7 @@ read_aaa <- function(file, column.names, fan.lines = 42, coordinates = "cartesia
         )
     } else {
         coord.names <- paste0(
-            rep(c("X_", "Y_"), each = fan.lines),
+            rep(c("radius_", "theta_"), each = fan.lines),
             rep(1:fan.lines)
         )
     }
@@ -36,8 +36,10 @@ read_aaa <- function(file, column.names, fan.lines = 42, coordinates = "cartesia
         na = "*",
         trim_ws = TRUE
     ) %>%
-        dplyr::mutate_at(dplyr::vars(dplyr::matches("^[XY]_")), dplyr::funs(as.numeric)) %>%
-        tidyr::gather(spline, coordinate, dplyr::matches("[XY]_")) %>%
+        dplyr::mutate_at(dplyr::vars(dplyr::matches("(^[XY]_)|(^radius_)|(^theta_)")),
+                         dplyr::funs(as.numeric)) %>%
+        tidyr::gather(spline, coordinate,
+                      dplyr::matches("(^[XY]_)|(^radius_)|(^theta_)")) %>%
         tidyr::separate(spline, c("axis", "fan"), convert = TRUE) %>%
         tidyr::spread(axis, coordinate)
 
