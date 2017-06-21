@@ -1,11 +1,12 @@
 Package: rticulate
 Type: Package
-Title: A small package for Ultrasound Tongue Imaging in R
+Title: Ultrasound Tongue Imaging in R
 Version: 1.0.1.9000
 Authors@R: person("Stefano", "Coretta", email = "stefano.coretta@gmail.com",
                   role = c("aut", "cre"))
-Description: This is a package providing a function for processing AAA splines
-    files and plot tongue contours.
+Description: This package provides function for processing Articulate 
+    Assistant Advanced (AAA) export files and plot tongue contour data from any
+    system.
 Depends: R (>= 2.10)
 License: MIT + file LICENSE
 Encoding: UTF-8
