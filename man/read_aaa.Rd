@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions.R
 \name{read_aaa}
 \alias{read_aaa}
-\title{Read AAA data.}
+\title{Read tab separated files with AAA spline data.}
 \usage{
 read_aaa(file, column.names, fan.lines = 42, coordinates = "cartesian",
   na.rm = FALSE)

@@ -50,7 +50,7 @@ read_aaa_data <- function(file, column.names, fan.lines, coordinates, na.rm) {
     return(data)
 }
 
-#' Read AAA data.
+#' Read tab separated files with AAA spline data.
 #'
 #' It reads a file or a list of files with data exported from AAA. The data are
 #' automatically transformed from a wide to a long format (each row has values
@@ -64,6 +64,10 @@ read_aaa_data <- function(file, column.names, fan.lines, coordinates, na.rm) {
 #' @param na.rm Remove NAs (the default is \code{FALSE}).
 #' @export
 read_aaa <- function(file, column.names, fan.lines = 42, coordinates = "cartesian", na.rm = FALSE) {
+    if(!coordinates %in% c("cartesian", "polar")) {
+        stop("The chosen coordinate system is not supported. Possible values are cartesian or polar.")
+    }
+
     if (length(file) == 1) {
         read_aaa_data(file, column.names, fan.lines, coordinates, na.rm)
     } else {
