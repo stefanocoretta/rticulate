@@ -3,10 +3,12 @@
 ## Unreleased
 ### Added
 - argument in `read_aaa` to choose coordinate system
+- `read_aaa_data` for internal use
 
 ### Changed
 - updates to `NEWS.md`
-- clarified documentation of `read_aaa`
+- clarified documentation
+- `read_aaa` can now accept a list of files
 
 ## [1.0.1] - 2017-06-10
 ### Added

@@ -2,13 +2,13 @@
 % Please edit documentation in R/functions.R
 \name{read_aaa}
 \alias{read_aaa}
-\title{Read data exported from AAA.}
+\title{Read AAA data.}
 \usage{
 read_aaa(file, column.names, fan.lines = 42, coordinates = "cartesian",
   na.rm = FALSE)
 }
 \arguments{
-\item{file}{The file with AAA data.}
+\item{file}{The path of the file with AAA data. It can also be a character vector with multiple paths as separate strings..}
 
 \item{column.names}{The names of the columns withouth including the splines columns.}
 
@@ -19,8 +19,8 @@ read_aaa(file, column.names, fan.lines = 42, coordinates = "cartesian",
 \item{na.rm}{Remove NAs (the default is \code{FALSE}).}
 }
 \description{
-It reads a file with data exported from AAA. The data are automatically
-transformed from a wide to a long format (each row has values of X or Y axes
-for each fan line). The imported tibble can then be used for plotting and
-statistical analysis.
+It reads a file or a list of files with data exported from AAA. The data are
+automatically transformed from a wide to a long format (each row has values
+of X or Y axes for each fan line). The imported tibble can then be used for
+plotting and statistical analysis.
 }

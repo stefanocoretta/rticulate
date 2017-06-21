@@ -1,18 +1,18 @@
-#' Read data exported from AAA.
+#' Data import function.
 #'
 #' It reads a file with data exported from AAA. The data are automatically
 #' transformed from a wide to a long format (each row has values of X or Y axes
 #' for each fan line). The imported tibble can then be used for plotting and
 #' statistical analysis.
 #'
-#' @param file The file with AAA data.
+#' @param file The file or files with AAA data.
 #' @param column.names The names of the columns withouth including the splines columns.
-#' @param fan.lines The number of fan lines (the default is \code{42}).
-#' @param coordinates A string specifying the coordinate system. Possible values are \code{"cartesian"} (the default) and \code{"polar"}.
-#' @param na.rm Remove NAs (the default is \code{FALSE}).
+#' @param fan.lines The number of fan lines.
+#' @param coordinates A string specifying the coordinate system. Possible values are \code{"cartesian"} and \code{"polar"}.
+#' @param na.rm Remove NAs.
 #' @importFrom magrittr "%>%"
-#' @export
-read_aaa <- function(file, column.names, fan.lines = 42, coordinates = "cartesian", na.rm = FALSE) {
+#' @keywords internal
+read_aaa_data <- function(file, column.names, fan.lines, coordinates, na.rm) {
     if (coordinates == "cartesian") {
         coord.names <- paste0(
             rep(c("X_", "Y_"), fan.lines),
@@ -48,6 +48,27 @@ read_aaa <- function(file, column.names, fan.lines = 42, coordinates = "cartesia
     }
 
     return(data)
+}
+
+#' Read AAA data.
+#'
+#' It reads a file or a list of files with data exported from AAA. The data are
+#' automatically transformed from a wide to a long format (each row has values
+#' of X or Y axes for each fan line). The imported tibble can then be used for
+#' plotting and statistical analysis.
+#'
+#' @param file The path of the file with AAA data. It can also be a character vector with multiple paths as separate strings..
+#' @param column.names The names of the columns withouth including the splines columns.
+#' @param fan.lines The number of fan lines (the default is \code{42}).
+#' @param coordinates A string specifying the coordinate system. Possible values are \code{"cartesian"} (the default) and \code{"polar"}.
+#' @param na.rm Remove NAs (the default is \code{FALSE}).
+#' @export
+read_aaa <- function(file, column.names, fan.lines = 42, coordinates = "cartesian", na.rm = FALSE) {
+    if (length(file) == 1) {
+        read_aaa_data(file, column.names, fan.lines, coordinates, na.rm)
+    } else {
+        purrr::map_df(.x = file, .f = ~read_aaa_data(.x, column.names, fan.lines, coordinates, na.rm))
+    }
 }
 
 #' Plot tongue contours from spline data.

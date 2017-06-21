@@ -13,6 +13,7 @@ LazyData: true
 Imports: dplyr,
     ggplot2,
     magrittr,
+    purrr,
     readr,
     stats,
     stringr,
