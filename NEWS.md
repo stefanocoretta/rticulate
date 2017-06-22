@@ -10,6 +10,9 @@
 - clarified documentation
 - `read_aaa` can now accept a list of files
 
+### Fixed
+- name of package in documentation
+
 ## [1.0.1] - 2017-06-10
 ### Added
 - depends and imports in DESCRIPTION
