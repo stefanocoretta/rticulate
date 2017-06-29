@@ -13,6 +13,7 @@
 ### Fixed
 - name of package in documentation
 - name of vignette
+- title in README
 
 ## [1.0.1] - 2017-06-10
 ### Added
