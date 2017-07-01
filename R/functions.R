@@ -40,7 +40,7 @@ read_aaa_data <- function(file, column.names, fan.lines, coordinates, na.rm) {
                          dplyr::funs(as.numeric)) %>%
         tidyr::gather(spline, coordinate,
                       dplyr::matches("(^[XY]_)|(^radius_)|(^theta_)")) %>%
-        tidyr::separate(spline, c("axis", "fan"), convert = TRUE) %>%
+        tidyr::separate(spline, c("axis", "fan.line"), convert = TRUE) %>%
         tidyr::spread(axis, coordinate)
 
     if (na.rm == TRUE) {

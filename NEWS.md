@@ -9,6 +9,7 @@
 - updates to `NEWS.md`
 - clarified documentation
 - `read_aaa` can now accept a list of files
+- column `fan` now properly named `fan.line`
 
 ### Fixed
 - name of package in documentation
