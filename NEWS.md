@@ -5,6 +5,7 @@
 - argument in `read_aaa` to choose coordinate system
 - `read_aaa_data` for internal use
 - `it02` data
+- example in vignette for multiple import
 
 ### Changed
 - updates to `NEWS.md`
