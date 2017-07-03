@@ -51,7 +51,7 @@ Now we can use `read_aaa()` to import the spline data as a tibble. The function 
 # system.file() is needed here because the example files reside in the package.
 # You can just include the file path directly in read_aaa, like 
 # read_aaa("~/Desktop/splines.tsv", columns)
-file.path <- system.file("extdata", "sc01-aaa.tsv", package = "rticulate")
+file.path <- system.file("extdata", "it01.tsv", package = "rticulate")
 
 tongue <- read_aaa(file.path, columns)
 ```
@@ -65,10 +65,10 @@ tongue
 Sometimes is useful to add extra information for each prompt (like vowel, consonant place, phonation, etc.). We can do so by using functions from the `dplyr` package (`word()` is from the `stringr` package).
 
 ```{r join}
-nonce <- read_csv(system.file("extdata", "nonce.csv", package = "rticulate"))
+stimuli <- read_csv(system.file("extdata", "stimuli.csv", package = "rticulate"))
 
 tongue <- mutate(tongue, word = stringr::word(prompt, 2)) %>%
-    left_join(y = nonce) %>%
+    left_join(y = stimuli) %>%
     mutate_if(is.character, as.factor)
 ```
 
@@ -104,7 +104,7 @@ plot_splines(tongue, alpha = 0.5) +
 Finally, if you want to plot the palate profile, you can do so by specifying a data frame with the coordinates for the palate spline.
 
 ```{r plot-palate}
-palate <- read_aaa(system.file("extdata", "sc01-palate.tsv", package = "rticulate"), columns)
+palate <- read_aaa(system.file("extdata", "it01-palate.tsv", package = "rticulate"), columns)
 
 filter(tongue, label == "max_TD") %>%
     plot_splines(palate = palate, alpha = 0.5) + aes(group = rec.date)
