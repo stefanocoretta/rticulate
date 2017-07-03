@@ -125,7 +125,7 @@ tongue2 <- list.files(
 
 We can now plot splines for both speakers.
 
-```{r plot-splines}
+```{r plot-speakers}
 plot_splines(tongue2, alpha = 0.5) +
     aes(group = rec.date) +
     facet_grid(. ~ speaker)
