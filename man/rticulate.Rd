@@ -4,8 +4,8 @@
 \name{rticulate}
 \alias{rticulate}
 \alias{rticulate-package}
-\title{rticulate: A small package for Ultrasound Tongue Imaging in R.}
+\title{rticulate: Ultrasound Tongue Imaging in R.}
 \description{
-This is a package providing a function for processing AAA splines
-files and plot tongue contours.
+This package provides function for processing Articulate Assistant Advanced
+(AAA) export files and plot tongue contour data from any system.
 }
