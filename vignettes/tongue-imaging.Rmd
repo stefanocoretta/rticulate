@@ -110,3 +110,23 @@ filter(tongue, label == "max_TD") %>%
     plot_splines(palate = palate, alpha = 0.5) + aes(group = rec.date)
 ```
 
+# Import multiple files
+
+To import multiple files with AAA data, simply use a list of paths with `read_aaa`, for example using `list.files`.
+
+```{r read-multiple}
+tongue2 <- list.files(
+    path = system.file("extdata", package = "rticulate"),
+    pattern = "*\\d.tsv",
+    full.names = TRUE
+    ) %>%
+    read_aaa(., columns)
+```
+
+We can now plot splines for both speakers.
+
+```{r plot-splines}
+plot_splines(tongue2, alpha = 0.5) +
+    aes(group = rec.date) +
+    facet_grid(. ~ speaker)
+```
