@@ -4,12 +4,14 @@
 ### Added
 - argument in `read_aaa` to choose coordinate system
 - `read_aaa_data` for internal use
+- `it02` data
 
 ### Changed
 - updates to `NEWS.md`
 - clarified documentation
 - `read_aaa` can now accept a list of files
 - column `fan` now properly named `fan.line`
+- data names
 
 ### Fixed
 - name of package in documentation
