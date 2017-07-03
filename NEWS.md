@@ -6,6 +6,7 @@
 - `read_aaa_data` for internal use
 - `it02` data
 - example in vignette for multiple import
+- added `point` and `path` options to `plot_tongue`
 
 ### Changed
 - updates to `NEWS.md`
@@ -13,6 +14,7 @@
 - `read_aaa` can now accept a list of files
 - column `fan` now properly named `fan.line`
 - data names
+- renamed `plot_splines` to `plot_tongue`
 
 ### Fixed
 - name of package in documentation

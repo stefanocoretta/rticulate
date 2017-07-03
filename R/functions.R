@@ -80,14 +80,22 @@ read_aaa <- function(file, column.names, fan.lines = 42, coordinates = "cartesia
 #' It plots tongue contours from data imported from AAA.
 #'
 #' @param data A data frame with splines data.
+#' @param geom Type of geom to plot. Possible values are: \code{line} (the default),
+#' \code{point}, \code{path}.
 #' @param ... List of arguments to be passed to \code{geom}.
 #' @param palate An optional data frame with the palate spline. If provided,
 #' the palate is plotted.
 #' @param palate.col The colour of the palate spline (the default is \code{green}).
 #' @export
-plot_splines <- function(data, ..., palate = NULL, palate.col = "green") {
+plot_tongue <- function(data, geom = "line", ..., palate = NULL, palate.col = "green") {
     spline.plot <- ggplot2::ggplot(data, ggplot2::aes_(x = ~X, y = ~Y)) +
-        ggplot2::geom_line(stat = "smooth", method = "loess", se = FALSE, ...) +
+        {if (geom == "line") {
+            ggplot2::geom_line(stat = "smooth", method = "loess", se = FALSE, ...)
+        } else if (geom == "point") {
+            ggplot2::geom_point(...)
+        } else if (geom == "path") {
+            ggplot2::geom_path(...)
+        }} +
         ggplot2::coord_fixed(ratio = 1) +
         ggplot2::labs(x = "antero-posterior",
              y = "supero-inferior"
