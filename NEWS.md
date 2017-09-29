@@ -1,6 +1,6 @@
 # Change Log
 
-## Unreleased
+## [1.2.0] - 2017-09-29
 ### Added
 - argument in `read_aaa` to choose coordinate system
 - `read_aaa_data` for internal use
@@ -33,4 +33,5 @@
 - missing `stats::` in `read_aaa`
 - `aes` call which caused notes on R CMD check using `aes_`
 
+[1.2.0]: https://github.com/stefanocoretta/rticulate/compare/v1.0.1...v1.2.0
 [1.0.1]: https://github.com/stefanocoretta/rticulate/compare/v1.0.0...v1.0.1
