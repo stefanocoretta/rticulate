@@ -4,5 +4,5 @@ This is the repository of the R package `rticulate`. This package provides two f
 
 # Installation
 
-To install the package, use `devtools::install_github("stefanocoretta/rticulate@1.2.0", build_vignettes = TRUE)`.
+To install the package, use `devtools::install_github("stefanocoretta/rticulate@v1.2.0", build_vignettes = TRUE)`.
 To learn how to use the package, do `vignette("tongue-imaging", package = "rticulate")` after the installation.
