@@ -1,5 +1,9 @@
 # Change Log
 
+## Unreleased
+### Changed
+- dropped levels in `tongue` data set
+
 ## [1.2.0] - 2017-09-29
 ### Added
 - argument in `read_aaa` to choose coordinate system
