@@ -3,6 +3,7 @@
 ## Unreleased
 ### Changed
 - dropped levels in `tongue` data set
+- use underscores in names everywhere
 
 ## [1.2.0] - 2017-09-29
 ### Added
