@@ -4,19 +4,19 @@
 \alias{read_aaa}
 \title{Read tab separated files with AAA spline data.}
 \usage{
-read_aaa(file, column.names, fan.lines = 42, coordinates = "cartesian",
-  na.rm = FALSE)
+read_aaa(file, column_names, fan_lines = 42, coordinates = "cartesian",
+  na_rm = FALSE)
 }
 \arguments{
 \item{file}{The path of the file with AAA data. It can also be a character vector with multiple paths as separate strings..}
 
-\item{column.names}{The names of the columns withouth including the splines columns.}
+\item{column_names}{The names of the columns withouth including the splines columns.}
 
-\item{fan.lines}{The number of fan lines (the default is \code{42}).}
+\item{fan_lines}{The number of fan lines (the default is \code{42}).}
 
 \item{coordinates}{A string specifying the coordinate system. Possible values are \code{"cartesian"} (the default) and \code{"polar"}.}
 
-\item{na.rm}{Remove NAs (the default is \code{FALSE}).}
+\item{na_rm}{Remove NAs (the default is \code{FALSE}).}
 }
 \description{
 It reads a file or a list of files with data exported from AAA. The data are

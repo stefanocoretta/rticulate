@@ -4,7 +4,7 @@
 \alias{plot_tongue}
 \title{Plot tongue contours from spline data.}
 \usage{
-plot_tongue(data, geom = "line", ..., palate = NULL, palate.col = "green")
+plot_tongue(data, geom = "line", ..., palate = NULL, palate_col = "green")
 }
 \arguments{
 \item{data}{A data frame with splines data.}
@@ -17,7 +17,7 @@ plot_tongue(data, geom = "line", ..., palate = NULL, palate.col = "green")
 \item{palate}{An optional data frame with the palate spline. If provided,
 the palate is plotted.}
 
-\item{palate.col}{The colour of the palate spline (the default is \code{green}).}
+\item{palate_col}{The colour of the palate spline (the default is \code{green}).}
 }
 \description{
 It plots tongue contours from data imported from AAA.

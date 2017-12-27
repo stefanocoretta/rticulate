@@ -8,13 +8,13 @@
 \describe{
     \item{speaker}{speaker ID}
     \item{seconds}{time of coordinate, in seconds}
-    \item{rec.date}{date and time of recording}
+    \item{rec_date}{date and time of recording}
     \item{prompt}{prompt string}
     \item{label}{label of annotation}
     \item{TT_displacement}{smoothed displacement of tongue tip}
     \item{TT_velocity}{velocity of tongue tip displacement}
     \item{TT_abs_velocity}{absolute velocity of tongue tip displacement}
-    \item{TT_displacement}{smoothed displacement of tongue dorsum}
+    \item{TD_displacement}{smoothed displacement of tongue dorsum}
     \item{TD_velocity}{velocity of tongue dorsum displacement}
     \item{TD_abs_velocity}{absolute velocity of tongue dorsum displacement}
     \item{fan_line}{fan line number}

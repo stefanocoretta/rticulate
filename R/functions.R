@@ -6,28 +6,28 @@
 #' statistical analysis.
 #'
 #' @param file The file or files with AAA data.
-#' @param column.names The names of the columns withouth including the splines columns.
-#' @param fan.lines The number of fan lines.
+#' @param column_names The names of the columns withouth including the splines columns.
+#' @param fan_lines The number of fan lines.
 #' @param coordinates A string specifying the coordinate system. Possible values are \code{"cartesian"} and \code{"polar"}.
-#' @param na.rm Remove NAs.
+#' @param na_rm Remove NAs.
 #' @importFrom magrittr "%>%"
 #' @keywords internal
-read_aaa_data <- function(file, column.names, fan.lines, coordinates, na.rm) {
+read_aaa_data <- function(file, column_names, fan_lines, coordinates, na_rm) {
     if (coordinates == "cartesian") {
-        coord.names <- paste0(
-            rep(c("X_", "Y_"), fan.lines),
-            rep(1:fan.lines, each = 2)
+        coord_names <- paste0(
+            rep(c("X_", "Y_"), fan_lines),
+            rep(1:fan_lines, each = 2)
         )
     } else {
-        coord.names <- paste0(
-            rep(c("radius_", "theta_"), each = fan.lines),
-            rep(1:fan.lines)
+        coord_names <- paste0(
+            rep(c("radius_", "theta_"), each = fan_lines),
+            rep(1:fan_lines)
         )
     }
 
     columns <- c(
-        column.names,
-        coord.names
+        column_names,
+        coord_names
     )
 
     data <- readr::read_tsv(
@@ -40,10 +40,10 @@ read_aaa_data <- function(file, column.names, fan.lines, coordinates, na.rm) {
                          dplyr::funs(as.numeric)) %>%
         tidyr::gather(spline, coordinate,
                       dplyr::matches("(^[XY]_)|(^radius_)|(^theta_)")) %>%
-        tidyr::separate(spline, c("axis", "fan.line"), convert = TRUE) %>%
+        tidyr::separate(spline, c("axis", "fan_line"), convert = TRUE) %>%
         tidyr::spread(axis, coordinate)
 
-    if (na.rm == TRUE) {
+    if (na_rm == TRUE) {
         data <- stats::na.omit(data)
     }
 
@@ -58,20 +58,20 @@ read_aaa_data <- function(file, column.names, fan.lines, coordinates, na.rm) {
 #' plotting and statistical analysis.
 #'
 #' @param file The path of the file with AAA data. It can also be a character vector with multiple paths as separate strings..
-#' @param column.names The names of the columns withouth including the splines columns.
-#' @param fan.lines The number of fan lines (the default is \code{42}).
+#' @param column_names The names of the columns withouth including the splines columns.
+#' @param fan_lines The number of fan lines (the default is \code{42}).
 #' @param coordinates A string specifying the coordinate system. Possible values are \code{"cartesian"} (the default) and \code{"polar"}.
-#' @param na.rm Remove NAs (the default is \code{FALSE}).
+#' @param na_rm Remove NAs (the default is \code{FALSE}).
 #' @export
-read_aaa <- function(file, column.names, fan.lines = 42, coordinates = "cartesian", na.rm = FALSE) {
-    if(!coordinates %in% c("cartesian", "polar")) {
+read_aaa <- function(file, column_names, fan_lines = 42, coordinates = "cartesian", na_rm = FALSE) {
+    if (!coordinates %in% c("cartesian", "polar")) {
         stop("The chosen coordinate system is not supported. Possible values are cartesian or polar.")
     }
 
     if (length(file) == 1) {
-        read_aaa_data(file, column.names, fan.lines, coordinates, na.rm)
+        read_aaa_data(file, column_names, fan_lines, coordinates, na_rm)
     } else {
-        purrr::map_df(.x = file, .f = ~read_aaa_data(.x, column.names, fan.lines, coordinates, na.rm))
+        purrr::map_df(.x = file, .f = ~read_aaa_data(.x, column_names, fan_lines, coordinates, na_rm))
     }
 }
 
@@ -85,10 +85,10 @@ read_aaa <- function(file, column.names, fan.lines = 42, coordinates = "cartesia
 #' @param ... List of arguments to be passed to \code{geom}.
 #' @param palate An optional data frame with the palate spline. If provided,
 #' the palate is plotted.
-#' @param palate.col The colour of the palate spline (the default is \code{green}).
+#' @param palate_col The colour of the palate spline (the default is \code{green}).
 #' @export
-plot_tongue <- function(data, geom = "line", ..., palate = NULL, palate.col = "green") {
-    spline.plot <- ggplot2::ggplot(data, ggplot2::aes_(x = ~X, y = ~Y)) +
+plot_tongue <- function(data, geom = "line", ..., palate = NULL, palate_col = "green") {
+    spline_plot <- ggplot2::ggplot(data, ggplot2::aes_(x = ~X, y = ~Y)) +
         {if (geom == "line") {
             ggplot2::geom_line(stat = "smooth", method = "loess", se = FALSE, ...)
         } else if (geom == "point") {
@@ -102,11 +102,11 @@ plot_tongue <- function(data, geom = "line", ..., palate = NULL, palate.col = "g
         )
 
     if (is.null(palate) == FALSE) {
-        spline.plot <- spline.plot +
+        spline_plot <- spline_plot +
             ggplot2::geom_line(stat = "smooth", method = "loess",
-                               data = palate, se = F, colour = palate.col
+                               data = palate, se = F, colour = palate_col
                                )
     }
 
-    return(spline.plot)
+    return(spline_plot)
 }

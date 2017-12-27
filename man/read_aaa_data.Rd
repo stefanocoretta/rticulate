@@ -4,18 +4,18 @@
 \alias{read_aaa_data}
 \title{Data import function.}
 \usage{
-read_aaa_data(file, column.names, fan.lines, coordinates, na.rm)
+read_aaa_data(file, column_names, fan_lines, coordinates, na_rm)
 }
 \arguments{
 \item{file}{The file or files with AAA data.}
 
-\item{column.names}{The names of the columns withouth including the splines columns.}
+\item{column_names}{The names of the columns withouth including the splines columns.}
 
-\item{fan.lines}{The number of fan lines.}
+\item{fan_lines}{The number of fan lines.}
 
 \item{coordinates}{A string specifying the coordinate system. Possible values are \code{"cartesian"} and \code{"polar"}.}
 
-\item{na.rm}{Remove NAs.}
+\item{na_rm}{Remove NAs.}
 }
 \description{
 It reads a file with data exported from AAA. The data are automatically

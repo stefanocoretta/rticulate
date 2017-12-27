@@ -33,15 +33,15 @@ To correctly import AAA data, it is required that the file exported from AAA doe
 columns <- c(
     "speaker",
     "seconds",
-    "rec.date",
+    "rec_date",
     "prompt",
     "label",
-    "TT.displacement.sm",
-    "TT.velocity",
-    "TT.velocity.abs",
-    "TD.displacement.sm",
-    "TD.velocity",
-    "TD.velocity.abs"
+    "TT_displacement",
+    "TT_velocity",
+    "TT_abs_velocity",
+    "TD_displacement",
+    "TD_velocity",
+    "TD_abs_velocity"
 )
 ```
 
@@ -97,16 +97,16 @@ You can specify `geom` options and aesthetics in the usual `ggplot` way (remembe
 
 ```{r plot-oprions}
 plot_tongue(tongue, alpha = 0.5) +
-    aes(group = rec.date, colour = c2place) +
-    theme(legend.position="bottom")
+    aes(group = rec_date, colour = c2_place) +
+    theme(legend.position = "bottom")
 ```
 
 To plot points instead of splines, use `plot_tongue(geom = "point")`.
 
 ```{r plot-geom}
 plot_tongue(tongue, geom = "point", alpha = 0.5) +
-    aes(group = rec.date, colour = c2place) +
-    theme(legend.position="bottom")
+    aes(group = rec_date, colour = c2_place) +
+    theme(legend.position = "bottom")
 ```
 
 Finally, if you want to plot the palate profile, you can do so by specifying a data frame with the coordinates for the palate spline.
@@ -115,7 +115,7 @@ Finally, if you want to plot the palate profile, you can do so by specifying a d
 palate <- read_aaa(system.file("extdata", "it01-palate.tsv", package = "rticulate"), columns)
 
 filter(tongue, label == "max_TD") %>%
-    plot_tongue(palate = palate, alpha = 0.5) + aes(group = rec.date)
+    plot_tongue(palate = palate, alpha = 0.5) + aes(group = rec_date)
 ```
 
 # Import multiple files
@@ -135,6 +135,6 @@ We can now plot splines for both speakers.
 
 ```{r plot-speakers}
 plot_tongue(tongue2, alpha = 0.5) +
-    aes(group = rec.date) +
+    aes(group = rec_date) +
     facet_grid(. ~ speaker)
 ```
