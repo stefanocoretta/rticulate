@@ -11,26 +11,27 @@
     \item{rec.date}{date and time of recording}
     \item{prompt}{prompt string}
     \item{label}{label of annotation}
-    \item{TT.displacement.sm}{smoothed displacement of tongue tip}
-    \item{TT.velocity}{velocity of tongue tip displacement}
-    \item{TT.velocity.abs}{absolute velocity of tongue tip displacement}
-    \item{TD.displacement.sm}{smoothed displacement of tongue dorsum}
-    \item{TD.velocity}{velocity of tongue dorsum displacement}
-    \item{TD.velocity.abs}{absolute velocity of tongue dorsum displacement}
-    \item{fan}{fan number}
+    \item{TT_displacement}{smoothed displacement of tongue tip}
+    \item{TT_velocity}{velocity of tongue tip displacement}
+    \item{TT_abs_velocity}{absolute velocity of tongue tip displacement}
+    \item{TT_displacement}{smoothed displacement of tongue dorsum}
+    \item{TD_velocity}{velocity of tongue dorsum displacement}
+    \item{TD_abs_velocity}{absolute velocity of tongue dorsum displacement}
+    \item{fan_line}{fan number}
     \item{X}{horizontal coordinate at time \code{seconds}}
     \item{Y}{vertical coordinate at time \code{seconds}}
     \item{word}{words of the form CVCV}
+    \item{language}{the speaker's language}
     \item{item}{item ID}
     \item{ipa}{IPA transcription of the words}
     \item{c1}{first consonant}
-    \item{c1phonation}{phonation of the first consonant, \code{voiceless}}
+    \item{c1_phonation}{phonation of the first consonant, \code{voiceless}}
     \item{vowel}{first and second vowel}
     \item{anteropost}{backness of the vowel, \code{back} or \code{central}}
     \item{height}{height of the vowel, \code{high}, \code{mid} or \code{low}}
     \item{c2}{second consonant}
-    \item{c2phonation}{phonation of the second consonant, \code{voiceless} or \code{voiced}}
-    \item{c2place}{place of the second consonant, \code{coronal} or \code{velar}}
+    \item{c2_phonation}{phonation of the second consonant, \code{voiceless} or \code{voiced}}
+    \item{c2_place}{place of the second consonant, \code{coronal} or \code{velar}}
 }}
 \usage{
 tongue
