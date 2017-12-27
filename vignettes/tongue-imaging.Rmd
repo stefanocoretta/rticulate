@@ -51,9 +51,9 @@ Now we can use `read_aaa()` to import the spline data as a tibble. The function 
 # system.file() is needed here because the example files reside in the package.
 # You can just include the file path directly in read_aaa, like 
 # read_aaa("~/Desktop/splines.tsv", columns)
-file.path <- system.file("extdata", "it01.tsv", package = "rticulate")
+file_path <- system.file("extdata", "it01.tsv", package = "rticulate")
 
-tongue <- read_aaa(file.path, columns)
+tongue <- read_aaa(file_path, columns)
 ```
 
 To check the head of the tibble, just do:
@@ -95,7 +95,7 @@ filter(tongue, label == "max_TD") %>%
 
 You can specify `geom` options and aesthetics in the usual `ggplot` way (remember to load the package with `library(ggplot2)` if you need this). `geom` options are arguments of `plot_tongue()`, while aesthetics can be called with `aes()`.
 
-```{r plot-oprions}
+```{r plot-options}
 plot_tongue(tongue, alpha = 0.5) +
     aes(group = rec_date, colour = c2_place) +
     theme(legend.position = "bottom")
