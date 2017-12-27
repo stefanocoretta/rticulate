@@ -17,7 +17,7 @@
     \item{TT_displacement}{smoothed displacement of tongue dorsum}
     \item{TD_velocity}{velocity of tongue dorsum displacement}
     \item{TD_abs_velocity}{absolute velocity of tongue dorsum displacement}
-    \item{fan_line}{fan number}
+    \item{fan_line}{fan line number}
     \item{X}{horizontal coordinate at time \code{seconds}}
     \item{Y}{vertical coordinate at time \code{seconds}}
     \item{word}{words of the form CVCV}
