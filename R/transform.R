@@ -6,14 +6,15 @@
 #' @param data A data set containing the spline coordinates (cartesian coordinates must be in columns named \code{X} and \code{Y}, polar coordinates in columns named \code{theta} and \code{radius}; these are the defaults in data imported with \code{read_aaa()}).
 #' @param to Which system to convert to, as a string, either \code{"polar"} or \code{"cartesian"} (the default is \code{"polar"}).
 #' @param origin The coordinates of the origin as a vector of \code{c(x, y)} coordinates.
+#' @inheritParams get_origin
 #' @export
-transform_coord <- function(data, to = "polar", origin = NULL) {
+transform_coord <- function(data, to = "polar", origin = NULL, fan_line_col = "fan_line", fan_lines = c(10, 25)) {
     if (!(to %in% c("polar", "cartesian"))) {
         stop("Please, specify either 'polar' or 'cartesian' as the value of 'to'.")
     }
 
     if (is.null(origin)) {
-        origin <- rticulate::get_origin(data)
+        origin <- rticulate::get_origin(data, fan_line_col = fan_line_col, fan_lines = fan_lines)
     }
 
     if (to == "polar") {

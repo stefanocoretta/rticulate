@@ -4,7 +4,8 @@
 \alias{transform_coord}
 \title{Transform the coordinates of spline data}
 \usage{
-transform_coord(data, to = "polar", origin = NULL)
+transform_coord(data, to = "polar", origin = NULL,
+  fan_line_col = "fan_line", fan_lines = c(10, 25))
 }
 \arguments{
 \item{data}{A data set containing the spline coordinates (cartesian coordinates must be in columns named \code{X} and \code{Y}, polar coordinates in columns named \code{theta} and \code{radius}; these are the defaults in data imported with \code{read_aaa()}).}
@@ -12,6 +13,10 @@ transform_coord(data, to = "polar", origin = NULL)
 \item{to}{Which system to convert to, as a string, either \code{"polar"} or \code{"cartesian"} (the default is \code{"polar"}).}
 
 \item{origin}{The coordinates of the origin as a vector of \code{c(x, y)} coordinates.}
+
+\item{fan_line_col}{A string with the name of the column listing the fan line numbers (the default is \code{"fan_line"}, which is the default for data imported with \code{read_aaa()}).}
+
+\item{fan_lines}{A numberic vector with two fan lines (the default is \code{c(10, 25)}).}
 }
 \description{
 It transforms the coordinates of spline data between the cartesian and polar
