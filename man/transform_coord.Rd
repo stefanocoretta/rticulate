@@ -7,7 +7,7 @@
 transform_coord(data, to = "polar", origin = NULL)
 }
 \arguments{
-\item{data}{A data set containing the spline coordinates.}
+\item{data}{A data set containing the spline coordinates (cartesian coordinates must be in columns named \code{X} and \code{Y}, polar coordinates in columns named \code{theta} and \code{radius}; these are the defaults in data imported with \code{read_aaa()}).}
 
 \item{to}{Which system to convert to, as a string, either \code{"polar"} or \code{"cartesian"} (the default is \code{"polar"}).}
 

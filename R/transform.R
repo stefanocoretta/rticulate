@@ -3,14 +3,34 @@
 #' It transforms the coordinates of spline data between the cartesian and polar
 #' coordinate systems.
 #'
-#' @param data A data set containing the spline coordinates.
+#' @param data A data set containing the spline coordinates (cartesian coordinates must be in columns named \code{X} and \code{Y}, polar coordinates in columns named \code{theta} and \code{radius}; these are the defaults in data imported with \code{read_aaa()}).
 #' @param to Which system to convert to, as a string, either \code{"polar"} or \code{"cartesian"} (the default is \code{"polar"}).
 #' @param origin The coordinates of the origin as a vector of \code{c(x, y)} coordinates.
 #' @export
 transform_coord <- function(data, to = "polar", origin = NULL) {
+    if (!(to %in% c("polar", "cartesian"))) {
+        stop("Please, specify either 'polar' or 'cartesian' as the value of 'to'.")
+    }
+
     if (is.null(origin)) {
         origin <- rticulate::get_origin(data)
     }
+
+    if (to == "polar") {
+        transformed_data <- data %>%
+            mutate(
+                radius = sqrt((X - origin[1]) ^ 2 + (Y - origin[2]) ^ 2),
+                theta = pi + atan2(Y - origin[2], X - origin[1])
+            )
+    } else {
+        transformed_data <- data %>%
+            mutate(
+                X = origin[1] - radius * cos(theta),
+                Y = radius * sin(theta) - origin[2]
+            )
+    }
+
+    return(transformed_data)
 }
 
 #' Get the origin of spline data
