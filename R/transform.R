@@ -26,7 +26,7 @@ transform_coord <- function(data, to = "polar", origin = NULL) {
         transformed_data <- data %>%
             mutate(
                 X = origin[1] - radius * cos(theta),
-                Y = radius * sin(theta) - origin[2]
+                Y = -radius * sin(theta) - origin[2]
             )
     }
 
