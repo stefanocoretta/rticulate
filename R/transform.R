@@ -19,13 +19,13 @@ transform_coord <- function(data, to = "polar", origin = NULL, fan_line_col = "f
 
     if (to == "polar") {
         transformed_data <- data %>%
-            mutate(
+            dplyr::mutate(
                 radius = sqrt((X - origin[1]) ^ 2 + (Y - origin[2]) ^ 2),
                 theta = pi + atan2(Y - origin[2], X - origin[1])
             )
     } else {
         transformed_data <- data %>%
-            mutate(
+            dplyr::mutate(
                 X = origin[1] - radius * cos(theta),
                 Y = -radius * sin(theta) - origin[2]
             )
@@ -44,16 +44,16 @@ transform_coord <- function(data, to = "polar", origin = NULL, fan_line_col = "f
 #'
 #' @export
 get_origin <- function(data, fan_line_col = "fan_line", fan_lines = c(10, 25)) {
-    line_1_model <- lm(
+    line_1_model <- stats::lm(
         Y ~ X,
         data = dplyr::filter(data, fan_line == fan_lines[1])
     )
-    line_2_model <- lm(
+    line_2_model <- stats::lm(
         Y ~ X,
         data = dplyr::filter(data, fan_line == fan_lines[2])
     )
 
-    coefficient_matrix <- rbind(coef(line_1_model), coef(line_2_model))
+    coefficient_matrix <- rbind(stats::coef(line_1_model), stats::coef(line_2_model))
     origin <- c(
         -solve(cbind(coefficient_matrix[,2], -1)) %*% coefficient_matrix[,1]
     )
