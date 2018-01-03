@@ -3,6 +3,7 @@
 ## Unreleased
 ### Added
 - functions for transforming coordinates
+- vignette about coordinates transformation
 
 ### Changed
 - dropped levels in `tongue` data set
