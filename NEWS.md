@@ -1,6 +1,9 @@
 # Change Log
 
 ## Unreleased
+### Added
+- functions for transforming coordinates
+
 ### Changed
 - dropped levels in `tongue` data set
 - use underscores in names everywhere
