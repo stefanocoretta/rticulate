@@ -1,1 +1,1 @@
-utils::globalVariables(c("axis", "coordinate", "spline"))
+utils::globalVariables(c("axis", "coordinate", "spline", "X", "Y", "fan_line", "radius", "theta"))
