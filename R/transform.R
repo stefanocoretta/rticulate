@@ -48,13 +48,20 @@ get_origin <- function(data, fan_line_col = "fan_line", fan_lines = c(10, 25)) {
         stop(glue::glue("'{fan_line_col}' is not a column of data. Please, specify the name of the fan line column in your data."))
     }
 
+    if (nrow(data) == 0) {
+        stop("Cannot work with empty data. Please, choose non-empty data.")
+    }
+
+    line_1 <- dplyr::filter(data, fan_line == fan_lines[1])
+    line_2 <- dplyr::filter(data, fan_line == fan_lines[2])
+
     line_1_model <- stats::lm(
         Y ~ X,
-        data = dplyr::filter(data, fan_line == fan_lines[1])
+        data = line_1
     )
     line_2_model <- stats::lm(
         Y ~ X,
-        data = dplyr::filter(data, fan_line == fan_lines[2])
+        data = line_2
     )
 
     coefficient_matrix <- rbind(stats::coef(line_1_model), stats::coef(line_2_model))
@@ -67,5 +74,6 @@ get_origin <- function(data, fan_line_col = "fan_line", fan_lines = c(10, 25)) {
         stop(glue::glue("Could not calculate origin. The chosen fan_lines ({fan_lines_print}) do not contain data. Please, try different fan lines."))
     }
 
+    message(glue::glue("The origin is x = {origin[1]}, y = {origin[2]}."))
     return(origin)
 }
