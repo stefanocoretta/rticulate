@@ -44,6 +44,10 @@ transform_coord <- function(data, to = "polar", origin = NULL, fan_line_col = "f
 #'
 #' @export
 get_origin <- function(data, fan_line_col = "fan_line", fan_lines = c(10, 25)) {
+    if (!(fan_line_col %in% colnames(data))) {
+        stop(glue::glue("'{fan_line_col}' is not a column of data. Please, specify the name of the fan line column in your data."))
+    }
+
     line_1_model <- stats::lm(
         Y ~ X,
         data = dplyr::filter(data, fan_line == fan_lines[1])
@@ -57,6 +61,11 @@ get_origin <- function(data, fan_line_col = "fan_line", fan_lines = c(10, 25)) {
     origin <- c(
         -solve(cbind(coefficient_matrix[,2], -1)) %*% coefficient_matrix[,1]
     )
+
+    if (anyNA(origin)) {
+        fan_lines_print <- paste("c(", fan_lines[1], ", ", fan_lines[2], ")", sep = "")
+        stop(glue::glue("Could not calculate origin. The chosen fan_lines ({fan_lines_print}) do not contain data. Please, try different fan lines."))
+    }
 
     return(origin)
 }
