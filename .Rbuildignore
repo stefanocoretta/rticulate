@@ -4,3 +4,4 @@
 ^\.Rprofile$
 ^NEWS\.md$
 ^README\.md$
+^inst/doc$
