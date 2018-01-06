@@ -3,12 +3,13 @@
 #' It transforms the coordinates of spline data between the cartesian and polar
 #' coordinate systems.
 #'
-#' @param data A data set containing the spline coordinates (cartesian coordinates must be in columns named \code{X} and \code{Y}, polar coordinates in columns named \code{theta} and \code{radius}; these are the defaults in data imported with \code{read_aaa()}).
+#' @param data A data set containing the spline coordinates (cartesian coordinates must be in columns named \code{X} and \code{Y}, polar coordinates in columns named \code{angle} and \code{radius}; these are the defaults in data imported with \code{read_aaa()}).
 #' @param to Which system to convert to, as a string, either \code{"polar"} or \code{"cartesian"} (the default is \code{"polar"}).
 #' @param origin The coordinates of the origin as a vector of \code{c(x, y)} coordinates.
+#' @param use_XY Whether to use the column names \code{X} and \code{Y} when converting to and from polar coordinates, rather than the default \code{angle} and \code{radius} (the default is \code{FALSE}. If \code{TRUE}, the columns \code{X} and \code{Y} are overwritten with the converted values. If converting to polar, \code{X} is the \code{angle} and \code{Y} the \code{radius}.
 #' @inheritParams get_origin
 #' @export
-transform_coord <- function(data, to = "polar", origin = NULL, fan_lines = c(10, 25)) {
+transform_coord <- function(data, to = "polar", origin = NULL, fan_lines = c(10, 25), use_XY = FALSE) {
     if (!(to %in% c("polar", "cartesian"))) {
         stop("Please, specify either 'polar' or 'cartesian' as the value of 'to'.")
     }
@@ -17,18 +18,44 @@ transform_coord <- function(data, to = "polar", origin = NULL, fan_lines = c(10,
         origin <- rticulate::get_origin(data, fan_lines = fan_lines)
     }
 
-    if (to == "polar") {
-        transformed_data <- data %>%
-            dplyr::mutate(
-                radius = sqrt((X - origin[1]) ^ 2 + (Y - origin[2]) ^ 2),
-                angle = pi + atan2(Y - origin[2], X - origin[1])
-            )
+    if (!use_XY) {
+        if (to == "polar") {
+            transformed_data <- data %>%
+                dplyr::mutate(
+                    radius = sqrt((X - origin[1]) ^ 2 + (Y - origin[2]) ^ 2),
+                    angle = pi + atan2(Y - origin[2], X - origin[1])
+                )
+        } else {
+            transformed_data <- data %>%
+                dplyr::mutate(
+                    X = origin[1] - radius * cos(angle),
+                    Y = -(radius * sin(angle) - origin[2])
+                )
+        }
     } else {
-        transformed_data <- data %>%
-            dplyr::mutate(
-                X = origin[1] - radius * cos(angle),
-                Y = -(radius * sin(angle) - origin[2])
-            )
+        if (to == "polar") {
+            transformed_data <- data %>%
+                dplyr::mutate(
+                    X_new = pi + atan2(Y - origin[2], X - origin[1]),
+                    Y_new = sqrt((X - origin[1]) ^ 2 + (Y - origin[2]) ^ 2)
+                ) %>%
+                select(-X, -Y) %>%
+                rename(
+                    X = X_new,
+                    Y = Y_new
+                )
+        } else {
+            transformed_data <- data %>%
+                dplyr::mutate(
+                    X_new = origin[1] - Y * cos(X),
+                    Y_new = -(Y * sin(X) - origin[2])
+                ) %>%
+                select(-X, -Y) %>%
+                rename(
+                    X = X_new,
+                    Y = Y_new
+                )
+        }
     }
 
     return(transformed_data)

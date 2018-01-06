@@ -4,16 +4,19 @@
 \alias{transform_coord}
 \title{Transform the coordinates of spline data}
 \usage{
-transform_coord(data, to = "polar", origin = NULL, fan_lines = c(10, 25))
+transform_coord(data, to = "polar", origin = NULL, fan_lines = c(10, 25),
+  use_XY = FALSE)
 }
 \arguments{
-\item{data}{A data set containing the spline coordinates (cartesian coordinates must be in columns named \code{X} and \code{Y}, polar coordinates in columns named \code{theta} and \code{radius}; these are the defaults in data imported with \code{read_aaa()}).}
+\item{data}{A data set containing the spline coordinates (cartesian coordinates must be in columns named \code{X} and \code{Y}, polar coordinates in columns named \code{angle} and \code{radius}; these are the defaults in data imported with \code{read_aaa()}).}
 
 \item{to}{Which system to convert to, as a string, either \code{"polar"} or \code{"cartesian"} (the default is \code{"polar"}).}
 
 \item{origin}{The coordinates of the origin as a vector of \code{c(x, y)} coordinates.}
 
 \item{fan_lines}{A numberic vector with two fan lines (the default is \code{c(10, 25)}).}
+
+\item{use_XY}{Whether to use the column names \code{X} and \code{Y} when converting to and from polar coordinates, rather than the default \code{angle} and \code{radius} (the default is \code{FALSE}. If \code{TRUE}, the columns \code{X} and \code{Y} are overwritten with the converted values. If converting to polar, \code{X} is the \code{angle} and \code{Y} the \code{radius}.}
 }
 \description{
 It transforms the coordinates of spline data between the cartesian and polar
