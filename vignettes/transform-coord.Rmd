@@ -51,7 +51,7 @@ Notice that the tip of the tongue is on the left (rather than the right, as in t
 
 ```{r}
 polar %>%
-    ggplot(aes(theta, radius, colour = c2_place)) +
+    ggplot(aes(angle, radius, colour = c2_place)) +
     geom_point() +
     scale_colour_discrete(name = "Place of C2") +
     theme(legend.position = "top")
@@ -61,11 +61,11 @@ Plotting in polar coordinates gives a sense of the actual shape of the tongue, b
 
 ```{r}
 polar %>%
-    ggplot(aes(theta, radius, colour = c2_place)) +
+    ggplot(aes(angle, radius, colour = c2_place)) +
     geom_point(alpha = 0.5) +
     scale_colour_discrete(name = "Place of C2") +
     coord_polar(start = pi) +
-    xlim(min(polar$theta) - pi / 2, max(polar$theta) + pi / 2) +
+    xlim(min(polar$angle) - pi / 2, max(polar$angle) + pi / 2) +
     ylim(0, max(polar$radius)) +
     theme_void() +
     theme(legend.position = "top")

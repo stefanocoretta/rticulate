@@ -21,13 +21,13 @@ transform_coord <- function(data, to = "polar", origin = NULL, fan_line_col = "f
         transformed_data <- data %>%
             dplyr::mutate(
                 radius = sqrt((X - origin[1]) ^ 2 + (Y - origin[2]) ^ 2),
-                theta = pi + atan2(Y - origin[2], X - origin[1])
+                angle = pi + atan2(Y - origin[2], X - origin[1])
             )
     } else {
         transformed_data <- data %>%
             dplyr::mutate(
-                X = origin[1] - radius * cos(theta),
-                Y = -(radius * sin(theta) - origin[2])
+                X = origin[1] - radius * cos(angle),
+                Y = -(radius * sin(angle) - origin[2])
             )
     }
 
