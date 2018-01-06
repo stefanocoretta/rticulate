@@ -8,13 +8,13 @@
 #' @param origin The coordinates of the origin as a vector of \code{c(x, y)} coordinates.
 #' @inheritParams get_origin
 #' @export
-transform_coord <- function(data, to = "polar", origin = NULL, fan_line_col = "fan_line", fan_lines = c(10, 25)) {
+transform_coord <- function(data, to = "polar", origin = NULL, fan_lines = c(10, 25)) {
     if (!(to %in% c("polar", "cartesian"))) {
         stop("Please, specify either 'polar' or 'cartesian' as the value of 'to'.")
     }
 
     if (is.null(origin)) {
-        origin <- rticulate::get_origin(data, fan_line_col = fan_line_col, fan_lines = fan_lines)
+        origin <- rticulate::get_origin(data, fan_lines = fan_lines)
     }
 
     if (to == "polar") {
@@ -39,12 +39,15 @@ transform_coord <- function(data, to = "polar", origin = NULL, fan_line_col = "f
 #' It returns the x,y coordinates of the intersection of the fan lines, which correponds to the origin of the ultrasonic waves/probe surface.
 #'
 #' @param data The spline data (the cartesian coordinates must be in two columns named \code{X} and \code{Y}).
-#' @param fan_line_col A string with the name of the column listing the fan line numbers (the default is \code{"fan_line"}, which is the default for data imported with \code{read_aaa()}).
 #' @param fan_lines A numberic vector with two fan lines (the default is \code{c(10, 25)}).
 #'
 #' @export
-get_origin <- function(data, fan_line_col = "fan_line", fan_lines = c(10, 25)) {
-    if (!(fan_line_col %in% colnames(data))) {
+get_origin <- function(data, fan_lines = c(10, 25)) {
+    if (!("X" %in% colnames(data)) || !("Y" %in% colnames(data))) {
+        stop(glue::glue("`data` does not contain columns named `X` and/or `Y`. Please, change the column names in `data` or add the columns `X` and `Y` to it."))
+    }
+
+    if (!("fan_line" %in% colnames(data))) {
         stop(glue::glue("'{fan_line_col}' is not a column of data. Please, specify the name of the fan line column in your data."))
     }
 
