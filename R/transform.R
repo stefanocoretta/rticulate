@@ -107,3 +107,40 @@ get_origin <- function(data, fan_lines = c(10, 25)) {
     message(glue::glue("The origin is x = {origin[1]}, y = {origin[2]}."))
     return(origin)
 }
+
+#' Transform confidence intervals to cartesian
+#'
+#' It returns the cartesian coordinates of the confidence intervals from a polar \code{gam}/\code{bam}.
+#'
+#' @param predictions A data frame containing the predictions obtained from a polar \code{gam}/\code{bam}.
+#' @param origin The coordinates of the origin as a vector of \code{c(x, y)} coordinates.
+#' @keywords internal
+transform_ci <- function(predictions, origin = NULL) {
+    predictions <- predictions %>%
+        dplyr::mutate(
+            CI_upper_X = origin[1] - CI_upper * cos(X),
+            CI_upper_Y = -(CI_upper * sin(X) - origin[2]),
+            CI_lower_X = origin[1] - CI_lower * cos(X),
+            CI_lower_Y = -(CI_lower * sin(X) - origin[2]),
+            index = seq(1, n())
+        )
+
+    predictions_upper <- predictions %>%
+        dplyr::select(-CI_lower_X, -CI_lower_Y) %>%
+        dplyr::rename(
+            CI_X = CI_upper_X,
+            CI_Y = CI_upper_Y
+        )
+
+    predictions_lower <- predictions %>%
+        dplyr::select(-CI_upper_X, -CI_upper_Y) %>%
+        dplyr::arrange(desc(index)) %>%
+        dplyr::rename(
+            CI_X = CI_lower_X,
+            CI_Y = CI_lower_Y
+        )
+
+    predictions <- rbind(predictions_upper, predictions_lower)
+
+    return(predictions)
+}
