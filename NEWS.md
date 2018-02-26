@@ -1,16 +1,6 @@
 # Change Log
 
-## [1.3.0] - 2018-02-26
-### Added
-- functions for transforming coordinates
-- vignette about coordinates transformation
-- polar gams
-
-### Changed
-- dropped levels in `tongue` data set
-- use underscores in names everywhere
-
-## [1.2.0] - 2017-09-29
+## Unreleased
 ### Added
 - argument in `read_aaa` to choose coordinate system
 - `read_aaa_data` for internal use
@@ -43,6 +33,9 @@
 - missing `stats::` in `read_aaa`
 - `aes` call which caused notes on R CMD check using `aes_`
 
+<<<<<<< HEAD
 [1.3.0]: https://github.com/stefanocoretta/rticulate/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/stefanocoretta/rticulate/compare/v1.0.1...v1.2.0
+=======
+>>>>>>> parent of 7bdd5e0... :package: prepare release v1.2.0
 [1.0.1]: https://github.com/stefanocoretta/rticulate/compare/v1.0.0...v1.0.1
