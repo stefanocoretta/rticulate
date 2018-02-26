@@ -6,3 +6,4 @@ packrat/lib*/
 packrat/src/
 *.Rproj
 inst/doc
+*.DS_Store
