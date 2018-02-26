@@ -38,6 +38,9 @@ plot_tongue <- function(data, geom = "line", ..., palate = NULL, palate_col = "g
 #'
 #' It plots the smooths of a polar GAM fitted with \code{polar_gam()}.
 #'
+#' @inheritParams tidymv::plot_smooths
+#' @inheritParams transform_coord
+#'
 #' @export
 plot_polar_smooths <- function(model, time_series, comparison, origin = NULL, facet_terms = NULL, conditions = NULL, exclude_random = TRUE, series_length = 100) {
     time_series_q <- dplyr::enquo(time_series)

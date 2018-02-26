@@ -8,6 +8,23 @@ plot_polar_smooths(model, time_series, comparison, origin = NULL,
   facet_terms = NULL, conditions = NULL, exclude_random = TRUE,
   series_length = 100)
 }
+\arguments{
+\item{model}{A \code{gam} or \code{bam} model object.}
+
+\item{time_series}{An unquoted expression indicating the model term that defines the time series.}
+
+\item{comparison}{An unquoted expression indicating the model term for which the comparison will be plotted.}
+
+\item{origin}{The coordinates of the origin as a vector of \code{c(x, y)} coordinates.}
+
+\item{facet_terms}{An unquoted formula with the terms used for faceting.}
+
+\item{conditions}{A list of quosures with \link[rlang]{quos} specifying the levels to plot from the model terms not among \code{time_series}, \code{comparison}, or \code{facet_terms}.}
+
+\item{exclude_random}{Whether to exclude random smooths (the default is \code{TRUE}).}
+
+\item{series_length}{An integer indicating how many values along the time series to use for predicting the outcome term.}
+}
 \description{
 It plots the smooths of a polar GAM fitted with \code{polar_gam()}.
 }
