@@ -114,7 +114,9 @@ get_origin <- function(data, fan_lines = c(10, 25)) {
 #'
 #' @param predictions A data frame containing the predictions obtained from a polar \code{gam}/\code{bam}.
 #' @param origin The coordinates of the origin as a vector of \code{c(x, y)} coordinates.
+#'
 #' @keywords internal
+#' @importFrom dplyr "n"
 transform_ci <- function(predictions, origin = NULL) {
     predictions <- predictions %>%
         dplyr::mutate(
