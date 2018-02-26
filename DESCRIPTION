@@ -18,10 +18,12 @@ Imports: dplyr,
     ggplot2,
     glue,
     magrittr,
+    mgcv,
     purrr,
     readr,
     stats,
     stringr,
+    tidymv,
     tidyr,
     tidyverse
 RoxygenNote: 6.0.1
