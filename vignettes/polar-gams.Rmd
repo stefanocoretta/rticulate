@@ -1,0 +1,61 @@
+---
+title: "Using generalised additive models (GAM) with polar coordinates for assessing tongue contours"
+author: "Stefano Coretta"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(tidyverse)
+theme_set(theme_bw())
+library(rticulate)
+```
+
+# Read data
+
+The package `rticulate` comes with a dataset containg spline data from two speakers of Italian.
+
+```{r load-data}
+library(rticulate)
+data(tongue)
+tongue
+```
+
+# Fit a polar GAM
+
+The spline data is in polar coordinates. The function `polar_gam()` converts the coordinates to polar and fits a GAM to the data.
+The polar coordinates are calculated based on the origin of the probe, which is estimated if `origin = NULL` using the fan lines specified with the argument `fan_lines` (the defaults are `c(10, 25)`).
+
+```{r polar-place}
+tongue_it01 <- filter(tongue, speaker == "it01")
+
+polar_place <- polar_gam(
+    Y ~
+        s(X, by = c2_place) +
+        s(X, word, bs = "fs"),
+    data = tongue_it01
+)
+summary(polar_place)
+```
+
+The output model is in polar coordinates but it contains the origin coordinates so that plotting can be done in cartesian coordinates.
+
+We can now plot the results from the model with `plot_polar_smooths()`.
+
+```{r plot-smooths}
+plot_polar_smooths(
+    polar_place,
+    X,
+    c2_place
+) +
+    theme(legend.position = "top")
+```
+
