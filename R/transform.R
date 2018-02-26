@@ -39,8 +39,8 @@ transform_coord <- function(data, to = "polar", origin = NULL, fan_lines = c(10,
                     X_new = pi + atan2(Y - origin[2], X - origin[1]),
                     Y_new = sqrt((X - origin[1]) ^ 2 + (Y - origin[2]) ^ 2)
                 ) %>%
-                select(-X, -Y) %>%
-                rename(
+                dplyr::select(-X, -Y) %>%
+                dplyr::rename(
                     X = X_new,
                     Y = Y_new
                 )
@@ -50,8 +50,8 @@ transform_coord <- function(data, to = "polar", origin = NULL, fan_lines = c(10,
                     X_new = origin[1] - Y * cos(X),
                     Y_new = -(Y * sin(X) - origin[2])
                 ) %>%
-                select(-X, -Y) %>%
-                rename(
+                dplyr::select(-X, -Y) %>%
+                dplyr::rename(
                     X = X_new,
                     Y = Y_new
                 )
@@ -134,7 +134,7 @@ transform_ci <- function(predictions, origin = NULL) {
 
     predictions_lower <- predictions %>%
         dplyr::select(-CI_upper_X, -CI_upper_Y) %>%
-        dplyr::arrange(desc(index)) %>%
+        dplyr::arrange(dplyr::desc(index)) %>%
         dplyr::rename(
             CI_X = CI_lower_X,
             CI_Y = CI_lower_Y
