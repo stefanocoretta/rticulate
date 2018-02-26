@@ -5,10 +5,12 @@ Version: 1.3.0
 Date: 2017-09-29
 Authors@R: person("Stefano", "Coretta", email = "stefano.coretta@gmail.com",
                   role = c("aut", "cre"))
+Author: Stefano Coretta [aut, cre]
+Maintainer: Stefano Coretta <stefano.coretta@gmail.com>
 Description: This package provides functions for processing Articulate 
     Assistant Advanced™ (AAA) export files and plot tongue contour data from any
     system.
-Depends: R (>= 2.10)
+Depends: R (>= 3.0.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -20,7 +22,6 @@ Imports: dplyr,
     readr,
     stats,
     stringr,
-    tidymv,
     tidyr,
     tidyverse
 RoxygenNote: 6.0.1
