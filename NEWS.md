@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.3.1] - 2018-02-26
+### Fixed
+- fix several bugs
+- fix issue #1
+
 ## [1.3.0] - 2018-02-26
 ### Added
 - functions for transforming coordinates
@@ -43,6 +48,7 @@
 - missing `stats::` in `read_aaa`
 - `aes` call which caused notes on R CMD check using `aes_`
 
+[1.3.0]: https://github.com/stefanocoretta/rticulate/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/stefanocoretta/rticulate/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/stefanocoretta/rticulate/compare/v1.0.1...v1.2.0
 [1.0.1]: https://github.com/stefanocoretta/rticulate/compare/v1.0.0...v1.0.1
