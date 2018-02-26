@@ -36,7 +36,7 @@ plot_tongue <- function(data, geom = "line", ..., palate = NULL, palate_col = "g
 
 #' Plot smooths from a polar \code{gam}
 #'
-#' It plots the smooths of a polar \code{gam}\code{bam}.
+#' It plots the smooths of a polar GAM fitted with \code{polar_gam()}.
 #'
 #' @export
 plot_polar_smooths <- function(model, time_series, comparison, origin = NULL, facet_terms = NULL, conditions = NULL, exclude_random = TRUE, series_length = 100) {
