@@ -48,7 +48,7 @@ plot_polar_smooths <- function(model, time_series, comparison, origin = NULL, fa
     }
     outcome_q <- model$formula[[2]]
 
-    predicted_tbl <- get_gam_predictions(model, !!time_series_q, conditions, exclude_random = exclude_random, series_length = series_length)
+    predicted_tbl <- tidymv::get_gam_predictions(model, !!time_series_q, conditions, exclude_random = exclude_random, series_length = series_length)
 
     if (is.null(origin)) {
         origin <- model$polar_origin
