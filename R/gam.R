@@ -14,8 +14,12 @@ polar_gam <- function(formula, data, origin = NULL, fan_lines = c(10, 25), ...) 
         origin <- rticulate::get_origin(data, fan_lines = fan_lines)
     }
 
-    polar_data <- data %>%
-        rticulate::transform_coord(., to = "polar", origin = origin, use_XY = TRUE)
+    polar_data <- rticulate::transform_coord(
+        data,
+        to = "polar",
+        origin = origin,
+        use_XY = TRUE
+    )
 
     model <- mgcv::bam(formula = formula, data = polar_data, ...)
 
