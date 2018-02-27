@@ -1,5 +1,12 @@
 # Change Log
 
+## Unreleased
+## Changed
+- removed `tidymv` version from README
+
+## Fixed
+- polar GAMs vignette title
+
 ## [1.3.1] - 2018-02-26
 ### Fixed
 - fix several bugs
