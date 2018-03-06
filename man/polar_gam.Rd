@@ -4,7 +4,8 @@
 \alias{polar_gam}
 \title{Polar generalised additive model (polar GAM)}
 \usage{
-polar_gam(formula, data, origin = NULL, fan_lines = c(10, 25), ...)
+polar_gam(formula, data, origin = NULL, fan_lines = c(10, 25),
+  AR_start = NULL, ...)
 }
 \arguments{
 \item{formula}{A GAM formula.}
@@ -14,6 +15,8 @@ polar_gam(formula, data, origin = NULL, fan_lines = c(10, 25), ...)
 \item{origin}{The coordinates of the origin as a vector of \code{c(x, y)} coordinates.}
 
 \item{fan_lines}{A numberic vector with two fan lines (the default is \code{c(10, 25)}).}
+
+\item{AR_start}{The \code{AR.start} argument to be passed to \code{mgcv::bam()}.}
 
 \item{...}{Arguments to be passed to \code{mgcv::bam()}.}
 }
