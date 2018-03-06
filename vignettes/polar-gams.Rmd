@@ -31,7 +31,7 @@ tongue
 
 # Fit a polar GAM
 
-The spline data is in polar coordinates. The function `polar_gam()` converts the coordinates to polar and fits a GAM to the data.
+The spline data is in cartesian coordinates. The function `polar_gam()` converts the coordinates to polar and fits a GAM to the data.
 The polar coordinates are calculated based on the origin of the probe, which is estimated if `origin = NULL` using the fan lines specified with the argument `fan_lines` (the defaults are `c(10, 25)`).
 
 ```{r polar-place}

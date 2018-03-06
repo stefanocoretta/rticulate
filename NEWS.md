@@ -6,6 +6,7 @@
 
 ## Fixed
 - polar GAMs vignette title
+- error in Polar GAMs vignette
 - error when using `AR.start`
 
 ## [1.3.1] - 2018-02-26
