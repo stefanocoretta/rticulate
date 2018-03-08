@@ -1,10 +1,13 @@
 # Change Log
 
 ## Unreleased
-## Changed
+### Added
+- argument in `read_aaa()` for choosing format (wide or long)
+
+### Changed
 - removed `tidymv` version from README
 
-## Fixed
+### Fixed
 - polar GAMs vignette title
 - error in Polar GAMs vignette
 - error when using `AR.start`

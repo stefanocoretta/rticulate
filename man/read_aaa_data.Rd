@@ -4,7 +4,7 @@
 \alias{read_aaa_data}
 \title{Data import function.}
 \usage{
-read_aaa_data(file, column_names, fan_lines, coordinates, na_rm)
+read_aaa_data(file, column_names, fan_lines, coordinates, na_rm, format)
 }
 \arguments{
 \item{file}{The file or files with AAA data.}
@@ -16,6 +16,8 @@ read_aaa_data(file, column_names, fan_lines, coordinates, na_rm)
 \item{coordinates}{A string specifying the coordinate system. Possible values are \code{"cartesian"} and \code{"polar"}.}
 
 \item{na_rm}{Remove NAs.}
+
+\item{format}{A string specifying the data format. Possible values are \code{"long"} and \code{"wide"} (the default is \code{"long"}).}
 }
 \description{
 It reads a file with data exported from AAA. The data are automatically

@@ -5,7 +5,7 @@
 \title{Read tab separated files with AAA spline data.}
 \usage{
 read_aaa(file, column_names, fan_lines = 42, coordinates = "cartesian",
-  na_rm = FALSE)
+  na_rm = FALSE, format = "long")
 }
 \arguments{
 \item{file}{The path of the file with AAA data. It can also be a character vector with multiple paths as separate strings..}
@@ -17,6 +17,8 @@ read_aaa(file, column_names, fan_lines = 42, coordinates = "cartesian",
 \item{coordinates}{A string specifying the coordinate system. Possible values are \code{"cartesian"} (the default) and \code{"polar"}.}
 
 \item{na_rm}{Remove NAs (the default is \code{FALSE}).}
+
+\item{format}{A string specifying the data format. Possible values are \code{"long"} and \code{"wide"} (the default is \code{"long"}).}
 }
 \description{
 It reads a file or a list of files with data exported from AAA. The data are
