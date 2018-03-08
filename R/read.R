@@ -50,7 +50,9 @@ read_aaa_data <- function(file, column_names, fan_lines, coordinates, na_rm, for
             col_names = columns,
             na = "*",
             trim_ws = TRUE
-        )
+        ) %>%
+        dplyr::mutate_at(dplyr::vars(dplyr::matches("(^[XY]_)|(^radius_)|(^theta_)")),
+                         dplyr::funs(as.numeric))
     } else {
         stop("Format not recognised. Available formats are 'long' and 'wide'.")
     }
