@@ -46,6 +46,8 @@ polar <- tongue %>%
 The function returns a data set with two new columns: `radius` and `theta`.
 It also prints the calculated origin.
 
+If you get an error relating to `lm.fit`, try to change the `fan_lines` to values different from the default.
+
 We can now plot the contours using polar coordinates in a cartesian system.
 Notice that the tip of the tongue is on the left (rather than the right, as in the original data).
 
