@@ -1,6 +1,6 @@
 # Change Log
 
-## Unreleased
+## [1.3.2] - 2018-08-02
 ### Added
 - argument in `read_aaa()` for choosing format (wide or long)
 
@@ -60,6 +60,7 @@
 - missing `stats::` in `read_aaa`
 - `aes` call which caused notes on R CMD check using `aes_`
 
+[1.3.0]: https://github.com/stefanocoretta/rticulate/compare/v1.3.1...v1.3.2
 [1.3.0]: https://github.com/stefanocoretta/rticulate/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/stefanocoretta/rticulate/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/stefanocoretta/rticulate/compare/v1.0.1...v1.2.0
