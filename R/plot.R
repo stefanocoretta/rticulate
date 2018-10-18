@@ -40,9 +40,11 @@ plot_tongue <- function(data, geom = "line", ..., palate = NULL, palate_col = "g
 #'
 #' @inheritParams tidymv::plot_smooths
 #' @inheritParams transform_coord
+#' @param split Columns to separate as a named list.
+#' @param sep Separator between columns (default is \code{"\\."}, which is the default with \code{}). If character, it is interpreted as a regular expression.
 #'
 #' @export
-plot_polar_smooths <- function(model, time_series, comparison, origin = NULL, facet_terms = NULL, conditions = NULL, exclude_random = TRUE, series_length = 100) {
+plot_polar_smooths <- function(model, time_series, comparison, origin = NULL, facet_terms = NULL, conditions = NULL, exclude_random = TRUE, series_length = 100, split = NULL, sep = "\\.") {
     time_series_q <- dplyr::enquo(time_series)
     comparison_q <- dplyr::enquo(comparison)
     facet_terms_q <- dplyr::enquo(facet_terms)
@@ -51,7 +53,7 @@ plot_polar_smooths <- function(model, time_series, comparison, origin = NULL, fa
     }
     outcome_q <- model$formula[[2]]
 
-    predicted_tbl <- tidymv::get_gam_predictions(model, !!time_series_q, conditions, exclude_random = exclude_random, series_length = series_length)
+    predicted_tbl <- tidymv::get_gam_predictions(model, !!time_series_q, conditions, exclude_random = exclude_random, series_length = series_length, split = split, sep = sep)
 
     if (is.null(origin)) {
         origin <- model$polar_origin
