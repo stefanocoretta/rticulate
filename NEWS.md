@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.3.3] - 2018-10-22
+### Added
+- `split` argument for splitting factor interactions into separate factors
+
 ## [1.3.2] - 2018-08-02
 ### Added
 - argument in `read_aaa()` for choosing format (wide or long)
@@ -60,8 +64,9 @@
 - missing `stats::` in `read_aaa`
 - `aes` call which caused notes on R CMD check using `aes_`
 
-[1.3.0]: https://github.com/stefanocoretta/rticulate/compare/v1.3.1...v1.3.2
-[1.3.0]: https://github.com/stefanocoretta/rticulate/compare/v1.3.0...v1.3.1
+[1.3.3]: https://github.com/stefanocoretta/rticulate/compare/v1.3.2...v1.3.3
+[1.3.2]: https://github.com/stefanocoretta/rticulate/compare/v1.3.1...v1.3.2
+[1.3.1]: https://github.com/stefanocoretta/rticulate/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/stefanocoretta/rticulate/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/stefanocoretta/rticulate/compare/v1.0.1...v1.2.0
 [1.0.1]: https://github.com/stefanocoretta/rticulate/compare/v1.0.0...v1.0.1
