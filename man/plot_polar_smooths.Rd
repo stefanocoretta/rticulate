@@ -4,9 +4,10 @@
 \alias{plot_polar_smooths}
 \title{Plot smooths from a polar \code{gam}}
 \usage{
-plot_polar_smooths(model, time_series, comparison, origin = NULL,
-  facet_terms = NULL, conditions = NULL, exclude_random = TRUE,
-  series_length = 100, split = NULL, sep = "\\\\.")
+plot_polar_smooths(model, time_series, comparison = NULL,
+  origin = NULL, facet_terms = NULL, conditions = NULL,
+  exclude_random = TRUE, series_length = 100, split = NULL,
+  sep = "\\\\.")
 }
 \arguments{
 \item{model}{A \code{gam} or \code{bam} model object.}

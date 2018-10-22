@@ -44,10 +44,13 @@ plot_tongue <- function(data, geom = "line", ..., palate = NULL, palate_col = "g
 #' @param sep Separator between columns (default is \code{"\\."}, which is the default with \code{}). If character, it is interpreted as a regular expression.
 #'
 #' @export
-plot_polar_smooths <- function(model, time_series, comparison, origin = NULL, facet_terms = NULL, conditions = NULL, exclude_random = TRUE, series_length = 100, split = NULL, sep = "\\.") {
+plot_polar_smooths <- function(model, time_series, comparison = NULL, origin = NULL, facet_terms = NULL, conditions = NULL, exclude_random = TRUE, series_length = 100, split = NULL, sep = "\\.") {
     time_series_q <- dplyr::enquo(time_series)
     comparison_q <- dplyr::enquo(comparison)
     facet_terms_q <- dplyr::enquo(facet_terms)
+    if (rlang::quo_is_null(comparison_q)) {
+      comparison_q <- NULL
+    }
     if (rlang::quo_is_null(facet_terms_q)) {
         facet_terms_q <- NULL
     }
@@ -77,21 +80,40 @@ plot_polar_smooths <- function(model, time_series, comparison, origin = NULL, fa
                 rlang::quo_name(time_series_q), rlang::quo_name(outcome_q)
             )
         ) +
-        ggplot2::geom_polygon(
+        {if (!is.null(comparison_q)) {
+          ggplot2::geom_polygon(
+              data = cartesian_ci,
+              ggplot2::aes_string(
+                  x = "CI_X",
+                  y = "CI_Y",
+                  fill = rlang::quo_name(comparison_q)
+              ),
+              alpha = 0.2
+          )
+        }} +
+        {if (is.null(comparison_q)) {
+          ggplot2::geom_polygon(
             data = cartesian_ci,
             ggplot2::aes_string(
-                x = "CI_X",
-                y = "CI_Y",
-                fill = rlang::quo_name(comparison_q)
+              x = "CI_X",
+              y = "CI_Y"
             ),
             alpha = 0.2
-        ) +
-        ggplot2::geom_path(
-            ggplot2::aes_string(
-                colour = rlang::quo_name(comparison_q),
-                linetype = rlang::quo_name(comparison_q)
-            )
-        ) +
+          )
+        }} +
+        {if (!is.null(comparison_q)) {
+          ggplot2::geom_path(
+              ggplot2::aes_string(
+                  colour = rlang::quo_name(comparison_q),
+                  linetype = rlang::quo_name(comparison_q)
+              )
+          )
+        }} +
+        {if (is.null(comparison_q)) {
+          ggplot2::geom_path(
+            ggplot2::aes_string()
+          )
+        }} +
         {if (!is.null(facet_terms_q)) {
             ggplot2::facet_wrap(facet_terms_q)
         }}
