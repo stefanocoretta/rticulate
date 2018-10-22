@@ -6,7 +6,7 @@
 \usage{
 plot_polar_smooths(model, time_series, comparison, origin = NULL,
   facet_terms = NULL, conditions = NULL, exclude_random = TRUE,
-  series_length = 100)
+  series_length = 100, split = NULL, sep = "\\\\.")
 }
 \arguments{
 \item{model}{A \code{gam} or \code{bam} model object.}
@@ -24,6 +24,10 @@ plot_polar_smooths(model, time_series, comparison, origin = NULL,
 \item{exclude_random}{Whether to exclude random smooths (the default is \code{TRUE}).}
 
 \item{series_length}{An integer indicating how many values along the time series to use for predicting the outcome term.}
+
+\item{split}{Columns to separate as a named list.}
+
+\item{sep}{Separator between columns (default is \code{"\\."}, which is the default with \code{}). If character, it is interpreted as a regular expression.}
 }
 \description{
 It plots the smooths of a polar GAM fitted with \code{polar_gam()}.

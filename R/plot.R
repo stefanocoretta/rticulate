@@ -48,7 +48,7 @@ plot_polar_smooths <- function(model, time_series, comparison, origin = NULL, fa
     time_series_q <- dplyr::enquo(time_series)
     comparison_q <- dplyr::enquo(comparison)
     facet_terms_q <- dplyr::enquo(facet_terms)
-    if (facet_terms_q == dplyr::quo(NULL)) {
+    if (rlang::quo_is_null(facet_terms_q)) {
         facet_terms_q <- NULL
     }
     outcome_q <- model$formula[[2]]
@@ -74,7 +74,7 @@ plot_polar_smooths <- function(model, time_series, comparison, origin = NULL, fa
     smooths_plot <- cartesian_predicted %>%
         ggplot2::ggplot(
             ggplot2::aes_string(
-                dplyr::quo_name(time_series_q), dplyr::quo_name(outcome_q)
+                rlang::quo_name(time_series_q), rlang::quo_name(outcome_q)
             )
         ) +
         ggplot2::geom_polygon(
@@ -82,14 +82,14 @@ plot_polar_smooths <- function(model, time_series, comparison, origin = NULL, fa
             ggplot2::aes_string(
                 x = "CI_X",
                 y = "CI_Y",
-                fill = dplyr::quo_name(comparison_q)
+                fill = rlang::quo_name(comparison_q)
             ),
             alpha = 0.2
         ) +
         ggplot2::geom_path(
             ggplot2::aes_string(
-                colour = dplyr::quo_name(comparison_q),
-                linetype = dplyr::quo_name(comparison_q)
+                colour = rlang::quo_name(comparison_q),
+                linetype = rlang::quo_name(comparison_q)
             )
         ) +
         {if (!is.null(facet_terms_q)) {

@@ -4,8 +4,8 @@
 \alias{transform_coord}
 \title{Transform the coordinates of spline data}
 \usage{
-transform_coord(data, to = "polar", origin = NULL, fan_lines = c(10, 25),
-  use_XY = FALSE)
+transform_coord(data, to = "polar", origin = NULL, fan_lines = c(10,
+  25), use_XY = FALSE)
 }
 \arguments{
 \item{data}{A data set containing the spline coordinates (cartesian coordinates must be in columns named \code{X} and \code{Y}, polar coordinates in columns named \code{angle} and \code{radius}; these are the defaults in data imported with \code{read_aaa()}).}
