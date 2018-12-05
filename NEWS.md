@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.3.5] - 2018-12-05
+### Changed
+- README now uses new `install_github` argument for building vignettes
+
 ## [1.3.4] - 2018-10-22
 ### Added
 - support for NULL comparison argument in `plot_polar_smooths()`
@@ -71,6 +75,7 @@
 - missing `stats::` in `read_aaa`
 - `aes` call which caused notes on R CMD check using `aes_`
 
+[1.3.5]: https://github.com/stefanocoretta/rticulate/compare/v1.3.4...v1.3.5
 [1.3.4]: https://github.com/stefanocoretta/rticulate/compare/v1.3.3...v1.3.4
 [1.3.3]: https://github.com/stefanocoretta/rticulate/compare/v1.3.2...v1.3.3
 [1.3.2]: https://github.com/stefanocoretta/rticulate/compare/v1.3.1...v1.3.2
