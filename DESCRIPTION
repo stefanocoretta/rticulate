@@ -27,6 +27,7 @@ Imports: dplyr,
     tidymv,
     tidyr,
     tidyverse
+Remotes: stefanocoretta/tidymv@v1.5.4
 RoxygenNote: 6.1.1
 Suggests: knitr,
     rmarkdown
