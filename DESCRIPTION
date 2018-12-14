@@ -14,8 +14,7 @@ Depends: R (>= 3.0.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports: devtools,
-    dplyr,
+Imports: dplyr,
     ggplot2,
     glue,
     magrittr,
@@ -28,7 +27,6 @@ Imports: devtools,
     tidymv,
     tidyr,
     tidyverse
-Remotes: stefanocoretta/tidymv@v1.5.4
 RoxygenNote: 6.1.1
 Suggests: knitr,
     rmarkdown
