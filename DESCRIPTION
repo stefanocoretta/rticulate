@@ -14,7 +14,8 @@ Depends: R (>= 3.0.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports: dplyr,
+Imports: devtools,
+    dplyr,
     ggplot2,
     glue,
     magrittr,
