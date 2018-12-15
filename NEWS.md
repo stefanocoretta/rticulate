@@ -1,5 +1,9 @@
 # Change Log
 
+## Unreleased
+### Added
+- examples in docs
+
 ## [1.3.5] - 2018-12-05
 ### Changed
 - README now uses new `install_github` argument for building vignettes

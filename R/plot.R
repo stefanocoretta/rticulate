@@ -9,6 +9,10 @@
 #' @param palate An optional data frame with the palate spline. If provided,
 #' the palate is plotted.
 #' @param palate_col The colour of the palate spline (the default is \code{green}).
+#'
+#' @examples
+#' plot_tongue(tongue, geom = "point")
+#'
 #' @export
 plot_tongue <- function(data, geom = "line", ..., palate = NULL, palate_col = "green") {
     spline_plot <- ggplot2::ggplot(data, ggplot2::aes_(x = ~X, y = ~Y)) +
@@ -42,6 +46,15 @@ plot_tongue <- function(data, geom = "line", ..., palate = NULL, palate_col = "g
 #' @inheritParams transform_coord
 #' @param split Columns to separate as a named list.
 #' @param sep Separator between columns (default is \code{"\\."}, which is the default with \code{}). If character, it is interpreted as a regular expression.
+#'
+#' @examples
+#' \dontrun{
+#' tongue_it01 <- filter(tongue, speaker == "it01")
+#' pgam <- polar_gam(Y ~ s(X, by = c2_place) + s(X, word, bs = "fs"),
+#' data = tongue_it01)
+#'
+#' plot_polar_smooths(polar_place, X, c2_place)
+#' }
 #'
 #' @export
 plot_polar_smooths <- function(model, time_series, comparison = NULL, origin = NULL, facet_terms = NULL, conditions = NULL, exclude_random = TRUE, series_length = 100, split = NULL, sep = "\\.") {

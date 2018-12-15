@@ -33,3 +33,13 @@ plot_polar_smooths(model, time_series, comparison = NULL,
 \description{
 It plots the smooths of a polar GAM fitted with \code{polar_gam()}.
 }
+\examples{
+\dontrun{
+tongue_it01 <- filter(tongue, speaker == "it01")
+pgam <- polar_gam(Y ~ s(X, by = c2_place) + s(X, word, bs = "fs"),
+data = tongue_it01)
+
+plot_polar_smooths(polar_place, X, c2_place)
+}
+
+}

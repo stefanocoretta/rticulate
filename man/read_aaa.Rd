@@ -20,9 +20,23 @@ read_aaa(file, column_names, fan_lines = 42, coordinates = "cartesian",
 
 \item{format}{A string specifying the data format. Possible values are \code{"long"} and \code{"wide"} (the default is \code{"long"}).}
 }
+\value{
+A tibble.
+}
 \description{
 It reads a file or a list of files with data exported from AAA. The data are
 automatically transformed from a wide to a long format (each row has values
 of X or Y axes for each fan line). The imported tibble can then be used for
 plotting and statistical analysis.
+}
+\examples{
+\dontrun{
+columns <- c("speaker","seconds","rec_date","prompt","label",
+"TT_displacement","TT_velocity","TT_abs_velocity","TD_displacement",
+"TD_velocity","TD_abs_velocity")
+file_path <- system.file("extdata", "it01.tsv", package = "rticulate")
+
+tongue <- read_aaa(file_path, columns, na_rm = TRUE)
+}
+
 }

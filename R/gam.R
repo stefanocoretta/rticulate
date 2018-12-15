@@ -9,6 +9,13 @@
 #' @param AR_start The \code{AR.start} argument to be passed to \code{mgcv::bam()}.
 #' @param ... Arguments to be passed to \code{mgcv::bam()}.
 #'
+#' @examples
+#' \dontrun{
+#' tongue_it01 <- filter(tongue, speaker == "it01")
+#' pgam <- polar_gam(Y ~ s(X, by = c2_place) + s(X, word, bs = "fs"),
+#' data = tongue_it01)
+#' }
+#'
 #' @export
 polar_gam <- function(formula, data, origin = NULL, fan_lines = c(10, 25), AR_start = NULL, ...) {
     if (is.null(origin)) {

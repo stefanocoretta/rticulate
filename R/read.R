@@ -77,6 +77,19 @@ read_aaa_data <- function(file, column_names, fan_lines, coordinates, na_rm, for
 #' @param coordinates A string specifying the coordinate system. Possible values are \code{"cartesian"} (the default) and \code{"polar"}.
 #' @param na_rm Remove NAs (the default is \code{FALSE}).
 #' @param format A string specifying the data format. Possible values are \code{"long"} and \code{"wide"} (the default is \code{"long"}).
+#'
+#' @return A tibble.
+#'
+#' @examples
+#' \dontrun{
+#' columns <- c("speaker","seconds","rec_date","prompt","label",
+#' "TT_displacement","TT_velocity","TT_abs_velocity","TD_displacement",
+#' "TD_velocity","TD_abs_velocity")
+#' file_path <- system.file("extdata", "it01.tsv", package = "rticulate")
+#'
+#' tongue <- read_aaa(file_path, columns, na_rm = TRUE)
+#' }
+#'
 #' @export
 read_aaa <- function(file, column_names, fan_lines = 42, coordinates = "cartesian", na_rm = FALSE, format = "long") {
     if (!coordinates %in% c("cartesian", "polar")) {

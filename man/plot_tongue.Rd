@@ -23,3 +23,7 @@ the palate is plotted.}
 \description{
 It plots tongue contours from data imported from AAA.
 }
+\examples{
+plot_tongue(tongue, geom = "point")
+
+}

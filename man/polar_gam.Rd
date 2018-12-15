@@ -25,3 +25,11 @@ It fits a generalised additive model (GAM) to transformed polar tongue data
 and it returns a model in polar coordinates. Use \code{plot_polar_smooths()}
 for plotting.
 }
+\examples{
+\dontrun{
+tongue_it01 <- filter(tongue, speaker == "it01")
+pgam <- polar_gam(Y ~ s(X, by = c2_place) + s(X, word, bs = "fs"),
+data = tongue_it01)
+}
+
+}
