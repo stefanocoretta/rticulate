@@ -4,7 +4,7 @@
 \name{tongue}
 \alias{tongue}
 \title{Tongue contours dataset.}
-\format{A data frame with 4578 rows and 25 variables.
+\format{A data frame with 3612 rows and 28 variables.
 \describe{
     \item{speaker}{speaker ID}
     \item{seconds}{time of coordinate, in seconds}
@@ -17,11 +17,13 @@
     \item{TD_displacement}{smoothed displacement of tongue dorsum}
     \item{TD_velocity}{velocity of tongue dorsum displacement}
     \item{TD_abs_velocity}{absolute velocity of tongue dorsum displacement}
+    \item{TR_displacement}{smoothed displacement of tongue root}
+    \item{TR_velocity}{velocity of tongue root displacement}
+    \item{TR_abs_velocity}{absolute velocity of tongue root displacement}
     \item{fan_line}{fan line number}
     \item{X}{horizontal coordinate at time \code{seconds}}
     \item{Y}{vertical coordinate at time \code{seconds}}
     \item{word}{words of the form CVCV}
-    \item{language}{the speaker's language}
     \item{item}{item ID}
     \item{ipa}{IPA transcription of the words}
     \item{c1}{first consonant}
