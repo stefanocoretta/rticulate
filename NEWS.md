@@ -4,6 +4,7 @@
 ### Added
 - examples in docs
 - section in `polar-gams.Rmd` about multiple predictors
+- function `predict_polar_gam()`
 
 ## [1.3.5] - 2018-12-05
 ### Changed
