@@ -51,6 +51,7 @@ polar_gam <- function(formula, data, origin = NULL, fan_lines = c(10, 25), AR_st
 #' @param exclude_terms Terms to be excluded from the prediction. Term names should be given as they appear in the model summary (for example, \code{"s(x0,x1)"}).
 #' @param length_out An integer indicating how many values along the numeric predictors to use for predicting the outcome term (the default is \code{50}).
 #' @param values User supplied values for numeric terms as a named list.
+#' @param return_ci Whether to return a tibble with cartesian confidence intervals (for use with \link[rticulate]{geom_polar_ci}).
 #' @param ci_z The z-value for calculating the CIs (the default is \code{1.96} for 95 percent CI).
 #'
 #' @return A tibble with predictions from a \link[rticulate]{polar_gam} model.
@@ -95,33 +96,35 @@ predict_polar_gam <- function(model, origin = NULL, exclude_terms = NULL, length
 
   predictions <- cbind(new_data, predicted)
   predictions <- tibble::as_tibble(predictions)
-  predictions <- rename(predictions, Y = "fit")
+  predictions <- dplyr::rename(predictions, Y = "fit")
 
   if (is.null(origin)) {
     origin <- model$polar_origin
   }
 
   if (return_ci) {
-    predictions <- mutate(
+    predictions <- dplyr::mutate(
       predictions,
       CI_upper = Y + ci_z * se.fit,
       CI_lower = Y - ci_z * se.fit
     )
 
-    predictions <- rticulate:::transform_ci(
+    predictions <- transform_ci(
       predictions,
       origin = origin
     ) %>%
-      select(-CI_upper, -CI_lower)
+      dplyr::select(-CI_upper, -CI_lower)
 
   } else {
-    predictions <- rticulate::transform_coord(
+    predictions <- transform_coord(
       data = predictions,
       to = "cartesian",
       origin = origin,
       use_XY = TRUE
     )
   }
+
+  attributes(predictions)$origin <- origin
 
   return(predictions)
 }

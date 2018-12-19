@@ -24,6 +24,7 @@ Imports: dplyr,
     rlang,
     stats,
     stringr,
+    tibble,
     tidymv,
     tidyr,
     tidyverse
