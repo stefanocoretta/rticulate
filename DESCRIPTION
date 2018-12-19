@@ -10,6 +10,8 @@ Maintainer: Stefano Coretta <stefano.coretta@gmail.com>
 Description: This package provides functions for processing Articulate 
     Assistant Advanced™ (AAA) export files and plot tongue contour data from any
     system.
+URL: https://github.com/stefanocoretta/rticulate
+BugReports: https://github.com/stefanocoretta/rticulate/issues
 Depends: R (>= 3.0.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
