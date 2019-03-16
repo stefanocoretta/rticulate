@@ -1,5 +1,9 @@
 # Change Log
 
+## Unreleased
+### Added
+- examples for `predict_polar_gam()` and plotting
+
 ## [1.4.0] - 2019-01-31
 ### Added
 - examples in docs

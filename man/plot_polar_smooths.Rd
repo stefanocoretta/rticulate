@@ -35,6 +35,7 @@ It plots the smooths of a polar GAM fitted with \code{polar_gam()}.
 }
 \examples{
 \dontrun{
+library(tidyverse)
 tongue_it01 <- filter(tongue, speaker == "it01")
 pgam <- polar_gam(Y ~ s(X, by = c2_place) + s(X, word, bs = "fs"),
 data = tongue_it01)

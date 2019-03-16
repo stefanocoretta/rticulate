@@ -28,3 +28,27 @@ A tibble with predictions from a \link[rticulate]{polar_gam} model.
 \description{
 It returns a tibble with the predictions from all the terms in a \link[rticulate]{polar_gam} model.
 }
+\details{
+The function behaves like \link[tidymv]{predict_gam} but it converts the
+coordinates from polar to cartesian automatically. Check
+\code{vignette("predict-gam", package = "tidymv")} to an overview of the
+predict method.
+
+To see an example of plotting, see the examples in \link[rticulate]{geom_polar_ci}.
+}
+\examples{
+\dontrun{
+library(tidyverse)
+tongue_it01 <- filter(tongue, speaker == "it01")
+it01_pol <- polar_gam(Y ~ s(X, by = c2_place) + s(X, word, bs = "fs"),
+data = tongue_it01)
+
+# get predictions
+it01_pred <- predict_polar_gam(it01_pol)
+
+# get predictions excluding the random smooth for word (the coefficient for
+# the random smooth is set to 0)
+it01_excl_rand <- predict_polar_gam(it01_pol, exclude_terms = "s(X,word)")
+}
+
+}

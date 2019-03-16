@@ -18,3 +18,24 @@ geom_polar_ci(data, group = NULL, ci_z = 1.96, ci_alpha = 0.1)
 \description{
 It provides a `geom` for plotting polar confidence intervals from the output of \link[rticulate]{predict_polar_gam} with the argument \code{return_ci = true}.
 }
+\examples{
+\dontrun{
+library(tidyverse)
+tongue_it01 <- filter(tongue, speaker == "it01")
+pgam <- polar_gam(Y ~ s(X, by = c2_place),
+data = tongue_it01)
+
+# get predictions
+it01_pred <- predict_polar_gam(pgam)
+
+# get CI for plotting
+it01_pred_ci <- predict_polar_gam(pgam, return_ci = TRUE)
+
+# plot predicted tongue with ggplot2
+it01_pred \%>\%
+  ggplot(aes(X, Y, colour = c2_place)) +
+  geom_path(aes(colour = c2_place)) +
+  geom_polar_ci(data = it01_pred_ci, group = c2_place)
+}
+
+}

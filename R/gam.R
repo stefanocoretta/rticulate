@@ -4,6 +4,9 @@
 #' and it returns a model in polar coordinates. Use \code{plot_polar_smooths()}
 #' for plotting.
 #'
+#' It is advised to fit a separate model per speaker, unless you have a working
+#' method for interspeaker normalisation of the coordinates.
+#'
 #' @param formula A GAM formula.
 #' @inheritParams transform_coord
 #' @param AR_start The \code{AR.start} argument to be passed to \code{mgcv::bam()}.
@@ -11,6 +14,7 @@
 #'
 #' @examples
 #' \dontrun{
+#' library(tidyverse)
 #' tongue_it01 <- filter(tongue, speaker == "it01")
 #' pgam <- polar_gam(Y ~ s(X, by = c2_place) + s(X, word, bs = "fs"),
 #' data = tongue_it01)
@@ -46,6 +50,13 @@ polar_gam <- function(formula, data, origin = NULL, fan_lines = c(10, 25), AR_st
 #'
 #' It returns a tibble with the predictions from all the terms in a \link[rticulate]{polar_gam} model.
 #'
+#' The function behaves like \link[tidymv]{predict_gam} but it converts the
+#' coordinates from polar to cartesian automatically. Check
+#' \code{vignette("predict-gam", package = "tidymv")} to an overview of the
+#' predict method.
+#'
+#' To see an example of plotting, see the examples in \link[rticulate]{geom_polar_ci}.
+#'
 #' @param model A \link[rticulate]{polar_gam} model object.
 #' @param origin The coordinates of the origin as a vector of \code{c(x, y)} coordinates.
 #' @param exclude_terms Terms to be excluded from the prediction. Term names should be given as they appear in the model summary (for example, \code{"s(x0,x1)"}).
@@ -55,6 +66,20 @@ polar_gam <- function(formula, data, origin = NULL, fan_lines = c(10, 25), AR_st
 #' @param ci_z The z-value for calculating the CIs (the default is \code{1.96} for 95 percent CI).
 #'
 #' @return A tibble with predictions from a \link[rticulate]{polar_gam} model.
+#' @examples
+#' \dontrun{
+#' library(tidyverse)
+#' tongue_it01 <- filter(tongue, speaker == "it01")
+#' it01_pol <- polar_gam(Y ~ s(X, by = c2_place) + s(X, word, bs = "fs"),
+#' data = tongue_it01)
+#'
+#' # get predictions
+#' it01_pred <- predict_polar_gam(it01_pol)
+#'
+#' # get predictions excluding the random smooth for word (the coefficient for
+#' # the random smooth is set to 0)
+#' it01_excl_rand <- predict_polar_gam(it01_pol, exclude_terms = "s(X,word)")
+#' }
 #'
 #' @export
 predict_polar_gam <- function(model, origin = NULL, exclude_terms = NULL, length_out = 50, values = NULL, return_ci = FALSE, ci_z = 1.96) {
