@@ -1,13 +1,13 @@
 Package: rticulate
 Type: Package
 Title: Ultrasound Tongue Imaging in R
-Version: 1.4.0
-Date: 2019-01-31
+Version: 1.4.0.9000
+Date: 2019-03-16
 Authors@R: person("Stefano", "Coretta", email = "stefano.coretta@gmail.com",
                   role = c("aut", "cre"))
 Author: Stefano Coretta [aut, cre]
 Maintainer: Stefano Coretta <stefano.coretta@gmail.com>
-Description: This package provides functions for processing Articulate 
+Description: This package provides functions for processing Articulate
     Assistant Advanced™ (AAA) export files and plot tongue contour data from any
     system.
 URL: https://github.com/stefanocoretta/rticulate
