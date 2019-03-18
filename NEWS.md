@@ -4,6 +4,9 @@
 ### Added
 - examples for `predict_polar_gam()` and plotting
 
+### Changed
+- extend `polar-gam.Rmd`
+
 ## [1.4.0] - 2019-01-31
 ### Added
 - examples in docs
