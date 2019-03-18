@@ -91,35 +91,42 @@ plot_polar_smooths(
   theme(legend.position = "top")
 ```
 
-# Extract all predicted values 
+# Extract all predicted values
 
 If your model includes other smooths, or you want to have more control over the plotting, you can use the function `predict_polar_gam()`. This function is based on `tidymv::predict_gam()`, and I suggest the reader to familiarise themselves with `vignette("predict-gam", package = "tidymv")`.
 
-For example, let's add a smooth to the model we used above and an interaction of this smooth with the one over `X`. For illustrative purposes, we will set up a smooth over `TR_abs_velocity`, which is the absolute velocity of the tongue root at the time point the tongue contour was extracted (note that this analysis might not make sense, and it is given here only to show how to extract the predictions).
+For example, let's add a smooth to the model we used above and an interaction of this smooth with the one over `X`. For illustrative purposes, we will set up a smooth over `TR_abs_velocity`, which is the absolute velocity of the tongue root at the time point the tongue contour was extracted (note that this analysis might not make sense, and it is given here only to show how to extract the predictions). We also include a random smooth for word, which we will exclude later when we extract the predictions.
 
 ```{r polar-place-2}
-polar_place_2 <- polar_gam(
+polar_2 <- polar_gam(
   Y ~
+    s(X) +
     s(X, by = c2_place) +
     s(TR_abs_velocity, k = 6) +
-    ti(X, TR_abs_velocity, k = c(9, 6)),
+    ti(X, TR_abs_velocity, k = c(9, 6)) +
+    s(X, word, bs = "fs"),
   data = tongue_it05
 )
-summary(polar_place_2)
+summary(polar_2)
 ```
 
-We can now obtain the predicted tongue contours. We set specific values for `TR_abs_velocity` using the `values` argument.
+We can now obtain the predicted tongue contours. We set specific values for `TR_abs_velocity` using the `values` argument. Since we included a random smooth, which we want to remove now, we can do so by using `exclude_terms`. To learn how this argument works in detail, see `vignette("predict-gam", package = "tidymv")`. Note that you have to filter the output to remove repeated data (which arise because we are excluding a term, i.e. we set its coefficient to 0).
 
 ```{r place-pred}
-place_pred <- predict_polar_gam(polar_place_2, values = list(TR_abs_velocity = seq(2, 24, 5)))
+polar_pred <- predict_polar_gam(
+  polar_2,
+  values = list(TR_abs_velocity = seq(2, 24, 5)),
+  exclude_terms = "s(X,word)"
+) %>%
+  filter(word == "paca") # filter data by choosing any value for word
 
-place_pred
+polar_pred
 ```
 
 And now we can plot using standard `ggplot2` functions.
 
 ```{r place-pred-plot, fig.width=7, fig.height=5}
-place_pred %>%
+polar_pred %>%
   ggplot(aes(X, Y, colour = as.factor(TR_abs_velocity), linetype = as.factor(TR_abs_velocity))) +
   geom_path() +
   facet_grid(c2_place ~ .)
@@ -132,16 +139,21 @@ If you want to add confidence intervals, the function `geom_polar_ci()` can help
 You first need to get the CI data from the model with `predict_polar_gam(return_ci = TRUE)`.
 
 ```{r ci-data}
-ci_data <- predict_polar_gam(polar_place_2, return_ci = TRUE, values = list(TR_abs_velocity = seq(2, 24, 5)))
+ci_data <- predict_polar_gam(
+  polar_2,
+  return_ci = TRUE,
+  values = list(TR_abs_velocity = seq(2, 24, 5)),
+  exclude_terms = "s(X,word)"
+) %>%
+  filter(word == "paca") # filter by choosing any level of word
 ```
 
-Now we can use the CI data with `geom_polar_ci()` (note the separate `aes()` in `geom_path()` and `geom_polar_ci()`).
+Now we can use the CI data with `geom_polar_ci()` (note the separate `aes()` in `geom_path()` and `geom_polar_ci()`). The confidence intervals are ridiculously wide in this example, because of the random smooth (which is probably not necessary in this model, but I added it to illustrate how to remove terms).
 
 ```{r place-pred-ci, fig.width=7, fig.height=5}
-place_pred %>%
+polar_pred %>%
   ggplot(aes(X, Y)) +
   geom_path(aes(colour = as.factor(TR_abs_velocity), linetype = as.factor(TR_abs_velocity))) +
-  facet_grid(c2_place ~ .) +
-  geom_polar_ci(data = ci_data, as.factor(TR_abs_velocity))
+  geom_polar_ci(data = ci_data, as.factor(TR_abs_velocity)) +
+  facet_grid(c2_place ~ .)
 ```
-
