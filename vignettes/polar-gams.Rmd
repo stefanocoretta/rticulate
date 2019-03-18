@@ -32,6 +32,8 @@ tongue
 # Fit a polar GAM
 
 The spline data is in cartesian coordinates. The function `polar_gam()` converts the coordinates to polar and fits a GAM to the data.
+Note that, unless you have a working method to normalise between speakers, it is recommended to fit separate models for each speaker.
+
 The polar coordinates are calculated based on the origin of the probe, which is estimated if `origin = NULL` using the fan lines specified with the argument `fan_lines` (the defaults are `c(10, 25)`).
 
 If you get an error relating to `lm.fit`, try to change the `fan_lines` to values different from the default.
@@ -88,3 +90,58 @@ plot_polar_smooths(
 ) +
   theme(legend.position = "top")
 ```
+
+# Extract all predicted values 
+
+If your model includes other smooths, or you want to have more control over the plotting, you can use the function `predict_polar_gam()`. This function is based on `tidymv::predict_gam()`, and I suggest the reader to familiarise themselves with `vignette("predict-gam", package = "tidymv")`.
+
+For example, let's add a smooth to the model we used above and an interaction of this smooth with the one over `X`. For illustrative purposes, we will set up a smooth over `TR_abs_velocity`, which is the absolute velocity of the tongue root at the time point the tongue contour was extracted (note that this analysis might not make sense, and it is given here only to show how to extract the predictions).
+
+```{r polar-place-2}
+polar_place_2 <- polar_gam(
+  Y ~
+    s(X, by = c2_place) +
+    s(TR_abs_velocity, k = 6) +
+    ti(X, TR_abs_velocity, k = c(9, 6)),
+  data = tongue_it05
+)
+summary(polar_place_2)
+```
+
+We can now obtain the predicted tongue contours. We set specific values for `TR_abs_velocity` using the `values` argument.
+
+```{r place-pred}
+place_pred <- predict_polar_gam(polar_place_2, values = list(TR_abs_velocity = seq(2, 24, 5)))
+
+place_pred
+```
+
+And now we can plot using standard `ggplot2` functions.
+
+```{r place-pred-plot, fig.width=7, fig.height=5}
+place_pred %>%
+  ggplot(aes(X, Y, colour = as.factor(TR_abs_velocity), linetype = as.factor(TR_abs_velocity))) +
+  geom_path() +
+  facet_grid(c2_place ~ .)
+```
+
+## Adding confidence intervals
+
+If you want to add confidence intervals, the function `geom_polar_ci()` can help.
+
+You first need to get the CI data from the model with `predict_polar_gam(return_ci = TRUE)`.
+
+```{r ci-data}
+ci_data <- predict_polar_gam(polar_place_2, return_ci = TRUE, values = list(TR_abs_velocity = seq(2, 24, 5)))
+```
+
+Now we can use the CI data with `geom_polar_ci()` (note the separate `aes()` in `geom_path()` and `geom_polar_ci()`).
+
+```{r place-pred-ci, fig.width=7, fig.height=5}
+place_pred %>%
+  ggplot(aes(X, Y)) +
+  geom_path(aes(colour = as.factor(TR_abs_velocity), linetype = as.factor(TR_abs_velocity))) +
+  facet_grid(c2_place ~ .) +
+  geom_polar_ci(data = ci_data, as.factor(TR_abs_velocity))
+```
+
