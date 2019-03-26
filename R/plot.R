@@ -58,8 +58,16 @@ plot_tongue <- function(data, geom = "line", ..., palate = NULL, palate_col = "g
 #' }
 #'
 #' @export
-plot_polar_smooths <- function(model, time_series, comparison = NULL, origin = NULL, facet_terms = NULL, conditions = NULL, exclude_random = TRUE, series_length = 100, split = NULL, sep = "\\.") {
-    time_series_q <- dplyr::enquo(time_series)
+plot_polar_smooths <- function(model, series, comparison = NULL, origin = NULL, facet_terms = NULL, conditions = NULL, exclude_random = TRUE, series_length = 100, split = NULL, sep = "\\.", time_series) {
+    if(!missing(time_series)) {
+      warning("This argument has been deprecated and will be removed in the future. Please use `series` instead.")
+
+      series_q = dplyr::enquo(time_series)
+    } else {
+      time_series = NULL
+      series_q <- dplyr::enquo(series)
+    }
+
     comparison_q <- dplyr::enquo(comparison)
     facet_terms_q <- dplyr::enquo(facet_terms)
     if (rlang::quo_is_null(comparison_q)) {
@@ -70,7 +78,7 @@ plot_polar_smooths <- function(model, time_series, comparison = NULL, origin = N
     }
     outcome_q <- model$formula[[2]]
 
-    predicted_tbl <- tidymv::get_gam_predictions(model, !!time_series_q, conditions, exclude_random = exclude_random, series_length = series_length, split = split, sep = sep)
+    predicted_tbl <- tidymv::get_gam_predictions(model, !!series_q, conditions, exclude_random = exclude_random, series_length = series_length, split = split, sep = sep)
 
     if (is.null(origin)) {
         origin <- model$polar_origin
@@ -91,7 +99,7 @@ plot_polar_smooths <- function(model, time_series, comparison = NULL, origin = N
     smooths_plot <- cartesian_predicted %>%
         ggplot2::ggplot(
             ggplot2::aes_string(
-                rlang::quo_name(time_series_q), rlang::quo_name(outcome_q)
+                rlang::quo_name(series_q), rlang::quo_name(outcome_q)
             )
         ) +
         {if (!is.null(comparison_q)) {

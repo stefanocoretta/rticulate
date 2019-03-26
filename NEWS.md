@@ -7,6 +7,9 @@
 ### Changed
 - extend `polar-gam.Rmd`
 
+### Deprecated
+- ⚠️ `time_series` is now deprecated and replaced with `series`. `time_series` will be removed in future releases.
+
 ## [1.4.0] - 2019-01-31
 ### Added
 - examples in docs
