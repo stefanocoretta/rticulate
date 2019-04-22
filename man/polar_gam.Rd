@@ -14,7 +14,7 @@ polar_gam(formula, data, origin = NULL, fan_lines = c(10, 25),
 
 \item{origin}{The coordinates of the origin as a vector of \code{c(x, y)} coordinates.}
 
-\item{fan_lines}{A numberic vector with two fan lines (the default is \code{c(10, 25)}).}
+\item{fan_lines}{A numeric vector with two fan lines (the default is \code{c(10, 25)}).}
 
 \item{AR_start}{The \code{AR.start} argument to be passed to \code{mgcv::bam()}.}
 

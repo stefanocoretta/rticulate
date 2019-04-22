@@ -6,7 +6,7 @@
 #' statistical analysis.
 #'
 #' @param file The file or files with AAA data.
-#' @param column_names The names of the columns withouth including the splines columns.
+#' @param column_names The names of the columns without including the splines columns.
 #' @param fan_lines The number of fan lines.
 #' @param coordinates A string specifying the coordinate system. Possible values are \code{"cartesian"} and \code{"polar"}.
 #' @param na_rm Remove NAs.
@@ -72,7 +72,7 @@ read_aaa_data <- function(file, column_names, fan_lines, coordinates, na_rm, for
 #' plotting and statistical analysis.
 #'
 #' @param file The path of the file with AAA data. It can also be a character vector with multiple paths as separate strings..
-#' @param column_names The names of the columns withouth including the splines columns.
+#' @param column_names The names of the columns without including the splines columns.
 #' @param fan_lines The number of fan lines (the default is \code{42}).
 #' @param coordinates A string specifying the coordinate system. Possible values are \code{"cartesian"} (the default) and \code{"polar"}.
 #' @param na_rm Remove NAs (the default is \code{FALSE}).

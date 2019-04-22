@@ -9,7 +9,7 @@ read_aaa_data(file, column_names, fan_lines, coordinates, na_rm, format)
 \arguments{
 \item{file}{The file or files with AAA data.}
 
-\item{column_names}{The names of the columns withouth including the splines columns.}
+\item{column_names}{The names of the columns without including the splines columns.}
 
 \item{fan_lines}{The number of fan lines.}
 

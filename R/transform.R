@@ -63,10 +63,10 @@ transform_coord <- function(data, to = "polar", origin = NULL, fan_lines = c(10,
 
 #' Get the origin of spline data
 #'
-#' It returns the x,y coordinates of the intersection of the fan lines, which correponds to the origin of the ultrasonic waves/probe surface.
+#' It returns the x,y coordinates of the intersection of the fan lines, which corresponds to the origin of the ultrasonic waves/probe surface.
 #'
 #' @param data The spline data (the cartesian coordinates must be in two columns named \code{X} and \code{Y}).
-#' @param fan_lines A numberic vector with two fan lines (the default is \code{c(10, 25)}).
+#' @param fan_lines A numeric vector with two fan lines (the default is \code{c(10, 25)}).
 #'
 #' @export
 get_origin <- function(data, fan_lines = c(10, 25)) {

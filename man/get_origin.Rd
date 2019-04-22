@@ -9,8 +9,8 @@ get_origin(data, fan_lines = c(10, 25))
 \arguments{
 \item{data}{The spline data (the cartesian coordinates must be in two columns named \code{X} and \code{Y}).}
 
-\item{fan_lines}{A numberic vector with two fan lines (the default is \code{c(10, 25)}).}
+\item{fan_lines}{A numeric vector with two fan lines (the default is \code{c(10, 25)}).}
 }
 \description{
-It returns the x,y coordinates of the intersection of the fan lines, which correponds to the origin of the ultrasonic waves/probe surface.
+It returns the x,y coordinates of the intersection of the fan lines, which corresponds to the origin of the ultrasonic waves/probe surface.
 }

@@ -10,7 +10,7 @@ read_aaa(file, column_names, fan_lines = 42, coordinates = "cartesian",
 \arguments{
 \item{file}{The path of the file with AAA data. It can also be a character vector with multiple paths as separate strings..}
 
-\item{column_names}{The names of the columns withouth including the splines columns.}
+\item{column_names}{The names of the columns without including the splines columns.}
 
 \item{fan_lines}{The number of fan lines (the default is \code{42}).}
 

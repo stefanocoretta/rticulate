@@ -21,7 +21,7 @@ library(rticulate)
 
 # Read data
 
-The package `rticulate` comes with a dataset containg spline data from two speakers of Italian.
+The package `rticulate` comes with a dataset containing spline data from two speakers of Italian.
 
 ```{r load-data}
 library(rticulate)
@@ -64,7 +64,7 @@ plot_polar_smooths(
 
 # Multiple predictors
 
-It is possibe to specify multiple predictors in the model and then facet the plots.
+It is possible to specify multiple predictors in the model and then facet the plots.
 
 ```{r polar-multi}
 tongue_it05 <- filter(tongue, speaker == "it05", fan_line < 38) %>% droplevels()
