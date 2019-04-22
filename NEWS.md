@@ -1,6 +1,6 @@
 # Change Log
 
-## Unreleased
+## [1.5.0] - 2019-04-22
 ### Added
 - examples for `predict_polar_gam()` and plotting
 
@@ -92,6 +92,7 @@
 - missing `stats::` in `read_aaa`
 - `aes` call which caused notes on R CMD check using `aes_`
 
+[1.5.0]: https://github.com/stefanocoretta/rticulate/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/stefanocoretta/rticulate/compare/v1.3.5...v1.4.0
 [1.3.5]: https://github.com/stefanocoretta/rticulate/compare/v1.3.4...v1.3.5
 [1.3.4]: https://github.com/stefanocoretta/rticulate/compare/v1.3.3...v1.3.4
