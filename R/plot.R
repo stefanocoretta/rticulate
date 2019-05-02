@@ -167,7 +167,7 @@ plot_polar_smooths <- function(model, series, comparison = NULL, origin = NULL, 
 #'
 #' # plot predicted tongue with ggplot2
 #' it01_pred %>%
-#'   ggplot(aes(X, Y, colour = c2_place)) +
+#'   ggplot(aes(X, Y)) +
 #'   geom_path(aes(colour = c2_place)) +
 #'   geom_polar_ci(data = it01_pred_ci, group = c2_place)
 #' }
