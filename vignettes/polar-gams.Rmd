@@ -12,7 +12,8 @@ vignette: >
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  fig.width=7, fig.height=5
 )
 library(tidyverse)
 theme_set(theme_bw())
@@ -132,28 +133,28 @@ polar_pred %>%
   facet_grid(c2_place ~ .)
 ```
 
-## Adding confidence intervals
+## Plotting the curve with confidence intervals
 
-If you want to add confidence intervals, the function `geom_polar_ci()` can help.
-
-You first need to get the CI data from the model with `predict_polar_gam(return_ci = TRUE)`.
+If you want to add confidence intervals to the fitted curve, you have to get both the coordinates of the fitted curves using `predict_polar_gam(model)` and the coordinates of the confidence intervals with `predict_polar_gam(model, return_ci = TRUE)`.
 
 ```{r ci-data}
+polar_multi_p <- predict_polar_gam(
+  polar_multi
+)
+
 ci_data <- predict_polar_gam(
-  polar_2,
+  polar_multi,
   return_ci = TRUE,
-  values = list(TR_abs_velocity = seq(2, 24, 5)),
-  exclude_terms = "s(X,word)"
-) %>%
-  filter(word == "paca") # filter by choosing any level of word
+)
 ```
 
-Now we can use the CI data with `geom_polar_ci()` (note the separate `aes()` in `geom_path()` and `geom_polar_ci()`). The confidence intervals are ridiculously wide in this example, because of the random smooth (which is probably not necessary in this model, but I added it to illustrate how to remove terms).
+Now you can use the prediction dataset as the global data and the CI data with `geom_polygon()`.
 
-```{r place-pred-ci, fig.width=7, fig.height=5}
-polar_pred %>%
+```{r place-pred-ci}
+polar_multi_p %>%
   ggplot(aes(X, Y)) +
-  geom_path(aes(colour = as.factor(TR_abs_velocity), linetype = as.factor(TR_abs_velocity))) +
-  geom_polar_ci(data = ci_data, as.factor(TR_abs_velocity)) +
-  facet_grid(c2_place ~ .)
+  geom_polygon(data = ci_data, aes(CI_X, CI_Y, group = c2_place), alpha = 0.1) +
+  geom_path(aes(colour = c2_place)) +
+  facet_grid(. ~ vowel) +
+  theme(legend.position = "top")
 ```

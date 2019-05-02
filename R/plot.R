@@ -172,8 +172,19 @@ plot_polar_smooths <- function(model, series, comparison = NULL, origin = NULL, 
 #'   geom_polar_ci(data = it01_pred_ci, group = c2_place)
 #' }
 #'
+#' @name geom_polar_ci-deprecated
+#' @usage geom_polar_ci(data, group, ci_z, ci_alpha)
+#' @seealso \code{\link{rticulate-deprecated}}
+#' @keywords internal
+NULL
+
+#' @rdname rticulate-deprecated
+#' @section \code{geom_polar_ci()}:
+#' For \code{geom_polar_ci()}, see \code{vignette("polar-gams", package = "rticulate")}.
+#'
 #' @export
 geom_polar_ci <- function(data, group = NULL, ci_z = 1.96, ci_alpha = 0.1) {
+  .Deprecated('vignette("polar-gam", package = "rticulate")', msg = "'geom_polar_ci()' has been deprecated. Check the vignette 'polar-gam' for a working alternative.")
   group_q <- rlang::enquo(group)
 
   if (rlang::quo_is_null(group_q)) {

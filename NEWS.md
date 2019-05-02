@@ -1,5 +1,9 @@
 # Change Log
 
+## Unreleased
+### Deprecated
+- `geom_polar_ci()`, see vignette "polar-gam" for a working alternative
+
 ## [1.5.0] - 2019-04-22
 ### Added
 - examples for `predict_polar_gam()` and plotting
