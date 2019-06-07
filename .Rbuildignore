@@ -7,3 +7,4 @@
 ^\.Rprofile$
 ^NEWS\.md$
 ^README\.md$
+^\.travis\.yml$

@@ -1,5 +1,9 @@
 # `rticulate`: Ultrasound Tongue Imaging in R
 
+<!-- badges: start -->
+[![Travis build status](https://travis-ci.org/stefanocoretta/rticulate.svg?branch=master)](https://travis-ci.org/stefanocoretta/rticulate)
+<!-- badges: end -->
+
 This is the repository of the R package `rticulate`. This package provides two functions for importing UTI data from Articulate Assistant Advanced and plotting UTI data from any source.
 
 # Installation
