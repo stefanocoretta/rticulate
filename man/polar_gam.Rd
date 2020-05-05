@@ -4,8 +4,14 @@
 \alias{polar_gam}
 \title{Polar generalised additive model (polar GAM)}
 \usage{
-polar_gam(formula, data, origin = NULL, fan_lines = c(10, 25),
-  AR_start = NULL, ...)
+polar_gam(
+  formula,
+  data,
+  origin = NULL,
+  fan_lines = c(10, 25),
+  AR_start = NULL,
+  ...
+)
 }
 \arguments{
 \item{formula}{A GAM formula.}

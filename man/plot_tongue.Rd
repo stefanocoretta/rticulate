@@ -4,8 +4,7 @@
 \alias{plot_tongue}
 \title{Plot tongue contours from spline data.}
 \usage{
-plot_tongue(data, geom = "line", ..., palate = NULL,
-  palate_col = "green")
+plot_tongue(data, geom = "line", ..., palate = NULL, palate_col = "green")
 }
 \arguments{
 \item{data}{A data frame with splines data.}

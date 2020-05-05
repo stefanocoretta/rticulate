@@ -4,8 +4,13 @@
 \alias{transform_coord}
 \title{Transform the coordinates of spline data}
 \usage{
-transform_coord(data, to = "polar", origin = NULL, fan_lines = c(10,
-  25), use_XY = FALSE)
+transform_coord(
+  data,
+  to = "polar",
+  origin = NULL,
+  fan_lines = c(10, 25),
+  use_XY = FALSE
+)
 }
 \arguments{
 \item{data}{A data set containing the spline coordinates (cartesian coordinates must be in columns named \code{X} and \code{Y}, polar coordinates in columns named \code{angle} and \code{radius}; these are the defaults in data imported with \code{read_aaa()}).}
@@ -19,6 +24,16 @@ transform_coord(data, to = "polar", origin = NULL, fan_lines = c(10,
 \item{use_XY}{Whether to use the column names \code{X} and \code{Y} when converting to and from polar coordinates, rather than the default \code{angle} and \code{radius} (the default is \code{FALSE}. If \code{TRUE}, the columns \code{X} and \code{Y} are overwritten with the converted values. If converting to polar, \code{X} is the \code{angle} and \code{Y} the \code{radius}.}
 }
 \description{
-It transforms the coordinates of spline data between the cartesian and polar
-coordinate systems.
+This function transforms the coordinates of spline data between Cartesian and
+polar coordinate systems. The origin x and y coordinates can be supplied by
+the user, or calculated automatically (see Details).
+}
+\details{
+The transformation between the coordinate systems require the selection of an
+origin in Cartesian coordinates (x and y). The origin ideally corresponds to
+the virtual origin of the ultrasound waves from the probe. The origin
+coordinates can be supplied by the user as a vector with the \code{origin}
+argument, or they can be estimated automatically if \code{origin = NULL} (the
+default). The estimation is performed by \code{\link{get_origin}} (see that
+function documentation for details).
 }

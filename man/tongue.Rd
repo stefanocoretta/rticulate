@@ -4,7 +4,8 @@
 \name{tongue}
 \alias{tongue}
 \title{Tongue contours dataset.}
-\format{A data frame with 3612 rows and 28 variables.
+\format{
+A data frame with 3612 rows and 28 variables.
 \describe{
     \item{speaker}{speaker ID}
     \item{seconds}{time of coordinate, in seconds}
@@ -34,7 +35,8 @@
     \item{c2}{second consonant}
     \item{c2_phonation}{phonation of the second consonant, \code{voiceless} or \code{voiced}}
     \item{c2_place}{place of the second consonant, \code{coronal} or \code{velar}}
-}}
+}
+}
 \usage{
 tongue
 }

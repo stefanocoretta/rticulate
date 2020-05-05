@@ -4,7 +4,8 @@
 \name{palate}
 \alias{palate}
 \title{Palate profile dataset.}
-\format{A data frame with 42 rows and 14 variables.
+\format{
+A data frame with 42 rows and 14 variables.
 \describe{
     \item{speaker}{speaker ID}
     \item{seconds}{time of coordinate, in seconds}
@@ -20,7 +21,8 @@
     \item{fan_line}{fan line number}
     \item{X}{horizontal coordinate at time \code{seconds}}
     \item{Y}{vertical coordinate at time \code{seconds}}
-}}
+}
+}
 \usage{
 palate
 }

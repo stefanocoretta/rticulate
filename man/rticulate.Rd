@@ -3,7 +3,6 @@
 \docType{package}
 \name{rticulate}
 \alias{rticulate}
-\alias{rticulate-package}
 \title{rticulate: Ultrasound Tongue Imaging in R.}
 \description{
 This package provides function for processing Articulate Assistant Advanced

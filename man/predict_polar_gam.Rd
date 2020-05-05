@@ -4,8 +4,15 @@
 \alias{predict_polar_gam}
 \title{Get all predictions from a polar GAM model}
 \usage{
-predict_polar_gam(model, origin = NULL, exclude_terms = NULL,
-  length_out = 50, values = NULL, return_ci = FALSE, ci_z = 1.96)
+predict_polar_gam(
+  model,
+  origin = NULL,
+  exclude_terms = NULL,
+  length_out = 50,
+  values = NULL,
+  return_ci = FALSE,
+  ci_z = 1.96
+)
 }
 \arguments{
 \item{model}{A \link[rticulate]{polar_gam} model object.}

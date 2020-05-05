@@ -4,7 +4,8 @@
 \name{stimuli}
 \alias{stimuli}
 \title{Stimuli dataset.}
-\format{A data frame with 12 rows and 11 variables.
+\format{
+A data frame with 12 rows and 11 variables.
 \describe{
     \item{item}{item ID}
     \item{word}{words of the form CVCV}
@@ -17,7 +18,8 @@
     \item{c2}{second consonant}
     \item{c2_phonation}{phonation of the second consonant, \code{voiceless} or \code{voiced}}
     \item{c2_place}{place of the second consonant, \code{coronal} or \code{velar}}
-}}
+}
+}
 \usage{
 stimuli
 }

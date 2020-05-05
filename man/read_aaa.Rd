@@ -4,8 +4,14 @@
 \alias{read_aaa}
 \title{Read tab separated files with AAA spline data.}
 \usage{
-read_aaa(file, column_names, fan_lines = 42, coordinates = "cartesian",
-  na_rm = FALSE, format = "long")
+read_aaa(
+  file,
+  column_names,
+  fan_lines = 42,
+  coordinates = "cartesian",
+  na_rm = FALSE,
+  format = "long"
+)
 }
 \arguments{
 \item{file}{The path of the file with AAA data. It can also be a character vector with multiple paths as separate strings..}

@@ -1,7 +1,16 @@
 #' Transform the coordinates of spline data
 #'
-#' It transforms the coordinates of spline data between the cartesian and polar
-#' coordinate systems.
+#' This function transforms the coordinates of spline data between Cartesian and
+#' polar coordinate systems. The origin x and y coordinates can be supplied by
+#' the user, or calculated automatically (see Details).
+#'
+#' The transformation between the coordinate systems require the selection of an
+#' origin in Cartesian coordinates (x and y). The origin ideally corresponds to
+#' the virtual origin of the ultrasound waves from the probe. The origin
+#' coordinates can be supplied by the user as a vector with the \code{origin}
+#' argument, or they can be estimated automatically if \code{origin = NULL} (the
+#' default). The estimation is performed by \code{\link{get_origin}} (see that
+#' function documentation for details).
 #'
 #' @param data A data set containing the spline coordinates (cartesian coordinates must be in columns named \code{X} and \code{Y}, polar coordinates in columns named \code{angle} and \code{radius}; these are the defaults in data imported with \code{read_aaa()}).
 #' @param to Which system to convert to, as a string, either \code{"polar"} or \code{"cartesian"} (the default is \code{"polar"}).
@@ -63,7 +72,12 @@ transform_coord <- function(data, to = "polar", origin = NULL, fan_lines = c(10,
 
 #' Get the origin of spline data
 #'
-#' It returns the x,y coordinates of the intersection of the fan lines, which corresponds to the origin of the ultrasonic waves/probe surface.
+#' It returns the Cartesian \code{x, y} coordinates of the virtual origin of the ultrasonic waves/probe surface (see Details).
+#'
+#' The function estimates the origin of the ultrasond waves from the probe using the spline data and the provided fan lines. The estimation method is based on Heyne, Matthias & Donald Derrick (2015) Using a radial ultrasound probe’s virtual origin to compute midsagittal smoothing splines in polar coordinates. \emph{The Journal of the Acoustical Society of America} 138(6), EL509–EL514, DOI:10.1121/1.4937168.
+#'
+#' @section Origin estimation:
+#' The equations of the two fan lines (10 and 25 by default) are set equal to find their intersection. The intersection is the origin. In some cases, the linear estimation of the equation fails, and an error related to fit is returned. In these cases, try different fan lines by increasing the minimum fan line and/or changing the maximum fan line (for example, if \code{c(10, 25)} returns an error, try \code{c(15, 30)}).
 #'
 #' @param data The spline data (the cartesian coordinates must be in two columns named \code{X} and \code{Y}).
 #' @param fan_lines A numeric vector with two fan lines (the default is \code{c(10, 25)}).

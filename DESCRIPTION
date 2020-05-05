@@ -30,7 +30,7 @@ Imports: dplyr,
     tidymv,
     tidyr,
     tidyverse
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0
 Suggests: knitr,
     rmarkdown
 VignetteBuilder: knitr
