@@ -99,19 +99,35 @@ get_origin <- function(data, fan_lines = c(10, 25)) {
     line_1 <- dplyr::filter(data, fan_line == fan_lines[1])
     line_2 <- dplyr::filter(data, fan_line == fan_lines[2])
 
-    line_1_model <- stats::lm(
-        Y ~ X,
-        data = line_1
+    line_1_model <- try(
+        stats::lm(
+            Y ~ X,
+            data = line_1
+        ),
+        silent = TRUE
     )
-    line_2_model <- stats::lm(
-        Y ~ X,
-        data = line_2
+    line_2_model <- try(
+        stats::lm(
+            Y ~ X,
+            data = line_2
+        ),
+        silent = TRUE
     )
 
+    if (class(line_1_model) == "try-error" | class(line_2_model) == "try-error") {
+        stop(glue::glue("The chosen fan lines ({fan_lines}) lead to a bad fit. Please, choose other fan lines."))
+    }
+
     coefficient_matrix <- rbind(stats::coef(line_1_model), stats::coef(line_2_model))
-    origin <- c(
+
+    origin <- try(c(
         -solve(cbind(coefficient_matrix[,2], -1)) %*% coefficient_matrix[,1]
-    )
+    ), silent = TRUE)
+
+    if (class(origin) == "try-error") {
+        fan_lines_print <- paste("c(", fan_lines[1], ", ", fan_lines[2], ")", sep = "")
+        stop(glue::glue("The chosen fan lines {fan_lines_print} lead to a bad fit. Please, choose other fan lines."))
+    }
 
     if (anyNA(origin)) {
         fan_lines_print <- paste("c(", fan_lines[1], ", ", fan_lines[2], ")", sep = "")

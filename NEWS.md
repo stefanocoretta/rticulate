@@ -3,6 +3,7 @@
 ## Unreleased
 ### Changed
 - expand documentation of `transform_coordinates()` and `get_origin()`
+- better handling of fit errors in `get_origin()`
 
 ### Deprecated
 - `geom_polar_ci()`, see vignette "polar-gam" for a working alternative
