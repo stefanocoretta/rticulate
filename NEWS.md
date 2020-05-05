@@ -1,6 +1,6 @@
 # Change Log
 
-## Unreleased
+## [1.6.0] - 2020-05-05
 ### Changed
 - expand documentation of `transform_coordinates()` and `get_origin()`
 - better handling of fit errors in `get_origin()`
@@ -100,6 +100,7 @@
 - missing `stats::` in `read_aaa`
 - `aes` call which caused notes on R CMD check using `aes_`
 
+[1.6.0]: https://github.com/stefanocoretta/rticulate/compare/v1.5.0...v1.6.0
 [1.5.0]: https://github.com/stefanocoretta/rticulate/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/stefanocoretta/rticulate/compare/v1.3.5...v1.4.0
 [1.3.5]: https://github.com/stefanocoretta/rticulate/compare/v1.3.4...v1.3.5

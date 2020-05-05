@@ -1,8 +1,8 @@
 Package: rticulate
 Type: Package
 Title: Ultrasound Tongue Imaging in R
-Version: 1.5.0.9000
-Date: 2019-05-02
+Version: 1.6.0
+Date: 2020-05-05
 Authors@R: person("Stefano", "Coretta", email = "stefano.coretta@gmail.com",
                   role = c("aut", "cre"))
 Author: Stefano Coretta [aut, cre]
