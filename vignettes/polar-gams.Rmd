@@ -4,7 +4,7 @@ author: "Stefano Coretta"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Polar GAMs}
+  %\VignetteIndexEntry{Using generalised additive models (GAM) with polar coordinates for assessing tongue contours}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
