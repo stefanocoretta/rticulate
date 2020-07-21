@@ -1,6 +1,6 @@
 # Change Log
 
-## Unreleased - 2020-07-21
+## Devel - 2020-07-21
 ### Changed
 - use `tidy::pivot_longer()` and `tidy::pivot_wider()` in `read_aaa_data()`
 - add `.index` column to `read_aaa_data()` output to group contours if needed.
