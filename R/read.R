@@ -38,12 +38,25 @@ read_aaa_data <- function(file, column_names, fan_lines, coordinates, na_rm, for
             na = "*",
             trim_ws = TRUE
         ) %>%
-            dplyr::mutate_at(dplyr::vars(dplyr::matches("(^[XY]_)|(^radius_)|(^theta_)")),
-                             dplyr::funs(as.numeric)) %>%
-            tidyr::gather(spline, coordinate,
-                          dplyr::matches("(^[XY]_)|(^radius_)|(^theta_)")) %>%
+            # Add index column for cases where contours don't have an identifier
+            dplyr::mutate(
+                .index = dplyr::row_number()
+            ) %>%
+            dplyr::mutate_at(
+                dplyr::vars(dplyr::matches("(^[XY]_)|(^radius_)|(^theta_)")),
+                as.numeric
+            ) %>%
+            tidyr::pivot_longer(
+                cols = dplyr::matches("(^[XY]_)|(^radius_)|(^theta_)"),
+                names_to = "spline",
+                values_to = "coordinate"
+            ) %>%
             tidyr::separate(spline, c("axis", "fan_line"), convert = TRUE) %>%
-            tidyr::spread(axis, coordinate)
+            tidyr::pivot_wider(
+                names_from = "axis",
+                values_from = "coordinate"
+            ) %>%
+            dplyr::relocate(.index, .after = tidyselect::last_col())
     } else if (format == "wide") {
         data <- readr::read_tsv(
             file,
@@ -52,7 +65,7 @@ read_aaa_data <- function(file, column_names, fan_lines, coordinates, na_rm, for
             trim_ws = TRUE
         ) %>%
         dplyr::mutate_at(dplyr::vars(dplyr::matches("(^[XY]_)|(^radius_)|(^theta_)")),
-                         dplyr::funs(as.numeric))
+                         as.numeric)
     } else {
         stop("Format not recognised. Available formats are 'long' and 'wide'.")
     }
@@ -78,7 +91,7 @@ read_aaa_data <- function(file, column_names, fan_lines, coordinates, na_rm, for
 #' @param na_rm Remove NAs (the default is \code{FALSE}).
 #' @param format A string specifying the data format. Possible values are \code{"long"} and \code{"wide"} (the default is \code{"long"}).
 #'
-#' @return A tibble.
+#' @return A tibble. An \code{.index} column is added which indexes (groups) each tongue contour.
 #'
 #' @examples
 #' \dontrun{

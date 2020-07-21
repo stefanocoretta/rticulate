@@ -1,5 +1,9 @@
 # Change Log
 
+## Unreleased - 2020-07-21
+### Changed
+- use `tidy::pivot_longer()` and `tidy::pivot_wider()` in `read_aaa_data()`
+- add `.index` column to `read_aaa_data()` output to group contours if needed.
 ## [1.6.0] - 2020-05-05
 ### Changed
 - expand documentation of `transform_coordinates()` and `get_origin()`

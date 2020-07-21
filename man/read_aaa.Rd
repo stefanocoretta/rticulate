@@ -27,7 +27,7 @@ read_aaa(
 \item{format}{A string specifying the data format. Possible values are \code{"long"} and \code{"wide"} (the default is \code{"long"}).}
 }
 \value{
-A tibble.
+A tibble. An \code{.index} column is added which indexes (groups) each tongue contour.
 }
 \description{
 It reads a file or a list of files with data exported from AAA. The data are
