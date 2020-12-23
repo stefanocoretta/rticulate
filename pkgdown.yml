@@ -1,0 +1,13 @@
+pandoc: 2.7.3
+pkgdown: 1.6.1
+pkgdown_sha: ~
+articles:
+  overview: overview.html
+  polar-gams: polar-gams.html
+  tongue-imaging: tongue-imaging.html
+  transform-coord: transform-coord.html
+last_built: 2020-12-23T21:13Z
+urls:
+  reference: https://stefanocoretta.github.io/rticulate/reference
+  article: https://stefanocoretta.github.io/rticulate/articles
+
