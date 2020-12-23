@@ -8,3 +8,4 @@ packrat/lib*/
 packrat/src/
 inst/doc
 *.DS_Store
+docs
