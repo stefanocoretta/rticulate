@@ -7,8 +7,8 @@
 ^\.Rprofile$
 ^NEWS\.md$
 ^README\.md$
-^\.travis\.yml$
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
 ^\.github$
+^README\.Rmd$

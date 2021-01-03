@@ -1,4 +1,4 @@
-# rticulate v1.6.0.9000
+# rticulate (development version)
 
 ## Changed
 
@@ -7,6 +7,12 @@
 * add `.index` column to `read_aaa_data()` output to group contours if needed.
 
 * changed index name of `polar-gams.Rmd` vignette.
+
+* Now uses `README.Rmd`.
+
+## Removed
+
+* Remove Travis CI (use GitHub Actions).
 
 # rticulate v1.6.0
 
