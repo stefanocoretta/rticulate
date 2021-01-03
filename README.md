@@ -1,9 +1,11 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# `rticulate`: Ultrasound Tongue Imaging in R
+# rticulate: Ultrasound Tongue Imaging in R <img src='man/figures/logo.png' align="right" height="120" />
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/stefanocoretta/rticulate/workflows/R-CMD-check/badge.svg)](https://github.com/stefanocoretta/rticulate/actions)
 <!-- badges: end -->
 
 This is the repository of the R package `rticulate`. This package

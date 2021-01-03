@@ -1,5 +1,9 @@
 # rticulate (development version)
 
+## Added
+
+* rticulate logo!
+
 ## Changed
 
 * use `tidy::pivot_longer()` and `tidy::pivot_wider()` in `read_aaa_data()`
