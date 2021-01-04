@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600px" height="600px" viewBox="0 0 600 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>rticulate-logo</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="rticulate-logo">
+            <path d="M320,11.5470054 L539.807621,138.452995 C552.183664,145.598306 559.807621,158.803387 559.807621,173.094011 L559.807621,426.905989 C559.807621,441.196613 552.183664,454.401694 539.807621,461.547005 L320,588.452995 C307.623957,595.598306 292.376043,595.598306 280,588.452995 L60.1923789,461.547005 C47.8163358,454.401694 40.1923789,441.196613 40.1923789,426.905989 L40.1923789,173.094011 C40.1923789,158.803387 47.8163358,145.598306 60.1923789,138.452995 L280,11.5470054 C292.376043,4.40169359 307.623957,4.40169359 320,11.5470054 Z" id="Polygon" fill="#FA6400"></path>
+            <g id="ultrasound" transform="translate(110.000000, 72.630557)" stroke="#FFFFFF">
+                <path d="M190,1.26923988 L380,161.610703 C321.504883,236.374931 258.171549,273.757045 190,273.757045 C121.828451,273.757045 58.4951175,236.374931 0,161.610703 L190,1.26923988 Z" id="Triangle" stroke-width="2" fill="#1C3339" transform="translate(190.000000, 137.513142) scale(1, -1) translate(-190.000000, -137.513142) "></path>
+                <g id="fanlines" transform="translate(58.746506, 6.000000)" stroke-dasharray="4,14" stroke-linecap="round" stroke-width="5">
+                    <line x1="1.25349372" y1="53.369443" x2="133.253494" y2="259.369443" id="Path"></line>
+                    <line x1="57.2534937" y1="19.369443" x2="131.253494" y2="259.369443" id="Path-2"></line>
+                    <line x1="131.253494" y1="53.369443" x2="263.253494" y2="259.369443" id="Path" transform="translate(197.253494, 156.369443) scale(-1, 1) translate(-197.253494, -156.369443) "></line>
+                    <line x1="133.253494" y1="19.369443" x2="207.253494" y2="259.369443" id="Path-2" transform="translate(170.253494, 139.369443) scale(-1, 1) translate(-170.253494, -139.369443) "></line>
+                    <line x1="131.753494" y1="2.25220164" x2="131.753494" y2="256.492731" id="Path-3"></line>
+                </g>
+            </g>
+            <text id="rticulate" font-family="Orbitron-Black, Orbitron" font-size="95" font-weight="800" fill="#FFFFFF">
+                <tspan x="77.71" y="442.5">rticulate</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
