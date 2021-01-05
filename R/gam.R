@@ -5,7 +5,7 @@
 #' for plotting.
 #'
 #' It is advised to fit a separate model per speaker, unless you have a working
-#' method for interspeaker normalisation of the coordinates.
+#' method for inter-speaker normalisation of the coordinates.
 #'
 #' @param formula A GAM formula.
 #' @inheritParams transform_coord

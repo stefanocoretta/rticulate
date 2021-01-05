@@ -1,4 +1,4 @@
-# rticulate (development version)
+# rticulate v1.7.0
 
 ## Added
 
@@ -19,6 +19,8 @@
 ## Removed
 
 * Remove Travis CI (use GitHub Actions).
+
+
 
 # rticulate v1.6.0
 

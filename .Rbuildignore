@@ -5,7 +5,6 @@
 ^\.Rproj\.user$
 ^packrat/
 ^\.Rprofile$
-^NEWS\.md$
 ^README\.md$
 ^_pkgdown\.yml$
 ^docs$
@@ -13,3 +12,4 @@
 ^\.github$
 ^README\.Rmd$
 ^LICENSE\.md$
+^cran-comments\.md$

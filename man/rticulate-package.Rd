@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-This package provides functions for processing Articulate
+It provides functions for processing Articulate
     Assistant Advanced™ (AAA) export files and plot tongue contour data from any
     system.
 }

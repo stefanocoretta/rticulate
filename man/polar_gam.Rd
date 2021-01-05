@@ -20,7 +20,8 @@ polar_gam(
 
 \item{origin}{The coordinates of the origin as a vector of \code{c(x, y)} coordinates.}
 
-\item{fan_lines}{A numeric vector with two fan lines (the default is \code{c(10, 25)}).}
+\item{fan_lines}{A numeric vector with two fan lines (the default is
+\code{c(10, 25)}).}
 
 \item{AR_start}{The \code{AR.start} argument to be passed to \code{mgcv::bam()}.}
 
@@ -33,7 +34,7 @@ for plotting.
 }
 \details{
 It is advised to fit a separate model per speaker, unless you have a working
-method for interspeaker normalisation of the coordinates.
+method for inter-speaker normalisation of the coordinates.
 }
 \examples{
 \dontrun{

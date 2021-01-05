@@ -7,11 +7,14 @@
 transform_ci(predictions, origin = NULL)
 }
 \arguments{
-\item{predictions}{A data frame containing the predictions obtained from a polar \code{gam}/\code{bam}.}
+\item{predictions}{A data frame containing the predictions obtained from a
+polar \code{gam}/\code{bam}.}
 
-\item{origin}{The coordinates of the origin as a vector of \code{c(x, y)} coordinates.}
+\item{origin}{The coordinates of the origin as a vector of \code{c(x, y)}
+coordinates.}
 }
 \description{
-It returns the cartesian coordinates of the confidence intervals from a polar \code{gam}/\code{bam}.
+It returns the cartesian coordinates of the confidence intervals from a polar
+\code{gam}/\code{bam}.
 }
 \keyword{internal}
