@@ -19,6 +19,9 @@ the palate is plotted.}
 
 \item{palate_col}{The colour of the palate spline (the default is \code{green}).}
 }
+\value{
+An object of class \code{\link[ggplot2]{ggplot}}.
+}
 \description{
 It plots tongue contours from data imported from AAA.
 }

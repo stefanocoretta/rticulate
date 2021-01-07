@@ -41,17 +41,17 @@ plot_polar_smooths(
 
 \item{time_series}{Deprecated, use \code{series} instead.}
 }
+\value{
+An object of class \code{\link[ggplot2]{ggplot}}.
+}
 \description{
 It plots the smooths of a polar GAM fitted with \code{polar_gam()}.
 }
 \examples{
-\dontrun{
 library(tidyverse)
 tongue_it01 <- filter(tongue, speaker == "it01")
-pgam <- polar_gam(Y ~ s(X, by = c2_place) + s(X, word, bs = "fs"),
-data = tongue_it01)
+pgam <- polar_gam(Y ~ s(X, by = as.factor(label)), data = tongue_it01)
 
-plot_polar_smooths(polar_place, X, c2_place)
-}
+plot_polar_smooths(pgam, X, label)
 
 }

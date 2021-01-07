@@ -11,6 +11,9 @@
 #' @param coordinates A string specifying the coordinate system. Possible values are \code{"cartesian"} and \code{"polar"}.
 #' @param na_rm Remove NAs.
 #' @param format A string specifying the data format. Possible values are \code{"long"} and \code{"wide"} (the default is \code{"long"}).
+#'
+#' @return An object of class \code{\link[tibble]{tbl_df-class}} (a tibble).
+#'
 #' @importFrom magrittr "%>%"
 #' @keywords internal
 read_aaa_data <- function(file, column_names, fan_lines, coordinates, na_rm, format) {
@@ -94,14 +97,12 @@ read_aaa_data <- function(file, column_names, fan_lines, coordinates, na_rm, for
 #' @return A tibble. An \code{.index} column is added which indexes (groups) each tongue contour.
 #'
 #' @examples
-#' \dontrun{
 #' columns <- c("speaker","seconds","rec_date","prompt","label",
 #' "TT_displacement","TT_velocity","TT_abs_velocity","TD_displacement",
 #' "TD_velocity","TD_abs_velocity")
 #' file_path <- system.file("extdata", "it01.tsv", package = "rticulate")
 #'
 #' tongue <- read_aaa(file_path, columns, na_rm = TRUE)
-#' }
 #'
 #' @export
 read_aaa <- function(file, column_names, fan_lines = 42, coordinates = "cartesian", na_rm = FALSE, format = "long") {

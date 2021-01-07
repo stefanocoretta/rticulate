@@ -7,6 +7,9 @@
 \usage{
 geom_polar_ci(data, group = NULL, ci_z = 1.96, ci_alpha = 0.1)
 }
+\value{
+Nothing. Used to document deprecated functions.
+}
 \description{
 The functions listed below are deprecated and will be defunct in
   the near future. When possible, alternative functions with similar

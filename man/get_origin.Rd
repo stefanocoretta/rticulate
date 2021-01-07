@@ -13,6 +13,10 @@ named \code{X} and \code{Y}).}
 \item{fan_lines}{A numeric vector with two fan lines (the default is
 \code{c(10, 25)}).}
 }
+\value{
+A numeric vector with the Cartesian \code{(x, y)} coordinates of the virtual origin of the
+  ultrasonic waves/probe surface.
+}
 \description{
 It returns the Cartesian \code{x, y} coordinates of the virtual origin of the
 ultrasonic waves/probe surface (see Details).

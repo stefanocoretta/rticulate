@@ -12,13 +12,14 @@
 #' @param AR_start The \code{AR.start} argument to be passed to \code{mgcv::bam()}.
 #' @param ... Arguments to be passed to \code{mgcv::bam()}.
 #'
+#' @return An object of class \code{"gam"} as described in
+#'   \code{\link[mgcv]{gamObject}}.
+#'
 #' @examples
-#' \dontrun{
 #' library(tidyverse)
 #' tongue_it01 <- filter(tongue, speaker == "it01")
 #' pgam <- polar_gam(Y ~ s(X, by = c2_place) + s(X, word, bs = "fs"),
 #' data = tongue_it01)
-#' }
 #'
 #' @export
 polar_gam <- function(formula, data, origin = NULL, fan_lines = c(10, 25), AR_start = NULL, ...) {
@@ -67,7 +68,6 @@ polar_gam <- function(formula, data, origin = NULL, fan_lines = c(10, 25), AR_st
 #'
 #' @return A tibble with predictions from a \link[rticulate]{polar_gam} model.
 #' @examples
-#' \dontrun{
 #' library(tidyverse)
 #' tongue_it01 <- filter(tongue, speaker == "it01")
 #' it01_pol <- polar_gam(Y ~ s(X, by = c2_place) + s(X, word, bs = "fs"),
@@ -79,7 +79,6 @@ polar_gam <- function(formula, data, origin = NULL, fan_lines = c(10, 25), AR_st
 #' # get predictions excluding the random smooth for word (the coefficient for
 #' # the random smooth is set to 0)
 #' it01_excl_rand <- predict_polar_gam(it01_pol, exclude_terms = "s(X,word)")
-#' }
 #'
 #' @export
 predict_polar_gam <- function(model, origin = NULL, exclude_terms = NULL, length_out = 50, values = NULL, return_ci = FALSE, ci_z = 1.96) {

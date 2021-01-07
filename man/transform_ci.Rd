@@ -13,6 +13,9 @@ polar \code{gam}/\code{bam}.}
 \item{origin}{The coordinates of the origin as a vector of \code{c(x, y)}
 coordinates.}
 }
+\value{
+An object of class \code{\link[tibble]{tbl_df-class}} (a tibble).
+}
 \description{
 It returns the cartesian coordinates of the confidence intervals from a polar
 \code{gam}/\code{bam}.

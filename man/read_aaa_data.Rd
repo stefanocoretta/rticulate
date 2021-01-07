@@ -19,6 +19,9 @@ read_aaa_data(file, column_names, fan_lines, coordinates, na_rm, format)
 
 \item{format}{A string specifying the data format. Possible values are \code{"long"} and \code{"wide"} (the default is \code{"long"}).}
 }
+\value{
+An object of class \code{\link[tibble]{tbl_df-class}} (a tibble).
+}
 \description{
 It reads a file with data exported from AAA. The data are automatically
 transformed from a wide to a long format (each row has values of X or Y axes

@@ -24,6 +24,9 @@ transform_coord(
 
 \item{use_XY}{Whether to use the column names \code{X} and \code{Y} when converting to and from polar coordinates, rather than the default \code{angle} and \code{radius} (the default is \code{FALSE}. If \code{TRUE}, the columns \code{X} and \code{Y} are overwritten with the converted values. If converting to polar, \code{X} is the \code{angle} and \code{Y} the \code{radius}.}
 }
+\value{
+An object of class \code{\link[tibble]{tbl_df-class}} (a tibble).
+}
 \description{
 This function transforms the coordinates of spline data between Cartesian and
 polar coordinate systems. The origin x and y coordinates can be supplied by

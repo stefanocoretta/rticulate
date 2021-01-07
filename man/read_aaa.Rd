@@ -36,13 +36,11 @@ of X or Y axes for each fan line). The imported tibble can then be used for
 plotting and statistical analysis.
 }
 \examples{
-\dontrun{
 columns <- c("speaker","seconds","rec_date","prompt","label",
 "TT_displacement","TT_velocity","TT_abs_velocity","TD_displacement",
 "TD_velocity","TD_abs_velocity")
 file_path <- system.file("extdata", "it01.tsv", package = "rticulate")
 
 tongue <- read_aaa(file_path, columns, na_rm = TRUE)
-}
 
 }

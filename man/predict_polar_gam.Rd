@@ -44,7 +44,6 @@ predict method.
 To see an example of plotting, see the examples in \link[rticulate]{geom_polar_ci}.
 }
 \examples{
-\dontrun{
 library(tidyverse)
 tongue_it01 <- filter(tongue, speaker == "it01")
 it01_pol <- polar_gam(Y ~ s(X, by = c2_place) + s(X, word, bs = "fs"),
@@ -56,6 +55,5 @@ it01_pred <- predict_polar_gam(it01_pol)
 # get predictions excluding the random smooth for word (the coefficient for
 # the random smooth is set to 0)
 it01_excl_rand <- predict_polar_gam(it01_pol, exclude_terms = "s(X,word)")
-}
 
 }
