@@ -41,9 +41,10 @@ It is advised to fit a separate model per speaker, unless you have a working
 method for inter-speaker normalisation of the coordinates.
 }
 \examples{
+\donttest{
 library(tidyverse)
 tongue_it01 <- filter(tongue, speaker == "it01")
 pgam <- polar_gam(Y ~ s(X, by = c2_place) + s(X, word, bs = "fs"),
 data = tongue_it01)
-
+}
 }

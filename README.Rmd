@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 # rticulate: Ultrasound Tongue Imaging in R <img src='man/figures/logo.png' align="right" height="120" />
 
 <!-- badges: start -->
-`r badger::badge_github_version(color = "blue")`
+`r badger::badge_github_version(color = "orange")`
 `r badger::badge_github_actions()`
 <!-- badges: end -->
 

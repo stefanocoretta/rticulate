@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![](https://img.shields.io/badge/devel%20version-1.6.0.9000-blue.svg)](https://github.com/stefanocoretta/rticulate)
+[![](https://img.shields.io/badge/devel%20version-1.7.2-orange.svg)](https://github.com/stefanocoretta/rticulate)
 [![R build
 status](https://github.com/stefanocoretta/rticulate/workflows/R-CMD-check/badge.svg)](https://github.com/stefanocoretta/rticulate/actions)
 <!-- badges: end -->

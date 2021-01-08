@@ -1,3 +1,16 @@
+# rticulate v1.7.2
+
+## Added
+
+* 📝 - @return filled in the documentation of functions.
+
+## Changed
+
+* 📝 - Use `\donttest` instead of `\dontrun`.
+
+
+
+
 # rticulate v1.7.0
 
 ## Added

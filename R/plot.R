@@ -52,12 +52,13 @@ plot_tongue <- function(data, geom = "line", ..., palate = NULL, palate_col = "g
 #' @return An object of class \code{\link[ggplot2]{ggplot}}.
 #'
 #' @examples
+#' \donttest{
 #' library(tidyverse)
 #' tongue_it01 <- filter(tongue, speaker == "it01")
 #' pgam <- polar_gam(Y ~ s(X, by = as.factor(label)), data = tongue_it01)
 #'
 #' plot_polar_smooths(pgam, X, label)
-#'
+#' }
 #' @export
 plot_polar_smooths <- function(model, series, comparison = NULL, origin = NULL, facet_terms = NULL, conditions = NULL, exclude_random = TRUE, series_length = 100, split = NULL, sep = "\\.", time_series) {
     if(!missing(time_series)) {
