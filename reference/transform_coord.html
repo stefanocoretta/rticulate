@@ -24,6 +24,13 @@
 
 <title>Transform the coordinates of spline data — transform_coord • rticulate</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -69,6 +76,7 @@
 <meta property="og:description" content="This function transforms the coordinates of spline data between Cartesian and
 polar coordinate systems. The origin x and y coordinates can be supplied by
 the user, or calculated automatically (see Details)." />
+<meta property="og:image" content="/logo.png" />
 
 
 
@@ -103,7 +111,7 @@ the user, or calculated automatically (see Details)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rticulate</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.2</span>
       </span>
     </div>
 
@@ -200,7 +208,8 @@ the user, or calculated automatically (see Details).</p>
     </tr>
     <tr>
       <th>fan_lines</th>
-      <td><p>A numeric vector with two fan lines (the default is <code><a href='https://rdrr.io/r/base/c.html'>c(10, 25)</a></code>).</p></td>
+      <td><p>A numeric vector with two fan lines (the default is
+<code><a href='https://rdrr.io/r/base/c.html'>c(10, 25)</a></code>).</p></td>
     </tr>
     <tr>
       <th>use_XY</th>
@@ -208,6 +217,9 @@ the user, or calculated automatically (see Details).</p>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>An object of class <code><a href='https://tibble.tidyverse.org/reference/tbl_df-class.html'>tbl_df-class</a></code> (a tibble).</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The transformation between the coordinate systems require the selection of an

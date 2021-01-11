@@ -24,6 +24,13 @@
 
 <title>Polar confidence intervals. — geom_polar_ci-deprecated • rticulate</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -67,6 +74,7 @@
 
 <meta property="og:title" content="Polar confidence intervals. — geom_polar_ci-deprecated" />
 <meta property="og:description" content="It provides a `geom` for plotting polar confidence intervals from the output of predict_polar_gam with the argument return_ci = true." />
+<meta property="og:image" content="/logo.png" />
 
 
 
@@ -101,7 +109,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rticulate</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.2</span>
       </span>
     </div>
 
@@ -198,27 +206,6 @@
 
     <div class='dont-index'><p><code><a href='geom_polar_ci.html'>rticulate-deprecated</a></code></p></div>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
-<span class='va'>tongue_it01</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>tongue</span>, <span class='va'>speaker</span> <span class='op'>==</span> <span class='st'>"it01"</span><span class='op'>)</span>
-<span class='va'>pgam</span> <span class='op'>&lt;-</span> <span class='fu'><a href='polar_gam.html'>polar_gam</a></span><span class='op'>(</span><span class='va'>Y</span> <span class='op'>~</span> <span class='fu'>s</span><span class='op'>(</span><span class='va'>X</span>, by <span class='op'>=</span> <span class='va'>c2_place</span><span class='op'>)</span>,
-data <span class='op'>=</span> <span class='va'>tongue_it01</span><span class='op'>)</span>
-
-<span class='co'># get predictions</span>
-<span class='va'>it01_pred</span> <span class='op'>&lt;-</span> <span class='fu'><a href='predict_polar_gam.html'>predict_polar_gam</a></span><span class='op'>(</span><span class='va'>pgam</span><span class='op'>)</span>
-
-<span class='co'># get CI for plotting</span>
-<span class='va'>it01_pred_ci</span> <span class='op'>&lt;-</span> <span class='fu'><a href='predict_polar_gam.html'>predict_polar_gam</a></span><span class='op'>(</span><span class='va'>pgam</span>, return_ci <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-
-<span class='co'># plot predicted tongue with ggplot2</span>
-<span class='va'>it01_pred</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span><span class='va'>X</span>, <span class='va'>Y</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_path</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>colour <span class='op'>=</span> <span class='va'>c2_place</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='geom_polar_ci.html'>geom_polar_ci</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>it01_pred_ci</span>, group <span class='op'>=</span> <span class='va'>c2_place</span><span class='op'>)</span>
-<span class='op'>}</span>
-
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

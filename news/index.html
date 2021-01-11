@@ -24,6 +24,13 @@
 
 <title>Changelog • rticulate</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -66,6 +73,7 @@
 
 
 <meta property="og:title" content="Changelog" />
+<meta property="og:image" content="/logo.png" />
 
 
 
@@ -100,7 +108,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rticulate</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.2</span>
       </span>
     </div>
 
@@ -165,25 +173,62 @@
       <small>Source: <a href='https://github.com/stefanocoretta/rticulate/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="rticulate-v1609000" class="section level1">
-<h1 class="page-header" data-toc-text="1.6.0.9000">
-<a href="#rticulate-v1609000" class="anchor"></a>rticulate v1.6.0.9000</h1>
+    <div id="rticulate-v172" class="section level1">
+<h1 class="page-header" data-toc-text="1.7.2">
+<a href="#rticulate-v172" class="anchor"></a>rticulate v1.7.2<small> 2021-01-11 </small>
+</h1>
+<div id="added" class="section level2">
+<h2 class="hasAnchor">
+<a href="#added" class="anchor"></a>Added</h2>
+<ul>
+<li>📝 - <a href='https://github.com/return'>@return</a> filled in the documentation of functions.</li>
+</ul>
+</div>
 <div id="changed" class="section level2">
 <h2 class="hasAnchor">
 <a href="#changed" class="anchor"></a>Changed</h2>
 <ul>
+<li>📝 - Use <code>\donttest</code> instead of <code>\dontrun</code>.</li>
+</ul>
+</div>
+</div>
+    <div id="rticulate-v170" class="section level1">
+<h1 class="page-header" data-toc-text="1.7.0">
+<a href="#rticulate-v170" class="anchor"></a>rticulate v1.7.0<small> Unreleased </small>
+</h1>
+<div id="added-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#added-1" class="anchor"></a>Added</h2>
+<ul>
+<li><p>rticulate logo!</p></li>
+<li><p>Use GitHub Actions for R CMD check.</p></li>
+</ul>
+</div>
+<div id="changed-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#changed-1" class="anchor"></a>Changed</h2>
+<ul>
 <li><p>use <code>tidy::pivot_longer()</code> and <code>tidy::pivot_wider()</code> in <code><a href="../reference/read_aaa_data.html">read_aaa_data()</a></code></p></li>
 <li><p>add <code>.index</code> column to <code><a href="../reference/read_aaa_data.html">read_aaa_data()</a></code> output to group contours if needed.</p></li>
 <li><p>changed index name of <code>polar-gams.Rmd</code> vignette.</p></li>
+<li><p>Now uses <code>README.Rmd</code>.</p></li>
+</ul>
+</div>
+<div id="removed" class="section level2">
+<h2 class="hasAnchor">
+<a href="#removed" class="anchor"></a>Removed</h2>
+<ul>
+<li>Remove Travis CI (use GitHub Actions).</li>
 </ul>
 </div>
 </div>
     <div id="rticulate-v160" class="section level1">
 <h1 class="page-header" data-toc-text="1.6.0">
-<a href="#rticulate-v160" class="anchor"></a>rticulate v1.6.0</h1>
-<div id="changed-1" class="section level2">
+<a href="#rticulate-v160" class="anchor"></a>rticulate v1.6.0<small> Unreleased </small>
+</h1>
+<div id="changed-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changed-1" class="anchor"></a>Changed</h2>
+<a href="#changed-2" class="anchor"></a>Changed</h2>
 <ul>
 <li><p>expand documentation of <code>transform_coordinates()</code> and <code><a href="../reference/get_origin.html">get_origin()</a></code></p></li>
 <li><p>better handling of fit errors in <code><a href="../reference/get_origin.html">get_origin()</a></code></p></li>
@@ -200,17 +245,18 @@
 </div>
     <div id="rticulate-v150" class="section level1">
 <h1 class="page-header" data-toc-text="1.5.0">
-<a href="#rticulate-v150" class="anchor"></a>rticulate v1.5.0</h1>
-<div id="added" class="section level2">
+<a href="#rticulate-v150" class="anchor"></a>rticulate v1.5.0<small> Unreleased </small>
+</h1>
+<div id="added-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#added" class="anchor"></a>Added</h2>
+<a href="#added-2" class="anchor"></a>Added</h2>
 <ul>
 <li>examples for <code><a href="../reference/predict_polar_gam.html">predict_polar_gam()</a></code> and plotting</li>
 </ul>
 </div>
-<div id="changed-2" class="section level2">
+<div id="changed-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changed-2" class="anchor"></a>Changed</h2>
+<a href="#changed-3" class="anchor"></a>Changed</h2>
 <ul>
 <li>extend <code>polar-gam.Rmd</code>
 </li>
@@ -226,10 +272,11 @@
 </div>
     <div id="rticulate-v140" class="section level1">
 <h1 class="page-header" data-toc-text="1.4.0">
-<a href="#rticulate-v140" class="anchor"></a>rticulate v1.4.0</h1>
-<div id="added-1" class="section level2">
+<a href="#rticulate-v140" class="anchor"></a>rticulate v1.4.0<small> Unreleased </small>
+</h1>
+<div id="added-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#added-1" class="anchor"></a>Added</h2>
+<a href="#added-3" class="anchor"></a>Added</h2>
 <ul>
 <li><p>examples in docs</p></li>
 <li><p>section in <code>polar-gams.Rmd</code> about multiple predictors</p></li>
@@ -240,10 +287,11 @@
 </div>
     <div id="rticulate-v135" class="section level1">
 <h1 class="page-header" data-toc-text="1.3.5">
-<a href="#rticulate-v135" class="anchor"></a>rticulate v1.3.5</h1>
-<div id="changed-3" class="section level2">
+<a href="#rticulate-v135" class="anchor"></a>rticulate v1.3.5<small> Unreleased </small>
+</h1>
+<div id="changed-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changed-3" class="anchor"></a>Changed</h2>
+<a href="#changed-4" class="anchor"></a>Changed</h2>
 <ul>
 <li>README now uses new <code>install_github</code> argument for building vignettes</li>
 </ul>
@@ -251,10 +299,11 @@
 </div>
     <div id="rticulate-v134" class="section level1">
 <h1 class="page-header" data-toc-text="1.3.4">
-<a href="#rticulate-v134" class="anchor"></a>rticulate v1.3.4</h1>
-<div id="added-2" class="section level2">
+<a href="#rticulate-v134" class="anchor"></a>rticulate v1.3.4<small> Unreleased </small>
+</h1>
+<div id="added-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#added-2" class="anchor"></a>Added</h2>
+<a href="#added-4" class="anchor"></a>Added</h2>
 <ul>
 <li>support for NULL comparison argument in <code><a href="../reference/plot_polar_smooths.html">plot_polar_smooths()</a></code>
 </li>
@@ -270,10 +319,11 @@
 </div>
     <div id="rticulate-v133" class="section level1">
 <h1 class="page-header" data-toc-text="1.3.3">
-<a href="#rticulate-v133" class="anchor"></a>rticulate v1.3.3</h1>
-<div id="added-3" class="section level2">
+<a href="#rticulate-v133" class="anchor"></a>rticulate v1.3.3<small> Unreleased </small>
+</h1>
+<div id="added-5" class="section level2">
 <h2 class="hasAnchor">
-<a href="#added-3" class="anchor"></a>Added</h2>
+<a href="#added-5" class="anchor"></a>Added</h2>
 <ul>
 <li>
 <code>split</code> argument for splitting factor interactions into separate factors</li>
@@ -282,17 +332,18 @@
 </div>
     <div id="rticulate-v132" class="section level1">
 <h1 class="page-header" data-toc-text="1.3.2">
-<a href="#rticulate-v132" class="anchor"></a>rticulate v1.3.2</h1>
-<div id="added-4" class="section level2">
+<a href="#rticulate-v132" class="anchor"></a>rticulate v1.3.2<small> Unreleased </small>
+</h1>
+<div id="added-6" class="section level2">
 <h2 class="hasAnchor">
-<a href="#added-4" class="anchor"></a>Added</h2>
+<a href="#added-6" class="anchor"></a>Added</h2>
 <ul>
 <li>argument in <code><a href="../reference/read_aaa.html">read_aaa()</a></code> for choosing format (wide or long)</li>
 </ul>
 </div>
-<div id="changed-4" class="section level2">
+<div id="changed-5" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changed-4" class="anchor"></a>Changed</h2>
+<a href="#changed-5" class="anchor"></a>Changed</h2>
 <ul>
 <li>removed <code>tidymv</code> version from README</li>
 </ul>
@@ -309,7 +360,8 @@
 </div>
     <div id="rticulate-v131" class="section level1">
 <h1 class="page-header" data-toc-text="1.3.1">
-<a href="#rticulate-v131" class="anchor"></a>rticulate v1.3.1</h1>
+<a href="#rticulate-v131" class="anchor"></a>rticulate v1.3.1<small> Unreleased </small>
+</h1>
 <div id="fixed-2" class="section level2">
 <h2 class="hasAnchor">
 <a href="#fixed-2" class="anchor"></a>Fixed</h2>
@@ -321,19 +373,20 @@
 </div>
     <div id="rticulate-v130" class="section level1">
 <h1 class="page-header" data-toc-text="1.3.0">
-<a href="#rticulate-v130" class="anchor"></a>rticulate v1.3.0</h1>
-<div id="added-5" class="section level2">
+<a href="#rticulate-v130" class="anchor"></a>rticulate v1.3.0<small> Unreleased </small>
+</h1>
+<div id="added-7" class="section level2">
 <h2 class="hasAnchor">
-<a href="#added-5" class="anchor"></a>Added</h2>
+<a href="#added-7" class="anchor"></a>Added</h2>
 <ul>
 <li><p>functions for transforming coordinates</p></li>
 <li><p>vignette about coordinates transformation</p></li>
 <li><p>polar gams</p></li>
 </ul>
 </div>
-<div id="changed-5" class="section level2">
+<div id="changed-6" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changed-5" class="anchor"></a>Changed</h2>
+<a href="#changed-6" class="anchor"></a>Changed</h2>
 <ul>
 <li><p>dropped levels in <code>tongue</code> data set</p></li>
 <li><p>use underscores in names everywhere</p></li>
@@ -342,10 +395,11 @@
 </div>
     <div id="rticulate-v120" class="section level1">
 <h1 class="page-header" data-toc-text="1.2.0">
-<a href="#rticulate-v120" class="anchor"></a>rticulate v1.2.0</h1>
-<div id="added-6" class="section level2">
+<a href="#rticulate-v120" class="anchor"></a>rticulate v1.2.0<small> Unreleased </small>
+</h1>
+<div id="added-8" class="section level2">
 <h2 class="hasAnchor">
-<a href="#added-6" class="anchor"></a>Added</h2>
+<a href="#added-8" class="anchor"></a>Added</h2>
 <ul>
 <li><p>argument in <code>read_aaa</code> to choose coordinate system</p></li>
 <li><p><code>read_aaa_data</code> for internal use</p></li>
@@ -354,9 +408,9 @@
 <li><p>added <code>point</code> and <code>path</code> options to <code>plot_tongue</code></p></li>
 </ul>
 </div>
-<div id="changed-6" class="section level2">
+<div id="changed-7" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changed-6" class="anchor"></a>Changed</h2>
+<a href="#changed-7" class="anchor"></a>Changed</h2>
 <ul>
 <li><p>updates to <code>NEWS.md</code></p></li>
 <li><p>clarified documentation</p></li>
@@ -378,10 +432,11 @@
 </div>
     <div id="rticulate-v101" class="section level1">
 <h1 class="page-header" data-toc-text="1.0.1">
-<a href="#rticulate-v101" class="anchor"></a>rticulate v1.0.1</h1>
-<div id="added-7" class="section level2">
+<a href="#rticulate-v101" class="anchor"></a>rticulate v1.0.1<small> Unreleased </small>
+</h1>
+<div id="added-9" class="section level2">
 <h2 class="hasAnchor">
-<a href="#added-7" class="anchor"></a>Added</h2>
+<a href="#added-9" class="anchor"></a>Added</h2>
 <ul>
 <li><p>depends and imports in DESCRIPTION</p></li>
 <li><p>globalVariables for data frame variables in functions</p></li>
