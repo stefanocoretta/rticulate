@@ -1,3 +1,11 @@
+# rticulate v1.7.2.9000
+
+## Added
+
+* Zenodo DOI in Readme, plus other Readme updates.
+
+
+
 # rticulate v1.7.2
 
 ## Added

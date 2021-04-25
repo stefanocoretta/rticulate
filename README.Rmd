@@ -16,29 +16,33 @@ knitr::opts_chunk$set(
 # rticulate: Ultrasound Tongue Imaging in R <img src='man/figures/logo.png' align="right" height="120" />
 
 <!-- badges: start -->
-`r badger::badge_github_version(color = "orange")`
+`r badger::badge_cran_release("rticulate", "blue")`
+`r badger::badge_cran_checks("rticulate")`
 `r badger::badge_github_actions()`
+`r badger::badge_devel(color = "orange")`
+`r badger::badge_doi(doi = "10.5281/zenodo.1469038", color = "blue")`
 <!-- badges: end -->
 
 This is the repository of the R package `rticulate`. This package provides two functions for importing UTI data from Articulate Assistant Advanced and plotting UTI data from any source.
 
 ## Installation
 
-To install the package, run the following (you need the package [remotes](https://remotes.r-lib.org)).
+The package is on CRAN, so you can install it from there with `install.packages("rticulate")`.
 
-```{r install-latest, eval=FALSE}
+If you like living on edge, install a polished pre-release with:
+
+```{r install-pre, eval=FALSE}
 remotes::install_github(
   "stefanocoretta/rticulate",
-  ref = remotes::github_release(), # this pulls the latest release
   build_vignettes = TRUE
 )
 ```
 
-If you want to install the development version, run this instead.
+Or the development version with:
 
 ```{r install-dev, eval=FALSE}
 remotes::install_github(
-  "stefanocoretta/rticulate",
+  "stefanocoretta/rticulate@devel",
   build_vignettes = TRUE
 )
 ```

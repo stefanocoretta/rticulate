@@ -5,9 +5,13 @@
 
 <!-- badges: start -->
 
-[![](https://img.shields.io/badge/devel%20version-1.7.2-orange.svg)](https://github.com/stefanocoretta/rticulate)
+[![](https://www.r-pkg.org/badges/version/rticulate?color=blue)](https://cran.r-project.org/package=rticulate)
+[![CRAN
+checks](https://cranchecks.info/badges/summary/rticulate)](https://cran.r-project.org/web/checks/check_results_rticulate.html)
 [![R build
 status](https://github.com/stefanocoretta/rticulate/workflows/R-CMD-check/badge.svg)](https://github.com/stefanocoretta/rticulate/actions)
+[![](https://img.shields.io/badge/devel%20version-1.7.2.9000-orange.svg)](https://github.com/stefanocoretta/rticulate)
+[![](https://img.shields.io/badge/doi-10.5281/zenodo.1469038-blue.svg)](https://doi.org/10.5281/zenodo.1469038)
 <!-- badges: end -->
 
 This is the repository of the R package `rticulate`. This package
@@ -16,22 +20,23 @@ Advanced and plotting UTI data from any source.
 
 ## Installation
 
-To install the package, run the following (you need the package
-[remotes](https://remotes.r-lib.org)).
+The package is on CRAN, so you can install it from there with
+`install.packages("rticulate")`.
+
+If you like living on edge, install a polished pre-release with:
 
 ``` r
 remotes::install_github(
   "stefanocoretta/rticulate",
-  ref = remotes::github_release(), # this pulls the latest release
   build_vignettes = TRUE
 )
 ```
 
-If you want to install the development version, run this instead.
+Or the development version with:
 
 ``` r
 remotes::install_github(
-  "stefanocoretta/rticulate",
+  "stefanocoretta/rticulate@devel",
   build_vignettes = TRUE
 )
 ```
