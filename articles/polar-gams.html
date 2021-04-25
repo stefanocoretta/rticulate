@@ -102,6 +102,10 @@
      
   </a>
 </li>
+        
+        
+
+
       </ul>
 </div>
 <!--/.nav-collapse -->
@@ -118,7 +122,7 @@
       <h1 data-toc-skip>Using generalised additive models (GAM) with polar coordinates for assessing tongue contours</h1>
                         <h4 class="author">Stefano Coretta</h4>
             
-            <h4 class="date">2021-01-11</h4>
+            <h4 class="date">2021-04-25</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/stefanocoretta/rticulate/blob/master/vignettes/polar-gams.Rmd"><code>vignettes/polar-gams.Rmd</code></a></small>
       <div class="hidden name"><code>polar-gams.Rmd</code></div>
@@ -136,18 +140,18 @@
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">tongue</span><span class="op">)</span>
 <span class="va">tongue</span>
 <span class="co">#&gt; # A tibble: 3,612 x 28</span>
-<span class="co">#&gt;    speaker seconds rec_date prompt label TT_displacement TT_velocity</span>
-<span class="co">#&gt;    &lt;fct&gt;     &lt;dbl&gt; &lt;fct&gt;    &lt;fct&gt;  &lt;fct&gt;           &lt;dbl&gt;       &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 it01       1.31 29/11/2… Dico … max_…            67.1       36.6 </span>
-<span class="co">#&gt;  2 it01       1.20 29/11/2… Dico … max_…            77.9       -7.73</span>
-<span class="co">#&gt;  3 it01       1.08 29/11/2… Dico … max_…            65.9       21.1 </span>
-<span class="co">#&gt;  4 it01       1.12 29/11/2… Dico … max_…            64.4        8.76</span>
-<span class="co">#&gt;  5 it01       1.42 29/11/2… Dico … max_…            76.9       -4.72</span>
-<span class="co">#&gt;  6 it01       1.35 29/11/2… Dico … max_…            78.1       -5.68</span>
-<span class="co">#&gt;  7 it01       1.07 29/11/2… Dico … max_…            69.9      -40.0 </span>
-<span class="co">#&gt;  8 it01       1.17 29/11/2… Dico … max_…            78.0       -7.31</span>
-<span class="co">#&gt;  9 it01       1.28 29/11/2… Dico … max_…            67.1       34.5 </span>
-<span class="co">#&gt; 10 it01       1.10 29/11/2… Dico … max_…            75.9      -23.5 </span>
+<span class="co">#&gt;    speaker seconds rec_date       prompt       label TT_displacement TT_velocity</span>
+<span class="co">#&gt;    &lt;fct&gt;     &lt;dbl&gt; &lt;fct&gt;          &lt;fct&gt;        &lt;fct&gt;           &lt;dbl&gt;       &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 it01       1.31 29/11/2016 15… Dico poco l… max_…            67.1       36.6 </span>
+<span class="co">#&gt;  2 it01       1.20 29/11/2016 15… Dico pata l… max_…            77.9       -7.73</span>
+<span class="co">#&gt;  3 it01       1.08 29/11/2016 15… Dico paca l… max_…            65.9       21.1 </span>
+<span class="co">#&gt;  4 it01       1.12 29/11/2016 15… Dico pucu l… max_…            64.4        8.76</span>
+<span class="co">#&gt;  5 it01       1.42 29/11/2016 15… Dico putu l… max_…            76.9       -4.72</span>
+<span class="co">#&gt;  6 it01       1.35 29/11/2016 15… Dico poto l… max_…            78.1       -5.68</span>
+<span class="co">#&gt;  7 it01       1.07 29/11/2016 15… Dico poco l… max_…            69.9      -40.0 </span>
+<span class="co">#&gt;  8 it01       1.17 29/11/2016 15… Dico pata l… max_…            78.0       -7.31</span>
+<span class="co">#&gt;  9 it01       1.28 29/11/2016 15… Dico paca l… max_…            67.1       34.5 </span>
+<span class="co">#&gt; 10 it01       1.10 29/11/2016 15… Dico pucu l… max_…            75.9      -23.5 </span>
 <span class="co">#&gt; # … with 3,602 more rows, and 21 more variables: TT_abs_velocity &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   TD_displacement &lt;dbl&gt;, TD_velocity &lt;dbl&gt;, TD_abs_velocity &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   TR_displacement &lt;dbl&gt;, TR_velocity &lt;dbl&gt;, TR_abs_velocity &lt;dbl&gt;,</span>

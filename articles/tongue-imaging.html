@@ -102,6 +102,10 @@
      
   </a>
 </li>
+        
+        
+
+
       </ul>
 </div>
 <!--/.nav-collapse -->
@@ -118,7 +122,7 @@
       <h1 data-toc-skip>Import and plot spline data from AAA</h1>
                         <h4 class="author">Stefano Coretta</h4>
             
-            <h4 class="date">2021-01-11</h4>
+            <h4 class="date">2021-04-25</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/stefanocoretta/rticulate/blob/master/vignettes/tongue-imaging.Rmd"><code>vignettes/tongue-imaging.Rmd</code></a></small>
       <div class="hidden name"><code>tongue-imaging.Rmd</code></div>
@@ -171,18 +175,18 @@
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tongue</span></code></pre></div>
 <pre><code>## # A tibble: 462 x 15
-##    speaker seconds rec_date prompt label TT_displacement TT_velocity
-##    &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt;
-##  1 it01       1.20 29/11/2… Dico … max_…            77.9       -7.73
-##  2 it01       1.20 29/11/2… Dico … max_…            77.9       -7.73
-##  3 it01       1.20 29/11/2… Dico … max_…            77.9       -7.73
-##  4 it01       1.20 29/11/2… Dico … max_…            77.9       -7.73
-##  5 it01       1.20 29/11/2… Dico … max_…            77.9       -7.73
-##  6 it01       1.20 29/11/2… Dico … max_…            77.9       -7.73
-##  7 it01       1.20 29/11/2… Dico … max_…            77.9       -7.73
-##  8 it01       1.20 29/11/2… Dico … max_…            77.9       -7.73
-##  9 it01       1.20 29/11/2… Dico … max_…            77.9       -7.73
-## 10 it01       1.20 29/11/2… Dico … max_…            77.9       -7.73
+##    speaker seconds rec_date       prompt       label TT_displacement TT_velocity
+##    &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;        &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt;
+##  1 it01       1.20 29/11/2016 15… Dico pata l… max_…            77.9       -7.73
+##  2 it01       1.20 29/11/2016 15… Dico pata l… max_…            77.9       -7.73
+##  3 it01       1.20 29/11/2016 15… Dico pata l… max_…            77.9       -7.73
+##  4 it01       1.20 29/11/2016 15… Dico pata l… max_…            77.9       -7.73
+##  5 it01       1.20 29/11/2016 15… Dico pata l… max_…            77.9       -7.73
+##  6 it01       1.20 29/11/2016 15… Dico pata l… max_…            77.9       -7.73
+##  7 it01       1.20 29/11/2016 15… Dico pata l… max_…            77.9       -7.73
+##  8 it01       1.20 29/11/2016 15… Dico pata l… max_…            77.9       -7.73
+##  9 it01       1.20 29/11/2016 15… Dico pata l… max_…            77.9       -7.73
+## 10 it01       1.20 29/11/2016 15… Dico pata l… max_…            77.9       -7.73
 ## # … with 452 more rows, and 8 more variables: TT_abs_velocity &lt;dbl&gt;,
 ## #   TD_displacement &lt;dbl&gt;, TD_velocity &lt;dbl&gt;, TD_abs_velocity &lt;dbl&gt;,
 ## #   fan_line &lt;int&gt;, X &lt;dbl&gt;, Y &lt;dbl&gt;, .index &lt;int&gt;</code></pre>
@@ -213,18 +217,18 @@
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tongue</span></code></pre></div>
 <pre><code>## # A tibble: 462 x 26
-##    speaker seconds rec_date prompt label TT_displacement TT_velocity
-##    &lt;fct&gt;     &lt;dbl&gt; &lt;fct&gt;    &lt;fct&gt;  &lt;fct&gt;           &lt;dbl&gt;       &lt;dbl&gt;
-##  1 it01       1.20 29/11/2… Dico … max_…            77.9       -7.73
-##  2 it01       1.20 29/11/2… Dico … max_…            77.9       -7.73
-##  3 it01       1.20 29/11/2… Dico … max_…            77.9       -7.73
-##  4 it01       1.20 29/11/2… Dico … max_…            77.9       -7.73
-##  5 it01       1.20 29/11/2… Dico … max_…            77.9       -7.73
-##  6 it01       1.20 29/11/2… Dico … max_…            77.9       -7.73
-##  7 it01       1.20 29/11/2… Dico … max_…            77.9       -7.73
-##  8 it01       1.20 29/11/2… Dico … max_…            77.9       -7.73
-##  9 it01       1.20 29/11/2… Dico … max_…            77.9       -7.73
-## 10 it01       1.20 29/11/2… Dico … max_…            77.9       -7.73
+##    speaker seconds rec_date       prompt       label TT_displacement TT_velocity
+##    &lt;fct&gt;     &lt;dbl&gt; &lt;fct&gt;          &lt;fct&gt;        &lt;fct&gt;           &lt;dbl&gt;       &lt;dbl&gt;
+##  1 it01       1.20 29/11/2016 15… Dico pata l… max_…            77.9       -7.73
+##  2 it01       1.20 29/11/2016 15… Dico pata l… max_…            77.9       -7.73
+##  3 it01       1.20 29/11/2016 15… Dico pata l… max_…            77.9       -7.73
+##  4 it01       1.20 29/11/2016 15… Dico pata l… max_…            77.9       -7.73
+##  5 it01       1.20 29/11/2016 15… Dico pata l… max_…            77.9       -7.73
+##  6 it01       1.20 29/11/2016 15… Dico pata l… max_…            77.9       -7.73
+##  7 it01       1.20 29/11/2016 15… Dico pata l… max_…            77.9       -7.73
+##  8 it01       1.20 29/11/2016 15… Dico pata l… max_…            77.9       -7.73
+##  9 it01       1.20 29/11/2016 15… Dico pata l… max_…            77.9       -7.73
+## 10 it01       1.20 29/11/2016 15… Dico pata l… max_…            77.9       -7.73
 ## # … with 452 more rows, and 19 more variables: TT_abs_velocity &lt;dbl&gt;,
 ## #   TD_displacement &lt;dbl&gt;, TD_velocity &lt;dbl&gt;, TD_abs_velocity &lt;dbl&gt;,
 ## #   fan_line &lt;int&gt;, X &lt;dbl&gt;, Y &lt;dbl&gt;, .index &lt;int&gt;, word &lt;fct&gt;, item &lt;dbl&gt;,
