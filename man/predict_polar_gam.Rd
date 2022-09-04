@@ -45,7 +45,7 @@ To see an example of plotting, see the examples in \link[rticulate]{geom_polar_c
 }
 \examples{
 \donttest{
-library(tidyverse)
+library(dplyr)
 tongue_it01 <- filter(tongue, speaker == "it01")
 it01_pol <- polar_gam(Y ~ s(X, by = c2_place) + s(X, word, bs = "fs"),
 data = tongue_it01)

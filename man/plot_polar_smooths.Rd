@@ -49,7 +49,7 @@ It plots the smooths of a polar GAM fitted with \code{polar_gam()}.
 }
 \examples{
 \donttest{
-library(tidyverse)
+library(dplyr)
 tongue_it01 <- filter(tongue, speaker == "it01")
 pgam <- polar_gam(Y ~ s(X, by = as.factor(label)), data = tongue_it01)
 

@@ -17,7 +17,7 @@
 #'
 #' @examples
 #' \donttest{
-#' library(tidyverse)
+#' library(dplyr)
 #' tongue_it01 <- filter(tongue, speaker == "it01")
 #' pgam <- polar_gam(Y ~ s(X, by = c2_place) + s(X, word, bs = "fs"),
 #' data = tongue_it01)
@@ -70,7 +70,7 @@ polar_gam <- function(formula, data, origin = NULL, fan_lines = c(10, 25), AR_st
 #' @return A tibble with predictions from a \link[rticulate]{polar_gam} model.
 #' @examples
 #' \donttest{
-#' library(tidyverse)
+#' library(dplyr)
 #' tongue_it01 <- filter(tongue, speaker == "it01")
 #' it01_pol <- polar_gam(Y ~ s(X, by = c2_place) + s(X, word, bs = "fs"),
 #' data = tongue_it01)

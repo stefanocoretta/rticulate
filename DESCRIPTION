@@ -29,7 +29,6 @@ Imports: dplyr,
     tibble,
     tidymv,
     tidyr,
-    tidyverse,
     tidyselect
 RoxygenNote: 7.2.1
 Suggests: knitr,
