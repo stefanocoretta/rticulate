@@ -1,9 +1,11 @@
 ## Resubmission
 This is a resubmission. In this version I have:
 
-* Added \value in the documentation of the functions.
+* Corrected typo in DATE (2021 > 2022).
 
-* Wrapped documentation examples in \donttest if execution > 5s on at least one of tested environments (plot_polar_smooths(), plot_polar_smooths(), polar_gam()).
+* Removed "in R" from TITLE.
+
+* Reworded package description.
 
 ## Test environments
 - R-hub windows-x86_64-devel (r-devel)

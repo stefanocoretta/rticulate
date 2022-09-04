@@ -4,11 +4,11 @@
 \name{rticulate-package}
 \alias{rticulate}
 \alias{rticulate-package}
-\title{rticulate: Ultrasound Tongue Imaging in R}
+\title{rticulate: Ultrasound Tongue Imaging}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-It provides functions for processing Articulate Assistant Advanced™ (AAA) export files and plot tongue contour data from any system.
+A tool for processing Articulate Assistant Advanced™ (AAA) export files and plot tongue contour data from any system.
 }
 \seealso{
 Useful links:
