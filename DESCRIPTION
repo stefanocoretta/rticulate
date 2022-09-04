@@ -25,14 +25,14 @@ Imports: dplyr,
     readr,
     rlang,
     stats,
-    stringr,
     tibble,
     tidymv,
     tidyr,
     tidyselect
 RoxygenNote: 7.2.1
 Suggests: knitr,
-    rmarkdown
+    rmarkdown,
+    stringr
 VignetteBuilder: knitr
 Language: en_GB
 License: MIT + file LICENSE

@@ -132,7 +132,7 @@ get_origin <- function(data, fan_lines = c(10, 25)) {
         silent = TRUE
     )
 
-    if (class(line_1_model) == "try-error" | class(line_2_model) == "try-error") {
+    if (inherits(line_1_model, "try-error") | inherits(line_2_model, "try-error")) {
         stop(glue::glue("The chosen fan lines ({fan_lines}) lead to a bad fit. Please, choose other fan lines."))
     }
 
@@ -142,7 +142,7 @@ get_origin <- function(data, fan_lines = c(10, 25)) {
         -solve(cbind(coefficient_matrix[,2], -1)) %*% coefficient_matrix[,1]
     ), silent = TRUE)
 
-    if (class(origin) == "try-error") {
+    if (inherits(origin, "try-error")) {
         fan_lines_print <- paste("c(", fan_lines[1], ", ", fan_lines[2], ")", sep = "")
         stop(glue::glue("The chosen fan lines {fan_lines_print} lead to a bad fit. Please, choose other fan lines."))
     }

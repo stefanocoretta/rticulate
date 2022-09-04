@@ -26,7 +26,7 @@ tongue <- list.files(
   full.names = TRUE
 ) %>%
   read_aaa(., columns) %>%
-  mutate(word = word(prompt, 2)) %>%
+  mutate(word = stringr::word(prompt, 2)) %>%
   left_join(y = stimuli) %>%
   filter(
     c1_phonation == "voiceless",

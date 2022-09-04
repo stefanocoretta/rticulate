@@ -13,6 +13,7 @@ vignette: >
 knitr::opts_chunk$set(out.width = "300px", fig.align = "center", dpi = 300)
 library(readr)
 library(dplyr)
+library(stringr)
 library(ggplot2)
 theme_set(theme_bw())
 library(rticulate)
@@ -68,7 +69,7 @@ Sometimes is useful to add extra information for each prompt (like vowel, conson
 ```{r join}
 stimuli <- read_csv(system.file("extdata", "stimuli.csv", package = "rticulate"))
 
-tongue <- mutate(tongue, word = stringr::word(prompt, 2)) %>%
+tongue <- mutate(tongue, word = word(prompt, 2)) %>%
     left_join(y = stimuli) %>%
     mutate_if(is.character, as.factor)
 ```
