@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# rticulate: Ultrasound Tongue Imaging in R <img src='man/figures/logo.png' align="right" height="120" />
+# rticulate: Ultrasound Tongue Imaging in R <img src='man/figures/logo.png' style="float: right;" height="120" />
 
 <!-- badges: start -->
 
@@ -10,7 +10,7 @@
 checks](https://cranchecks.info/badges/summary/rticulate)](https://cran.r-project.org/web/checks/check_results_rticulate.html)
 [![R build
 status](https://github.com/stefanocoretta/rticulate/workflows/R-CMD-check/badge.svg)](https://github.com/stefanocoretta/rticulate/actions)
-[![](https://img.shields.io/badge/devel%20version-1.7.2.9000-orange.svg)](https://github.com/stefanocoretta/rticulate)
+[![](https://img.shields.io/badge/devel%20version-1.7.3-orange.svg)](https://github.com/stefanocoretta/rticulate)
 [![](https://img.shields.io/badge/doi-10.5281/zenodo.1469038-blue.svg)](https://doi.org/10.5281/zenodo.1469038)
 <!-- badges: end -->
 

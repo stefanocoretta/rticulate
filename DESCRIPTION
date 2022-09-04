@@ -1,8 +1,8 @@
 Package: rticulate
 Type: Package
 Title: Ultrasound Tongue Imaging in R
-Version: 1.7.2.9000
-Date: 2021-04-25
+Version: 1.7.3
+Date: 2021-09-04
 Authors@R: c(person(given = "Stefano",
                     family = "Coretta",
                     email = paste0("stefano.coretta", "@", "gmail.com"),
@@ -31,7 +31,7 @@ Imports: dplyr,
     tidyr,
     tidyverse,
     tidyselect
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.1
 Suggests: knitr,
     rmarkdown
 VignetteBuilder: knitr
