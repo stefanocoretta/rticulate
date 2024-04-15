@@ -9,3 +9,4 @@ packrat/src/
 inst/doc
 *.DS_Store
 docs
+data-raw/ema/
