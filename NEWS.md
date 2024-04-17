@@ -1,3 +1,11 @@
+# rticulate v1.7.3.9000
+
+## Added
+
+* `read_ag500_pos()` to read `.pos` files from Carstens AG500 electro-magnetic-alticulographer.
+
+
+
 # rticulate v1.7.3
 
 ## Added

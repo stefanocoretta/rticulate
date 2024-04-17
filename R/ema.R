@@ -1,4 +1,14 @@
-read_ema_pos<- function(path, channels = 12, ch_values = 7, bytes = 4) {
+#' Read EMA data from AG500 pos files
+#'
+#' @param path Path to the .pos file.
+#' @param channels Number of channels (default \code{12}).
+#' @param ch_values Number of values per channel (default \code{7}).
+#' @param bytes Number of bytes per value (default \code{4}).
+#' @param fs Sampling frequency (default \code{200} Hz).
+#'
+#' @return A tibble.
+#' @export
+read_ag500_pos <- function(path, channels = 12, ch_values = 7, bytes = 4, fs = 200) {
   con <- file(path, "rb")
 
   # File size in bytes
@@ -14,15 +24,18 @@ read_ema_pos<- function(path, channels = 12, ch_values = 7, bytes = 4) {
   data_matrix <- matrix(data_bin, ncol = ch_values, byrow = TRUE)
   colnames(data_matrix) <- c("x", "y", "z", "phi", "theta", "rms", "extra")
 
+  time <- seq(0, (n_samples - 1) / fs, by = 1 / fs)
+
   data_tbl <- tibble::as_tibble(
     data_matrix
   ) |>
     dplyr::mutate(
+      file = path,
       chn = rep(1:channels, length.out = n_values / ch_values),
       sample = rep(1:n_samples, each = channels),
-      file = path
+      time = rep(time, each = channels)
     ) |>
-    relocate(file, chn, sample, everything())
+    dplyr::relocate(file, chn, sample, time, tidyselect::everything())
 
   return(data_tbl)
 }
