@@ -1,8 +1,19 @@
 # rticulate v1.7.3.9000
 
+## BREAKING
+
+* `read_aaa()` now can read AAA data with existing headers, both fan-line and DeepLabCut data.
+
+  * Now any column starting with `X` or `Y` will be selected for pivoting when `format = "long"` (the default).
+
+* This enhancement has brought in a few breaking changes:
+
+  * The order of the arguments has changed.
+  * The argument `fan_line` doesn't have a default any more, so it has to be specified.
+
 ## Added
 
-* `read_ag500_pos()` to read `.pos` files from Carstens AG500 electro-magnetic-alticulographer.
+* `read_ag500_pos()` to read `.pos` files from Carstens AG500 electro-magnetic-articulographer.
 
 
 
