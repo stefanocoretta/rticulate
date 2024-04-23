@@ -21,24 +21,64 @@ library(rticulate)
 
 ```{r}
 it01_dlc_path <- system.file("extdata/it01-dlc.tsv", package = "rticulate")
-it01_dlc <- read_aaa(it01_dlc_path)
+it01_dlc <- read_aaa(it01_dlc_path) |> 
+  mutate(
+    # Let's create an ID for each displacement trajectory of each knot in each recording
+    # We need to include both knot and spline because there is also HM spline and STM spline
+    knot_displ_id = as.numeric(as.factor(paste0(`Date Time of recording`, spline, knot)))
+  ) |> 
+  group_by(knot_displ_id) |> 
+  mutate(
+    Y_sm = filter_signal(Y, window_length = 7, apply = 2),
+    Y_smb = filter_signal(Y, filter = "butter", cutoff_freq = 10, sampling_freq = 67)
+  )
 ```
+
+
+```{r}
+#| label: fs-mean
+
+it01_dlc |>
+  group_by(knot_displ_id) |>
+  mutate(
+    dt = `Time of sample in annot` - lag(`Time of sample in annot`)
+  ) |>
+  summarise(
+    mean_dt = mean(dt, na.rm = TRUE)
+  ) |>
+  summarise(
+    mean_fs = round(mean(1/mean_dt))
+  )
+```
+
+Mean sampling frequency of 67 frames per second.
 
 ```{r}
 it01_dlc |> 
   filter(knot == "8") |> 
   ggplot(aes(`Time of sample in annot`, Y, group = `Date Time of recording`)) +
-  geom_point(alpha = 0.2) +
-  geom_line(aes(y = filter_signal(filter_signal(Y, window_length = 11), window_length = 11)))
+  geom_line(alpha = 0.2) +
+  geom_line(aes(y = Y_sm), colour = "red")
 ```
+
+```{r}
+kdi <- sample(unique(it01_dlc$knot_displ_id), 1)
+it01_dlc |> 
+  filter(knot_displ_id == kdi) |> 
+  ggplot(aes(`Time of sample in annot`, Y)) +
+  geom_line(alpha = 0.2) +
+  geom_line(aes(y = Y_sm), colour = "red") +
+  labs(title = glue::glue("{it01_dlc$knot[it01_dlc$knot_displ_id == kdi]}"))
+```
+
 
 ```{r}
 it01_dlc |> 
   filter(knot == "8") |> 
-  ggplot(aes(`Time of sample in annot`, Y, group = `Date Time of recording`)) +
-  geom_point(alpha = 0.2) +
-  geom_line(aes(y = filter_signal(Y, filter = "butter", cutoff_freq = 10, sampling_freq = 65))) +
- ylim(55, 80)
+  ggplot(aes(`Time of sample in annot`, Y, group = knot_displ_id)) +
+  geom_line(alpha = 0.2) +
+  geom_line(aes(y = Y_smb), colour = "red") +
+  geom_line(aes(y = Y_sm), colour = "blue", linetype = "dashed")
 ```
 
 ```{r}
