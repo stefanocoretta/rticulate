@@ -1,0 +1,47 @@
+---
+title: "Filter signals"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{filter-signals}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(tidyverse)
+library(rticulate)
+```
+
+```{r}
+it01_dlc_path <- system.file("extdata/it01-dlc.tsv", package = "rticulate")
+it01_dlc <- read_aaa(it01_dlc_path)
+```
+
+```{r}
+it01_dlc |> 
+  filter(knot == "8") |> 
+  ggplot(aes(`Time of sample in annot`, Y, group = `Date Time of recording`)) +
+  geom_point(alpha = 0.2) +
+  geom_line(aes(y = filter_signal(filter_signal(Y, window_length = 11), window_length = 11)))
+```
+
+```{r}
+it01_dlc |> 
+  filter(knot == "8") |> 
+  ggplot(aes(`Time of sample in annot`, Y, group = `Date Time of recording`)) +
+  geom_point(alpha = 0.2) +
+  geom_line(aes(y = filter_signal(Y, filter = "butter", cutoff_freq = 10, sampling_freq = 65))) +
+ ylim(55, 80)
+```
+
+```{r}
+
+```
+
