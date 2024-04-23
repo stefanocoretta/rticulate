@@ -69,6 +69,7 @@ read_aaa_data <- function(
                 values_to = "value"
             ) |>
         tidyr::separate_wider_position(coord_knot, c(coord = 1, knot = 2), too_few = "align_start") |>
+        dplyr::mutate(knot = as.numeric(knot)) |>
         tidyr::pivot_wider(names_from = coord, values_from = value) |>
         dplyr::relocate(.index, .after = tidyselect::last_col())
     } else if (format == "wide") {
