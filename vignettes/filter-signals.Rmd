@@ -2,7 +2,7 @@
 title: "Filter signals"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{filter-signals}
+  %\VignetteIndexEntry{Filter signals}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -62,26 +62,29 @@ it01_dlc |>
 ```
 
 ```{r}
-kdi <- sample(unique(it01_dlc$knot_displ_id), 1)
+set.seed(13579)
+kdi <- sample(unique(it01_dlc$knot_displ_id), 9)
 it01_dlc |> 
-  filter(knot_displ_id == kdi) |> 
+  filter(knot_displ_id %in% kdi) |> 
   ggplot(aes(`Time of sample in annot`, Y)) +
   geom_line(alpha = 0.2) +
-  geom_line(aes(y = Y_sm), colour = "red") +
-  labs(title = glue::glue("{it01_dlc$knot[it01_dlc$knot_displ_id == kdi]}"))
+  geom_point(aes(y = Y_sm), colour = "red") +
+  facet_wrap(vars(knot_displ_id), scales = "free")
 ```
 
 
-```{r}
-it01_dlc |> 
-  filter(knot == "8") |> 
-  ggplot(aes(`Time of sample in annot`, Y, group = knot_displ_id)) +
-  geom_line(alpha = 0.2) +
-  geom_line(aes(y = Y_smb), colour = "red") +
-  geom_line(aes(y = Y_sm), colour = "blue", linetype = "dashed")
-```
 
 ```{r}
+id_14 <- it01_dlc |> 
+  filter(knot_displ_id == 14)
 
+id_14_y <- id_14$Y_sm
+id_14_time <- id_14$`Time of sample in annot`
+
+y_re <- resample_signal(id_14_y, id_14_time, by = 2)
+y_re_sm <- filter_signal(y_re$signal, window_length = 11, apply = 2)
+
+plot(y_re$time, y_re$signal); lines(y_re$time, y_re_sm, type = "p", col = "red")
+plot(y_re$time, c(NA, diff(y_re_sm))); lines(y_re$time, abs(c(NA, diff(y_re_sm))), col = "red")
 ```
 

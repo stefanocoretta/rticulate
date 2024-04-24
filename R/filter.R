@@ -1,19 +1,15 @@
-#' Title
+#' Filter a signal
 #'
-#' @param signal
-#' @param filter
-#' @param order
-#' @param window_length
-#' @param cutoff_freq
-#' @param sampling_freq
-#' @param type
+#' @param signal Signal to filter.
+#' @param filter Type of filter (default is \code{"sgolay"}, or \code{"butter"}).
+#' @param order Order of the filter.
+#' @param window_length Window length of the Savitzky-Golay filter.
+#' @param cutoff_freq Cut-off frequency of the Butterworth filter.
+#' @param sampling_freq Sampling frequency of the signal.
+#' @param type Butterworth band type (default is \code{"low"}).
 #'
-#' @return
+#' @return The filtered signal.
 #' @export
-#'
-#' @examples
-#'
-#'
 filter_signal <- function(
   signal,
   filter = "sgolay",
@@ -41,4 +37,37 @@ filter_signal <- function(
   }
 
   return(signal_sm)
+}
+
+
+#' Resample (up or down) a signal
+#'
+#' @param signal The signal to resample.
+#' @param time The time vector of the signal to resample.
+#' @param by The factor by which to resample the signal (default is \code(2)).
+#' @param to The frequency to resample to.
+#' @param from The original sampling frequency.
+#' @param method Resampling method (default is \code{interpolate} which uses \code{approx}).
+#'
+#' @return A list with the resampled signal and time if \code{methdo = "interpolate"}.
+#' @export
+#'
+resample_signal <- function(
+    signal,
+    time,
+    by = 2,
+    to,
+    from,
+    method = "interpolation"
+) {
+  if (method == "interpolation") {
+    interp_time <- seq(min(time), max(time), length.out = length(time) * by)
+    interp_signal <- approx(time, signal, xout = interp_time)
+    return(list(signal = interp_signal$y, time = interp_signal$x))
+  } else if (method == "resample") {
+    resampled_signal <- gsignal::resample(signal, p = to, q = from)
+    phase_shift <- round(to / from) - 1
+    resampled_signal <- resampled_signal[1:(length(resampled_signal) - phase_shift)]
+    return(resampled_signal)
+  }
 }

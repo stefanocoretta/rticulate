@@ -15,6 +15,11 @@
 
 * `read_ag500_pos()` to read `.pos` files from Carstens AG500 electro-magnetic-articulographer.
 
+* `filter_signal()` to filter a signal with a Savitzky-Golay or Butterworth filter.
+
+* `resample_signal()` to up/down-sample a signal using interpolation.
+
+
 
 
 # rticulate v1.7.3

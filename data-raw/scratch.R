@@ -1,3 +1,96 @@
+# resample example ----
+
+# Generate a sample signal (sine wave)
+frequency <- 5  # Frequency of the sine wave (in Hz)
+sampling_rate <- 65  # Sampling rate (in Hz)
+duration <- 1  # Duration of the signal (in seconds)
+time <- seq(0, duration, 1/sampling_rate)  # Time vector
+signal <- sin(2 * pi * frequency * time)  # Sine wave signal
+# noise <- rnorm(length(signal), mean = 0, sd = 0.2)
+# noisy_signal <- signal + noise
+
+# Resample the signal using a polyphase algorithm
+resampled_signal <- gsignal::resample(signal, p = 390, q = 65)
+resampled_time <- seq(0, 1, length.out = length(resampled_signal) - 5)
+upsampled_signal <- gsignal::upsample(signal, 4)
+upsampled_time <- seq(0, 1, length.out = length(upsampled_signal) - 5)
+
+resampled <- resample_signal(signal, 390, 65)
+
+
+plot(time, signal, type = "p")
+lines(resampled$time, resampled$signal, col = "red", type = "p", pch = 3)
+# lines(upsampled_time, upsampled_signal[1:(length(upsampled_signal) - 4)], col = "green", type = "p", pch = 20)
+
+# new_fs <- 200
+# interp_time <- seq(0, 1, length.out = new_fs)
+# interp_signal <- approx(time, signal, xout = interp_time)
+
+# order <- 4  # Filter order
+# cutoff_freq <- 20  # Cutoff frequency in Hz
+# sampling_freq <- 65  # Sampling frequency in Hz
+
+# Calculate normalized cutoff frequency
+# nyquist_freq <- sampling_freq / 2
+# normalized_cutoff <- cutoff_freq / nyquist_freq
+
+# Design the Butterworth filter
+# butterworth_filter <- gsignal::butter(order, normalized_cutoff, type = "low")
+
+# padded_signal <- gsignal::upfirdn(signal, butterworth_filter$b, p = 3)
+
+# Plot the original and resampled signals
+
+# lines(interp_time, interp_signal$y, col = "green", type = "l")
+# lines(seq(0, 1, length.out = length(padded_signal)), padded_signal, col = "green", type = "p", pch = 20)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+lx <- 600
+tx <- seq(0, 1360, length.out = lx)
+x <- sin(2 * pi * tx / 120)
+
+# upsample
+p <- 3; q <- 2
+ty <- seq(0, 1360, length.out = lx * p / q)
+y <- resample(x, p, q)
+
+# downsample
+p <- 2; q <- 3
+tz <- seq(0, 1360, length.out = lx * p / q)
+z <- resample(x, p, q)
+
+# plot
+plot(tx, x, type = "b", col = 1, pch = 1,
+     xlab = "", ylab = "")
+points(ty, y, col = 2, pch = 2)
+points(tz, z, col = 3, pch = 3)
+legend("bottomleft", legend = c("original", "upsampled", "downsampled"),
+       lty = 1, pch = 1:3, col = 1:3)
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Generate a noisy sinusoidal signal
 set.seed(123) # Set seed for reproducibility
 
@@ -51,7 +144,7 @@ nyquist_freq <- sampling_freq / 2
 normalized_cutoff <- cutoff_freq / nyquist_freq
 
 # Design the Butterworth filter
-butterworth_filter <- butter(order, normalized_cutoff, type = "low")
+butterworth_filter <- gsignal::butter(order, normalized_cutoff, type = "low")
 
 # Generate example signal (e.g., sinusoidal)
 time <- seq(0, 10, length.out = 1000)
