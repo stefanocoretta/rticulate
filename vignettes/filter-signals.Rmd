@@ -27,10 +27,10 @@ it01_dlc <- read_aaa(it01_dlc_path) |>
     # We need to include both knot and spline because there is also HM spline and STM spline
     knot_displ_id = as.numeric(as.factor(paste0(`Date Time of recording`, spline, knot)))
   ) |> 
-  group_by(knot_displ_id) |> 
   mutate(
     Y_sm = filter_signal(Y, window_length = 7, apply = 2),
-    Y_smb = filter_signal(Y, filter = "butter", cutoff_freq = 10, sampling_freq = 67)
+    Y_smb = filter_signal(Y, filter = "butter", cutoff_freq = 10, sampling_freq = 67),
+    .by = knot_displ_id
   )
 ```
 
@@ -86,5 +86,22 @@ y_re_sm <- filter_signal(y_re$signal, window_length = 11, apply = 2)
 
 plot(y_re$time, y_re$signal); lines(y_re$time, y_re_sm, type = "p", col = "red")
 plot(y_re$time, c(NA, diff(y_re_sm))); lines(y_re$time, abs(c(NA, diff(y_re_sm))), col = "red")
+```
+
+```{r}
+it01_up <- it01_dlc |> 
+  reframe(
+    resample_signal(Y_sm, `Time of sample in annot`, by = 3), .by = c(knot_displ_id, knot)
+  ) |> 
+  mutate(
+    signal_sm = filter_signal(signal, window_length = 11)
+  )
+
+it01_up |> 
+  filter(knot == 8) |> 
+  ggplot(aes(time, signal_sm)) +
+  geom_point(alpha = 0.2) +
+  geom_point(aes(y = signal), colour = "red", size = 0.25) +
+  facet_wrap(vars(knot_displ_id))
 ```
 
