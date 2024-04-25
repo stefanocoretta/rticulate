@@ -3,6 +3,7 @@
 export(filter_signal)
 export(geom_polar_ci)
 export(get_origin)
+export(get_velocity)
 export(plot_polar_smooths)
 export(plot_tongue)
 export(polar_gam)

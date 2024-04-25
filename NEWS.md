@@ -19,6 +19,7 @@
 
 * `resample_signal()` to up/down-sample a signal using interpolation.
 
+* `get_velocity()` to calculate the velocity of displacement.
 
 
 

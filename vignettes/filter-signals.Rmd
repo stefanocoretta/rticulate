@@ -91,17 +91,32 @@ plot(y_re$time, c(NA, diff(y_re_sm))); lines(y_re$time, abs(c(NA, diff(y_re_sm))
 ```{r}
 it01_up <- it01_dlc |> 
   reframe(
-    resample_signal(Y_sm, `Time of sample in annot`, by = 3), .by = c(knot_displ_id, knot)
+    resample_signal(Y_sm, `Time of sample in annot`, by = 2), .by = c(knot_displ_id, knot)
   ) |> 
   mutate(
-    signal_sm = filter_signal(signal, window_length = 11)
+    signal_sm = filter_signal(signal, window_length = 11, apply = 2),
+    .by = c(knot_displ_id, knot)
   )
 
 it01_up |> 
   filter(knot == 8) |> 
-  ggplot(aes(time, signal_sm)) +
+  ggplot(aes(time, signal)) +
   geom_point(alpha = 0.2) +
-  geom_point(aes(y = signal), colour = "red", size = 0.25) +
+  geom_point(aes(y = signal_sm), colour = "red", size = 0.25) +
   facet_wrap(vars(knot_displ_id))
+```
+
+```{r}
+#| warning: false
+
+it01_up |> 
+  filter(knot_displ_id == 14) |> 
+  mutate(
+    signal_sm_vel = get_velocity(signal_sm)
+  ) |> 
+  ggplot(aes(time, signal_sm_vel)) +
+  geom_point() +
+  geom_line(aes(y = abs(signal_sm_vel)), colour = "red") +
+  annotate("rect", xmin = 0.3, xmax = 0.55, ymin = -Inf, ymax = Inf, alpha = 0.3)
 ```
 
