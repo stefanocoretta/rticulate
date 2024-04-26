@@ -85,8 +85,10 @@ y_re <- resample_signal(id_14_y, id_14_time, by = 2)
 y_re_sm <- filter_signal(y_re$signal_int, window_length = 11, apply = 2)
 
 plot(y_re$time_int, y_re$signal_int); lines(y_re$time_int, y_re_sm, type = "p", col = "red")
-plot(y_re$time_int, c(NA, diff(y_re_sm))); lines(y_re$time_int, abs(c(NA, diff(y_re_sm))), col = "red")
+plot(y_re$time_int, get_velocity(y_re_sm)); lines(y_re$time_int, abs(get_velocity(y_re_sm)), col = "red"); lines(y_re$time_int, get_acceleration(y_re_sm), col = "green")
 ```
+
+
 
 ```{r}
 it01_up <- it01_dlc |> 
