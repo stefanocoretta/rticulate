@@ -82,10 +82,10 @@ id_14_y <- id_14$Y_sm
 id_14_time <- id_14$`Time of sample in annot`
 
 y_re <- resample_signal(id_14_y, id_14_time, by = 2)
-y_re_sm <- filter_signal(y_re$signal, window_length = 11, apply = 2)
+y_re_sm <- filter_signal(y_re$signal_int, window_length = 11, apply = 2)
 
-plot(y_re$time, y_re$signal); lines(y_re$time, y_re_sm, type = "p", col = "red")
-plot(y_re$time, c(NA, diff(y_re_sm))); lines(y_re$time, abs(c(NA, diff(y_re_sm))), col = "red")
+plot(y_re$time_int, y_re$signal_int); lines(y_re$time_int, y_re_sm, type = "p", col = "red")
+plot(y_re$time_int, c(NA, diff(y_re_sm))); lines(y_re$time_int, abs(c(NA, diff(y_re_sm))), col = "red")
 ```
 
 ```{r}
@@ -94,15 +94,15 @@ it01_up <- it01_dlc |>
     resample_signal(Y_sm, `Time of sample in annot`, by = 2), .by = c(knot_displ_id, knot)
   ) |> 
   mutate(
-    signal_sm = filter_signal(signal, window_length = 11, apply = 2),
+    Y_sm_up = filter_signal(signal_int, window_length = 11, apply = 2),
     .by = c(knot_displ_id, knot)
   )
 
 it01_up |> 
   filter(knot == 8) |> 
-  ggplot(aes(time, signal)) +
+  ggplot(aes(time_int, signal_int)) +
   geom_point(alpha = 0.2) +
-  geom_point(aes(y = signal_sm), colour = "red", size = 0.25) +
+  geom_point(aes(y = Y_sm_up), colour = "red", size = 0.25) +
   facet_wrap(vars(knot_displ_id))
 ```
 
@@ -112,11 +112,11 @@ it01_up |>
 it01_up |> 
   filter(knot_displ_id == 14) |> 
   mutate(
-    signal_sm_vel = get_velocity(signal_sm)
+    Y_sm_up_vel = get_velocity(Y_sm_up)
   ) |> 
-  ggplot(aes(time, signal_sm_vel)) +
+  ggplot(aes(time_int, Y_sm_up_vel)) +
   geom_point() +
-  geom_line(aes(y = abs(signal_sm_vel)), colour = "red") +
+  geom_line(aes(y = abs(Y_sm_up_vel)), colour = "red") +
   annotate("rect", xmin = 0.3, xmax = 0.55, ymin = -Inf, ymax = Inf, alpha = 0.3)
 ```
 

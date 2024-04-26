@@ -62,8 +62,10 @@ resample_signal <- function(
 ) {
   if (method == "interpolation") {
     interp_time <- seq(min(time), max(time), length.out = length(time) * by)
-    interp_signal <- approx(time, signal, xout = interp_time)
-    return(tibble::tibble(signal = interp_signal$y, time = interp_signal$x))
+    interp_sig <- approx(time, signal, xout = interp_time)
+
+    return(tibble::tibble(signal_int = interp_sig$y, time_int = interp_sig$x))
+    return(tbl_out)
   } else if (method == "resample") {
     resampled_signal <- gsignal::resample(signal, p = to, q = from)
     phase_shift <- round(to / from) - 1
