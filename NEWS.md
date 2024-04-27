@@ -21,6 +21,8 @@
 
 * `get_velocity()` and `get_acceleration()` to calculate the velocity and acceleration (first and second derivative) of displacement.
 
+* `get_landmarks()` to get several gestural landmarks from the displacement of a single gesture.
+
 
 
 # rticulate v1.7.3

@@ -2,6 +2,8 @@
 
 export(filter_signal)
 export(geom_polar_ci)
+export(get_acceleration)
+export(get_landmarks)
 export(get_origin)
 export(get_velocity)
 export(plot_polar_smooths)

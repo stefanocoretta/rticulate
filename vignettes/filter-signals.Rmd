@@ -83,9 +83,10 @@ id_14_time <- id_14$`Time of sample in annot`
 
 y_re <- resample_signal(id_14_y, id_14_time, by = 2)
 y_re_sm <- filter_signal(y_re$signal_int, window_length = 11, apply = 2)
+y_re_sm_vel <- get_velocity(y_re_sm)
 
 plot(y_re$time_int, y_re$signal_int); lines(y_re$time_int, y_re_sm, type = "p", col = "red")
-plot(y_re$time_int, get_velocity(y_re_sm)); lines(y_re$time_int, abs(get_velocity(y_re_sm)), col = "red"); lines(y_re$time_int, get_acceleration(y_re_sm), col = "green")
+plot(y_re$time_int, y_re_sm_vel); lines(y_re$time_int, abs(y_re_sm_vel), col = "red"); lines(y_re$time_int, get_acceleration(y_re_sm), col = "green")
 ```
 
 
@@ -93,7 +94,7 @@ plot(y_re$time_int, get_velocity(y_re_sm)); lines(y_re$time_int, abs(get_velocit
 ```{r}
 it01_up <- it01_dlc |> 
   reframe(
-    resample_signal(Y_sm, `Time of sample in annot`, by = 2), .by = c(knot_displ_id, knot)
+    resample_signal(Y_sm, `Time of sample in annot`, by = 3), .by = c(knot_displ_id, knot)
   ) |> 
   mutate(
     Y_sm_up = filter_signal(signal_int, window_length = 11, apply = 2),
@@ -120,5 +121,33 @@ it01_up |>
   geom_point() +
   geom_line(aes(y = abs(Y_sm_up_vel)), colour = "red") +
   annotate("rect", xmin = 0.3, xmax = 0.55, ymin = -Inf, ymax = Inf, alpha = 0.3)
+```
+
+```{r}
+y_re_sm_vel_peaks <- pracma::findpeaks(abs(y_re_sm_vel))
+
+plot(y_re$time_int, abs(y_re_sm_vel)); lines(y_re$time_int[y_re_sm_vel_peaks[,2]], y_re_sm_vel_peaks[,1], col = "red", type = "p", pch = 3); lines(y_re$time_int[y_re_sm_vel_peaks[,3]], y_re_sm_vel_peaks[,1], col = "green", type = "p", pch = 18); lines(y_re$time_int[y_re_sm_vel_peaks[,4]], y_re_sm_vel_peaks[,1], col = "blue", type = "p", pch = 18)
+```
+
+```{r}
+it01_up_win <- it01_up |> filter(knot_displ_id == 14, time_int > 0.3, time_int < 0.55)
+
+it01_up_win_land <- get_landmarks(it01_up_win$Y_sm_up, it01_up_win$time_int)
+it01_up_win_land_long <- it01_up_win_land |> 
+  pivot_longer(everything(), names_to = "land")
+
+it01_up_win |> 
+  ggplot(aes(time_int, abs(get_velocity(Y_sm_up)))) +
+  geom_point() +
+  geom_vline(data = it01_up_win_land_long |> filter(str_detect(land, "_ons|_off")), aes(xintercept = value))
+
+it01_up_win |> 
+  ggplot(aes(time_int, Y_sm_up)) +
+  geom_point() +
+  geom_vline(data = it01_up_win_land_long |> filter(str_detect(land, "_ons|_off")), aes(xintercept = value)) +
+  annotate("rect", ymin = -Inf, ymax = Inf, xmin = it01_up_win_land$peak_1_time + (it01_up_win_land$PLAT_ons - it01_up_win_land$peak_1_time) / 2, xmax = it01_up_win_land$PLAT_off + (it01_up_win_land$peak_2_time - it01_up_win_land$PLAT_off) / 2, fill = "red", alpha = 0.2) +
+  labs(
+    caption = "The red areas marks the closure onset and offset which are\nthe mid-point between the peak closing velocity and the plateau onset,\nand the mid-point between the plateau offset and the peak opening velocity"
+  )
 ```
 
