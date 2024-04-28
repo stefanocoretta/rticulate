@@ -29,6 +29,8 @@ filter_signal(
 \item{sampling_freq}{Sampling frequency of the signal.}
 
 \item{type}{Butterworth band type (default is \code{"low"}).}
+
+\item{apply}{Apply the filter N times (default is \code{1}).}
 }
 \value{
 The filtered signal.

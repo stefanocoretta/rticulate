@@ -11,7 +11,7 @@ resample_signal(signal, time, by = 2, to, from, method = "interpolation")
 
 \item{time}{The time vector of the signal to resample.}
 
-\item{by}{The factor by which to resample the signal (default is \code(2)).}
+\item{by}{The factor by which to resample the signal (default is \code{2}).}
 
 \item{to}{The frequency to resample to.}
 

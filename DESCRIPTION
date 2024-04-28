@@ -16,12 +16,14 @@ BugReports: https://github.com/stefanocoretta/rticulate/issues
 Depends: R (>= 3.0.0)
 Encoding: UTF-8
 LazyData: true
-Imports: dplyr,
+Imports: cli,
+    dplyr,
     ggplot2,
     glue,
     gsignal,
     magrittr,
     mgcv,
+    pracma,
     purrr,
     readr,
     rlang,
@@ -32,8 +34,10 @@ Imports: dplyr,
     tidyselect
 RoxygenNote: 7.3.1
 Suggests: knitr,
+    rcartocolor,
     rmarkdown,
-    stringr
+    stringr,
+    tidyverse
 VignetteBuilder: knitr
 Language: en_GB
 License: MIT + file LICENSE

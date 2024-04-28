@@ -7,6 +7,7 @@
 #' @param cutoff_freq Cut-off frequency of the Butterworth filter.
 #' @param sampling_freq Sampling frequency of the signal.
 #' @param type Butterworth band type (default is \code{"low"}).
+#' @param apply Apply the filter N times (default is \code{1}).
 #'
 #' @return The filtered signal.
 #' @export
@@ -44,7 +45,7 @@ filter_signal <- function(
 #'
 #' @param signal The signal to resample.
 #' @param time The time vector of the signal to resample.
-#' @param by The factor by which to resample the signal (default is \code(2)).
+#' @param by The factor by which to resample the signal (default is \code{2}).
 #' @param to The frequency to resample to.
 #' @param from The original sampling frequency.
 #' @param method Resampling method (default is \code{interpolate} which uses \code{approx}).
@@ -62,10 +63,9 @@ resample_signal <- function(
 ) {
   if (method == "interpolation") {
     interp_time <- seq(min(time), max(time), length.out = length(time) * by)
-    interp_sig <- approx(time, signal, xout = interp_time)
+    interp_sig <- stats::approx(time, signal, xout = interp_time)
 
     return(tibble::tibble(time_int = interp_sig$x, signal_int = interp_sig$y))
-    return(tbl_out)
   } else if (method == "resample") {
     resampled_signal <- gsignal::resample(signal, p = to, q = from)
     phase_shift <- round(to / from) - 1

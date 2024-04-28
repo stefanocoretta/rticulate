@@ -27,7 +27,7 @@ read_aaa(
 \item{column_names}{The names of the columns without including the splines columns.}
 }
 \value{
-A tibble. An \code{.index} column is added which indexes (groups) each tongue contour.
+A tibble.
 }
 \description{
 It reads a file or a list of files with data exported from AAA. The data are
