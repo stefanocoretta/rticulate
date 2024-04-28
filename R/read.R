@@ -56,7 +56,7 @@ read_aaa_data <- function(
       aaa_data <- aaa_data |>
             # Add index column for cases where contours don't have an identifier
             dplyr::mutate(
-                .index = dplyr::row_number(),
+                frame_id = dplyr::row_number(),
                 dplyr::across(
                   dplyr::matches("(^[XY]\\d+\\s)|(^radius_)|(^theta_)"),
                   as.numeric
@@ -71,11 +71,25 @@ read_aaa_data <- function(
         tidyr::separate_wider_position(coord_knot, c(coord = 1, knot = 2), too_few = "align_start") |>
         dplyr::mutate(knot = as.numeric(knot)) |>
         tidyr::pivot_wider(names_from = coord, values_from = value) |>
-        dplyr::relocate(.index, .after = tidyselect::last_col())
+        dplyr::relocate(frame_id, .after = tidyselect::last_col())
+
+      if ("Date Time of recording" %in% colnames(aaa_data)) {
+        aaa_data <- aaa_data |>
+          dplyr::mutate(
+            displ_id = as.numeric(
+              as.factor(
+                paste0(`Date Time of recording`, spline, sprintf("%02d", knot))))
+          )
+      } else {
+        cli::cli_alert_warning(
+          "Column `Date Time of recording` not found. Did not create a `displ_id` column.
+          We recommend to include `Date Time of recording` when exporting data from AAA."
+        )
+      }
     } else if (format == "wide") {
         aaa_data <- aaa_data |>
         dplyr::mutate(
-          .index = dplyr::row_number(),
+          frame_id = dplyr::row_number(),
           dplyr::across(
             dplyr::matches("(^[XY]\\d+\\s)|(^radius_)|(^theta_)"),
             as.numeric
@@ -106,7 +120,7 @@ read_aaa_data <- function(
 #' @param knots The number of spline knots or fan lines.
 #' @param column_names The names of the columns without including the splines columns.
 #'
-#' @return A tibble. An \code{.index} column is added which indexes (groups) each tongue contour.
+#' @return A tibble.
 #'
 #' @examples
 #' columns <- c("speaker","seconds","rec_date","prompt","label",
