@@ -57,8 +57,8 @@ resample_signal <- function(
     signal,
     time,
     by = 2,
-    to,
-    from,
+    to = NULL,
+    from = NULL,
     method = "interpolation"
 ) {
   if (method == "interpolation") {

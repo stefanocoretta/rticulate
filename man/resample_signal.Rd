@@ -4,7 +4,14 @@
 \alias{resample_signal}
 \title{Resample (up or down) a signal}
 \usage{
-resample_signal(signal, time, by = 2, to, from, method = "interpolation")
+resample_signal(
+  signal,
+  time,
+  by = 2,
+  to = NULL,
+  from = NULL,
+  method = "interpolation"
+)
 }
 \arguments{
 \item{signal}{The signal to resample.}

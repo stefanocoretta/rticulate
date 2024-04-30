@@ -186,6 +186,61 @@ it01_tongue |>
   facet_wrap(vars(displ_id))
 ```
 
+## Resampling
+
+It is usually a good idea to upsample the smoothed signals especially when one wants to calculate the velocity of the displacement signal.
+
+The package rticulate provides users with a `resample_signal()` function that uses linear interpolation to resample a signal. In this section, we will see how to upsample the displacement signals of knot 8.
+
+Upsampling with linear interpolation means that the upsampled signal will have to be smoothed. We will do that at the end of this section although the procedure is the same as the one we have seen above.
+
+Let's upsample the `Y_sm` signal. The `resample_signal()` function takes three main arguments:
+
+- The sample to resample, here `Y_sm`.
+- The column containing the time information, here `time_annot`.
+- The resampling factor, here `3` (meaning the sampling rate will be increased by a factor of 3).
+
+Since resampling changes the number of rows in the tibble, we need to use `reframe()` rather than mutate. And of course we need to use the `.by` argument so that upsampling is done for each signal individually.
+
+```{r upsample}
+it01_tongue_up <- it01_tongue |> 
+  reframe(
+    resample_signal(Y_sm, time_annot, by = 3),
+    .by = displ_id
+  )
+
+# Nothing exceptional here, just doing some wrangling to get the info back
+it01_tongue_up <- it01_tongue_up |> 
+  left_join(y = it01_tongue |> select(Prompt, spline, knot, displ_id) |> distinct()) |> 
+  rename(Y_sm_up = signal_int)
+
+it01_tongue_up
+```
 
 
+Let's plot knot 8!
+
+```{r upsample-plot}
+it01_tongue_up |> 
+  filter(knot == 8) |> 
+  ggplot(aes(time_int, Y_sm_up, group = displ_id)) +
+  geom_point(alpha = 0.25) +
+  geom_line()
+```
+
+It looks good, but we do need to apply a filter so that we get smoother signals where the interpolation created straight lines.
+
+```{r upsample-smooth}
+it01_tongue_up <- it01_tongue_up |> 
+  mutate(
+    Y_sm_up_sm = filter_signal(Y_sm_up, order = 2, window_length = 7, apply = 2),
+    .by = displ_id
+  )
+
+it01_tongue_up |> 
+  filter(knot == 8) |> 
+  ggplot(aes(time_int, Y_sm_up_sm, group = displ_id)) +
+  geom_point(alpha = 0.25) +
+  geom_line()
+```
 
