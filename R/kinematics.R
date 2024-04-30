@@ -32,51 +32,57 @@ get_landmarks <- function(signal, time, threshold = 0.2) {
   signal_abs_vel <- abs(get_velocity(signal))
   peaks <- pracma::findpeaks(signal_abs_vel, minpeakheight = 0.1)
 
-  min_1_time <- time[peaks[1,3] - 1]
-  min_1 <- signal[peaks[1,3] - 1]
-  peak_1_time <- time[peaks[1,2]]
-  peak_1 <- signal[peaks[1,2]]
-  max_disp_time <- time[peaks[1,4] - 1]
-  max_disp <- signal[peaks[1,4] - 1]
-  peak_2_time <- time[peaks[2,2]]
-  peak_2 <- signal[peaks[2,2]]
-  min_3_time <- time[peaks[2,4] - 1]
-  min_3 <- signal[peaks[2,4] - 1]
+  min_1_pos <- peaks[1,3] - 1
+  peak_1_pos <- peaks[1,2]
+  max_disp_pos <- peaks[1,4] - 1
+  peak_2_pos <- peaks[2,2]
+  min_3_pos <- peaks[2,4] - 1
+
+  min_1_time <- time[min_1_pos]
+  min_1 <- signal[min_1_pos]
+  peak_1_time <- time[peak_1_pos]
+  peak_1 <- signal[peak_1_pos]
+  max_disp_time <- time[max_disp_pos]
+  max_disp <- signal[max_disp_pos]
+  peak_2_time <- time[peak_2_pos]
+  peak_2 <- signal[peak_2_pos]
+  min_3_time <- time[min_3_pos]
+  min_3 <- signal[min_3_pos]
 
   # Get gesture onset
-  # Formula: threshold * (abs_vel at peak_1 = peaks[1,2] - abs_vel at min_1 = peaks[1,3] - 1)
-  min1_peak1_thresh <- threshold * (signal_abs_vel[peaks[1,2]] - signal_abs_vel[peaks[1,3] - 1])
+  # Formula: threshold * (abs_vel at peak_1 = peak_1_pos - abs_vel at min_1 = min_1_pos)
+  min1_peak1_thresh <- threshold * (signal_abs_vel[peak_1_pos] - signal_abs_vel[min_1_pos])
   GEST_ons <- stats::approx(
     signal_abs_vel[time >= min_1_time & time <= peak_1_time],
     time[time >= min_1_time & time <= peak_1_time],
-    signal_abs_vel[peaks[1,3] - 1] + min1_peak1_thresh
+    signal_abs_vel[min_1_pos] + min1_peak1_thresh
   )$y
 
   # Get plateau onset
   # Formula: 1 - threshold * (abs_vel at max_disp - abs_vel at peak_1)
-  peak1_max_thresh <- (1 - threshold) * (signal_abs_vel[peaks[1,4] - 1] - signal_abs_vel[peaks[1,2]])
+  peak1_max_thresh <- (1 - threshold) * (signal_abs_vel[max_disp_pos] - signal_abs_vel[peak_1_pos])
   PLAT_ons <- stats::approx(
     signal_abs_vel[time >= peak_1_time & time <= max_disp_time],
     time[time >= peak_1_time & time <= max_disp_time],
-    signal_abs_vel[peaks[1,2]] + peak1_max_thresh
+    signal_abs_vel[peak_1_pos] + peak1_max_thresh
   )$y
 
   # Get plateau offset
   # Formula: 1 - threshold * (abs_vel at max - abs_vel at peak_2)
-  max_peak2_thresh <- threshold * (signal_abs_vel[peaks[1,4] - 1] - signal_abs_vel[peaks[2,2]])
+  max_peak2_thresh <- threshold * (signal_abs_vel[max_disp_pos] - signal_abs_vel[peak_2_pos])
   PLAT_off <- stats::approx(
     signal_abs_vel[time >= max_disp_time & time <= peak_2_time],
     time[time >= max_disp_time & time <= peak_2_time],
-    signal_abs_vel[peaks[1,4] - 1] - max_peak2_thresh
+    signal_abs_vel[max_disp_pos] - max_peak2_thresh
   )$y
 
   # Get gesture offset
-  # Formula: threshold * (abs_vel at peak_2 = peaks[2,2] - abs_vel at min_3 = peaks[2,4] - 1)
-  peak2_min3_thresh <- threshold * (signal_abs_vel[peaks[2,2]] - signal_abs_vel[peaks[2,4] - 1])
+  # Formula: threshold * (abs_vel at peak_2 = peak_2_pos - abs_vel at min_3 = min_3_pos)
+  peak2_min3_thresh <- threshold * (signal_abs_vel[peak_2_pos] - signal_abs_vel[min_3_pos])
   GEST_off <- stats::approx(
     signal_abs_vel[time >= peak_2_time],
     time[time >= peak_2_time],
-    signal_abs_vel[peaks[2,4] - 1] +
+    signal_abs_vel[min_3_pos] +
       peak2_min3_thresh
   )$y
 
