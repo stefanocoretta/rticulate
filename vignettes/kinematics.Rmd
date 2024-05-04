@@ -127,3 +127,20 @@ it01_up_win |>
   labs(y = "Y displacement")
 ```
 
+Let's now get gestural landmarks for all the knot 8 data.
+
+```{r it01-up-lands}
+it01_up_lands <- it01_up |> 
+  filter(knot == 8, time_int > 0.3, time_int < 0.55) |> 
+  reframe(
+    get_landmarks(Y_sm_up, time_int),
+    .by = displ_id
+  )
+
+it01_up_lands
+```
+
+At the moment the algorithm is very crude and will reject any case in which there aren't precisely two peaks in the absolute velocity in the given time window.
+
+
+
