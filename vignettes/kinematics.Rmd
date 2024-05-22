@@ -143,4 +143,16 @@ it01_up_lands
 At the moment the algorithm is very crude and will reject any case in which there aren't precisely two peaks in the absolute velocity in the given time window.
 
 
+```{r}
+it01_14 <- it01_up_win |> 
+  filter(displ_id == 14) |> 
+  mutate(
+    Y_sm_up_vel = get_velocity(Y_sm_up)
+  )
+
+
+maxdisp <- get_zerocross(it01_14$Y_sm_up_vel, it01_14$time_int, 0.4, 0.5)
+
+get_peakvel(it01_14$Y_sm_up_vel, it01_14$time_int, maxdisp)
+```
 

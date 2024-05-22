@@ -108,3 +108,46 @@ get_landmarks <- function(signal, time, threshold = 0.2) {
     )
   }
 }
+
+
+## Internals ----
+
+# Get the time when the velocity crosses 0.
+get_zerocross <- function(signal_vel, time, start = NULL, end = NULL) {
+  if (is.null(start)) {
+    start <- time[1]
+  }
+
+  if (is.null(end)) {
+    end <- time[length(time)]
+  }
+
+  time_win_ids <- which(time >= start & time <= end)
+
+  stats::approx(
+    signal_vel[time_win_ids],
+    time[time_win_ids],
+    0
+  )$y
+}
+
+# Get the first peak velocity before and after maximum displacement
+get_peakvel <- function(signal_vel, time, maxd_time) {
+  signal_abs_vel <- abs(signal_vel)
+
+  peak_1 <- pracma::findpeaks(rev(signal_abs_vel[time < maxd_time]), minpeakheight = 0.1, npeaks = 1)
+  peak_2 <- pracma::findpeaks(signal_abs_vel[time > maxd_time], minpeakheight = 0.1, npeaks = 1)
+
+  peak_1_time <- rev(time[time < maxd_time])[peak_1[1,2]]
+  peak_2_time <- time[time > maxd_time][peak_2[1,2]]
+
+  return(
+    list(
+      peak_1_vel = peak_1[1,1],
+      peak_1_time = peak_1_time,
+      peak_2_vel = peak_2[1,1],
+      peak_2_time = peak_2_time
+    )
+  )
+
+}
