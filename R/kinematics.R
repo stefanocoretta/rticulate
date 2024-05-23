@@ -105,8 +105,8 @@ get_zerocross <- function(signal_vel, time, start = NULL, end = NULL) {
   )$y
 
   if (is.na(min_time)) {
-    min_vel <- min(signal_vel[time_win_ids], na.rm = TRUE)
-    min_time <- time[which(signal_vel == min_vel)]
+    min_vel <- min(abs(signal_vel[time_win_ids]), na.rm = TRUE)
+    min_time <- time[which(abs(signal_vel) == min_vel)]
   }
 
   return(
