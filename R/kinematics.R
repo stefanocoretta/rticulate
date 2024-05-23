@@ -22,91 +22,64 @@ get_acceleration <- function(signal) {
 
 #' Get gestural landmarks
 #'
-#' @param signal The displacement signal.
+#' @param signal_vel The velocity of the displacement signal.
 #' @param time The time of the signal.
+#' @param start Start time of interval in which to search for maximum displacement.
+#' @param end End time of interval in which to search for maximum displacement.
 #' @param threshold The velocity threshold (default is \code{0.2}, corresponding to 20 percent velocity.)
 #'
 #' @return A tibble with one row and a column for each gestural landmark.
 #' @export
-get_landmarks <- function(signal, time, threshold = 0.2) {
-  signal_abs_vel <- abs(get_velocity(signal))
-  peaks <- pracma::findpeaks(signal_abs_vel, minpeakheight = 0.1)
+get_landmarks <- function(signal_vel, time, start, end, threshold = 0.2) {
 
-  if (!is.null(peaks)) {
-    if (nrow(peaks) == 2) {
-    min_1_pos <- peaks[1,3] - 1
-    peak_1_pos <- peaks[1,2]
-    max_disp_pos <- peaks[1,4] - 1
-    peak_2_pos <- peaks[2,2]
-    min_3_pos <- peaks[2,4] - 1
+  max_disp <- get_zerocross(signal_vel, time, start = start, end = end)
+  peaks <- get_peakvel(signal_vel, time, max_disp$min_time)
+  min_1 <- get_zerocross(signal_vel, time, end = peaks$peak_1_time)
+  min_3 <- get_zerocross(signal_vel, time, start = peaks$peak_2_time)
 
-    min_1_time <- time[min_1_pos]
-    min_1 <- signal[min_1_pos]
-    peak_1_time <- time[peak_1_pos]
-    peak_1 <- signal[peak_1_pos]
-    max_disp_time <- time[max_disp_pos]
-    max_disp <- signal[max_disp_pos]
-    peak_2_time <- time[peak_2_pos]
-    peak_2 <- signal[peak_2_pos]
-    min_3_time <- time[min_3_pos]
-    min_3 <- signal[min_3_pos]
+  signal_abs_vel <- abs(signal_vel)
 
-    # Get gesture onset
-    # Formula: threshold * (abs_vel at peak_1 = peak_1_pos - abs_vel at min_1 = min_1_pos)
-    min1_peak1_thresh <- threshold * (signal_abs_vel[peak_1_pos] - signal_abs_vel[min_1_pos])
-    GEST_ons <- stats::approx(
-      signal_abs_vel[time >= min_1_time & time <= peak_1_time],
-      time[time >= min_1_time & time <= peak_1_time],
-      signal_abs_vel[min_1_pos] + min1_peak1_thresh
-    )$y
+  # Get gesture onset
+  min1_peak1_thresh <- threshold * (peaks$peak_1_vel - min_1$min_vel)
+  GEST_ons <- stats::approx(
+    signal_abs_vel[time >= min_1$min_time & time <= peaks$peak_1_time],
+    time[time >= min_1$min_time & time <= peaks$peak_1_time],
+    min_1$min_vel + min1_peak1_thresh
+  )$y
 
-    # Get plateau onset
-    # Formula: 1 - threshold * (abs_vel at max_disp - abs_vel at peak_1)
-    peak1_max_thresh <- (1 - threshold) * (signal_abs_vel[max_disp_pos] - signal_abs_vel[peak_1_pos])
-    PLAT_ons <- stats::approx(
-      signal_abs_vel[time >= peak_1_time & time <= max_disp_time],
-      time[time >= peak_1_time & time <= max_disp_time],
-      signal_abs_vel[peak_1_pos] + peak1_max_thresh
-    )$y
+  # Get plateau onset
+  peak1_max_thresh <- (1 - threshold) * (max_disp$min_vel - peaks$peak_1_vel)
+  PLAT_ons <- stats::approx(
+    signal_abs_vel[time >= peaks$peak_1_time & time <= max_disp$min_time],
+    time[time >= peaks$peak_1_time & time <= max_disp$min_time],
+    peaks$peak_1_vel + peak1_max_thresh
+  )$y
 
-    # Get plateau offset
-    # Formula: 1 - threshold * (abs_vel at max - abs_vel at peak_2)
-    max_peak2_thresh <- threshold * (signal_abs_vel[max_disp_pos] - signal_abs_vel[peak_2_pos])
-    PLAT_off <- stats::approx(
-      signal_abs_vel[time >= max_disp_time & time <= peak_2_time],
-      time[time >= max_disp_time & time <= peak_2_time],
-      signal_abs_vel[max_disp_pos] - max_peak2_thresh
-    )$y
+  # Get plateau offset
+  max_peak2_thresh <- threshold * (max_disp$min_vel - peaks$peak_2_vel)
+  PLAT_off <- stats::approx(
+    signal_abs_vel[time >= max_disp$min_time & time <= peaks$peak_2_time],
+    time[time >= max_disp$min_time & time <= peaks$peak_2_time],
+    max_disp$min_vel - max_peak2_thresh
+  )$y
 
-    # Get gesture offset
-    # Formula: threshold * (abs_vel at peak_2 = peak_2_pos - abs_vel at min_3 = min_3_pos)
-    peak2_min3_thresh <- threshold * (signal_abs_vel[peak_2_pos] - signal_abs_vel[min_3_pos])
-    GEST_off <- stats::approx(
-      signal_abs_vel[time >= peak_2_time],
-      time[time >= peak_2_time],
-      signal_abs_vel[min_3_pos] +
-        peak2_min3_thresh
-    )$y
+  # Get gesture offset
+  peak2_min3_thresh <- threshold * (peaks$peak_2_vel - min_3$min_vel)
+  GEST_off <- stats::approx(
+    signal_abs_vel[time >= peaks$peak_2_time & time <= min_3$min_time],
+    time[time >= peaks$peak_2_time & time <= min_3$min_time],
+    min_3$min_vel + peak2_min3_thresh
+  )$y
 
-      tibble::tibble(
-        min_1, peak_1, max_disp, peak_2, min_3,
-        min_1_time, peak_1_time, max_disp_time, peak_2_time, min_3_time,
-        GEST_ons, PLAT_ons, PLAT_off, GEST_off
-      )
-    } else {
-      tibble::tibble(
-        min_1 = NA, peak_1 = NA, max_disp = NA, peak_2 = NA, min_3 = NA,
-        min_1_time = NA, peak_1_time = NA, max_disp_time = NA, peak_2_time = NA, min_3_time = NA,
-        GEST_ons = NA, PLAT_ons = NA, PLAT_off = NA, GEST_off = NA
-      )
-    }
-  } else {
-    tibble::tibble(
-      min_1 = NA, peak_1 = NA, max_disp = NA, peak_2 = NA, min_3 = NA,
-      min_1_time = NA, peak_1_time = NA, max_disp_time = NA, peak_2_time = NA, min_3_time = NA,
-      GEST_ons = NA, PLAT_ons = NA, PLAT_off = NA, GEST_off = NA
-    )
-  }
+  tibble::tibble(
+    min_1_vel = min_1$min_vel, peak_1_vel = peaks$peak_1_vel,
+    max_disp_vel = max_disp$min_vel,
+    peak_2_vel = peaks$peak_2_vel, min_3_vel = min_3$min_vel,
+    min_1_time = min_1$min_time, peaks_1_time = peaks$peak_1_time,
+    max_disp_time = max_disp$min_time,
+    peak_2_time = peaks$peak_2_time, min_3_time = min_3$min_time,
+    GEST_ons, PLAT_ons, PLAT_off, GEST_off
+  )
 }
 
 
@@ -122,13 +95,26 @@ get_zerocross <- function(signal_vel, time, start = NULL, end = NULL) {
     end <- time[length(time)]
   }
 
-  time_win_ids <- which(time >= start & time <= end)
+  time_win_ids <- time >= start & time <= end
 
-  stats::approx(
+  min_vel <- 0
+  min_time <- stats::approx(
     signal_vel[time_win_ids],
     time[time_win_ids],
     0
   )$y
+
+  if (is.na(min_time)) {
+    min_vel <- min(signal_vel[time_win_ids], na.rm = TRUE)
+    min_time <- time[which(signal_vel == min_vel)]
+  }
+
+  return(
+    list(
+      min_vel = min_vel,
+      min_time = min_time
+    )
+  )
 }
 
 # Get the first peak velocity before and after maximum displacement
