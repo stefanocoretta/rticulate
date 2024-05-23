@@ -37,7 +37,17 @@ get_landmarks <- function(signal_vel, time, start, end, threshold = 0.2) {
 
   if (is.null(peaks$peak_1_vel) | is.null(peaks$peak_2_vel)) {
     cli::cli_alert_warning("Peak not found!")
-    return(NA)
+    return(
+      tibble::tibble(
+        min_1_vel = NA, peak_1_vel = NA,
+        max_disp_vel = NA,
+        peak_2_vel = NA, min_3_vel = NA,
+        min_1_time = NA, peaks_1_time = NA,
+        max_disp_time = NA,
+        peak_2_time = NA, min_3_time = NA,
+        GEST_ons = NA, PLAT_ons = NA, PLAT_off = NA, GEST_off = NA
+      )
+    )
   }
 
   min_1 <- get_zerocross(signal_vel, time, end = peaks$peak_1_time)
