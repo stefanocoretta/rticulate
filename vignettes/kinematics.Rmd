@@ -43,7 +43,7 @@ it01_up <- it01_dlc |>
   filter(spline == "DLC_Tongue") |> 
   mutate(
     Y_sm = filter_signal(Y, order = 2, window_length = 7, apply = 2),
-    .by = displ_id
+    .by = c(displ_id)
   ) |> 
   reframe(
     resample_signal(Y_sm, time_annot, by = 3), .by = c(displ_id, knot)
@@ -69,11 +69,13 @@ Note that calculating the derivative of a signal returns a vector that is one it
 The following code chunk illustrates the use of `get_velocity()` on a single signal (`displ_id = 14`) and plots the results.
 
 ```{r get-velocity, warning=FALSE}
-it01_up |> 
-  filter(displ_id == 14) |> 
+it01_up <- it01_up |> 
   mutate(
     Y_sm_up_vel = get_velocity(Y_sm_up)
-  ) |> 
+  )
+
+it01_up |> 
+  filter(displ_id == 14) |> 
   ggplot(aes(time_int, Y_sm_up_vel)) +
   geom_point() +
   geom_line(aes(y = abs(Y_sm_up_vel)), colour = "red") +
@@ -97,14 +99,17 @@ The following schematics illustrates the relation between the displacement signa
 
 The following code illustrates the use of `get_landmarks()` with the same single displacement signal from above (`displ_id == 14`).
 
-For the `get_landmarks()` function to function correctly, the user has to select a time window which includes the displacement signal that roughly corresponds to the closing and opening gesture so that the calculated velocity contains the three minimum absolute velocities (which means the absolute velocity will have two peaks only). If the function detects more than two peaks, it does not return landmarks.
+For the `get_landmarks()` function to function correctly, the user has to select a time window within which the maximum displacement (i.e. the minimum velocity) will be searched. The window should not contain any other velocity minima. For consonants, a good reference is the start and end of the consonant closure as obtained from acoustics. To make things easier, here I am selecting a single window for all displacement signals, which happens to work fine.
+
+I also recommend to run the function on the signal within a reduced time window which includes the opening-closing gesture only. This will help reducing the erroneous detection of other peaks/minima in the signal.
 
 ```{r get-landmarks, warning=FALSE}
-# Filter signal to include only the necessary window
-it01_up_win <- it01_up |> filter(displ_id == 14, time_int > 0.3, time_int < 0.55)
+# Filter signal to include a reduced time window
+it01_up_win <- it01_up |>
+  filter(displ_id == 14, time_int > 0.3, time_int < 0.55)
 
 # Get landmarks
-it01_up_win_land <- get_landmarks(it01_up_win$Y_sm_up, it01_up_win$time_int)
+it01_up_win_land <- get_landmarks(it01_up_win$Y_sm_up_vel, it01_up_win$time_int, 0.4, 0.5)
 it01_up_win_land_long <- it01_up_win_land |> 
   pivot_longer(everything(), names_to = "land")
 
@@ -133,26 +138,24 @@ Let's now get gestural landmarks for all the knot 8 data.
 it01_up_lands <- it01_up |> 
   filter(knot == 8, time_int > 0.3, time_int < 0.55) |> 
   reframe(
-    get_landmarks(Y_sm_up, time_int),
+    get_landmarks(Y_sm_up_vel, time_int, 0.35, 0.45),
     .by = displ_id
   )
 
 it01_up_lands
 ```
 
-At the moment the algorithm is very crude and will reject any case in which there aren't precisely two peaks in the absolute velocity in the given time window.
-
+And finally, let's plot the gestural landmarks!
 
 ```{r}
-it01_14 <- it01_up_win |> 
-  filter(displ_id == 14) |> 
-  mutate(
-    Y_sm_up_vel = get_velocity(Y_sm_up)
-  )
+it01_up_lands_long <- it01_up_lands |> 
+  pivot_longer(-displ_id, names_to = "land")
 
-
-maxdisp <- get_zerocross(it01_14$Y_sm_up_vel, it01_14$time_int, 0.4, 0.5)
-
-get_peakvel(it01_14$Y_sm_up_vel, it01_14$time_int, maxdisp)
+it01_up |> 
+  filter(knot == 8) |> 
+  ggplot(aes(time_int, Y_sm_up)) +
+  geom_point(alpha = 0.2) +
+  geom_vline(data = it01_up_lands_long |> filter(str_detect(land, "_ons|_off")), aes(xintercept = value)) +
+  facet_wrap(vars(displ_id))
 ```
 

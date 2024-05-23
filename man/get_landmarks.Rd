@@ -4,12 +4,16 @@
 \alias{get_landmarks}
 \title{Get gestural landmarks}
 \usage{
-get_landmarks(signal, time, threshold = 0.2)
+get_landmarks(signal_vel, time, start, end, threshold = 0.2)
 }
 \arguments{
-\item{signal}{The displacement signal.}
+\item{signal_vel}{The velocity of the displacement signal.}
 
 \item{time}{The time of the signal.}
+
+\item{start}{Start time of interval in which to search for maximum displacement.}
+
+\item{end}{End time of interval in which to search for maximum displacement.}
 
 \item{threshold}{The velocity threshold (default is \code{0.2}, corresponding to 20 percent velocity.)}
 }
