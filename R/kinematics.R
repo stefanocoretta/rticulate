@@ -42,7 +42,7 @@ get_landmarks <- function(signal_vel, time, start, end, threshold = 0.2) {
         min_1_vel = NA, peak_1_vel = NA,
         max_disp_vel = NA,
         peak_2_vel = NA, min_3_vel = NA,
-        min_1_time = NA, peaks_1_time = NA,
+        min_1_time = NA, peak_1_time = NA,
         max_disp_time = NA,
         peak_2_time = NA, min_3_time = NA,
         GEST_ons = NA, PLAT_ons = NA, PLAT_off = NA, GEST_off = NA
@@ -91,7 +91,7 @@ get_landmarks <- function(signal_vel, time, start, end, threshold = 0.2) {
     min_1_vel = min_1$min_vel, peak_1_vel = peaks$peak_1_vel,
     max_disp_vel = max_disp$min_vel,
     peak_2_vel = peaks$peak_2_vel, min_3_vel = min_3$min_vel,
-    min_1_time = min_1$min_time, peaks_1_time = peaks$peak_1_time,
+    min_1_time = min_1$min_time, peak_1_time = peaks$peak_1_time,
     max_disp_time = max_disp$min_time,
     peak_2_time = peaks$peak_2_time, min_3_time = min_3$min_time,
     GEST_ons, PLAT_ons, PLAT_off, GEST_off
