@@ -1,3 +1,8 @@
+# rticulate v1.7.4
+
+* Fix CRAN note about language field.
+
+
 # rticulate v1.7.3
 
 ## Added
