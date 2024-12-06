@@ -6,28 +6,28 @@
 \usage{
 read_aaa(
   file,
-  column_names,
-  fan_lines = 42,
   coordinates = "cartesian",
+  format = "long",
   na_rm = FALSE,
-  format = "long"
+  knots = NULL,
+  column_names = NULL
 )
 }
 \arguments{
 \item{file}{The path of the file with AAA data. It can also be a character vector with multiple paths as separate strings..}
 
-\item{column_names}{The names of the columns without including the splines columns.}
-
-\item{fan_lines}{The number of fan lines (the default is \code{42}).}
-
 \item{coordinates}{A string specifying the coordinate system. Possible values are \code{"cartesian"} (the default) and \code{"polar"}.}
+
+\item{format}{A string specifying the data format. Possible values are \code{"long"} and \code{"wide"} (the default is \code{"long"}).}
 
 \item{na_rm}{Remove NAs (the default is \code{FALSE}).}
 
-\item{format}{A string specifying the data format. Possible values are \code{"long"} and \code{"wide"} (the default is \code{"long"}).}
+\item{knots}{The number of spline knots or fan lines.}
+
+\item{column_names}{The names of the columns without including the splines columns.}
 }
 \value{
-A tibble. An \code{.index} column is added which indexes (groups) each tongue contour.
+A tibble.
 }
 \description{
 It reads a file or a list of files with data exported from AAA. The data are
@@ -41,6 +41,6 @@ columns <- c("speaker","seconds","rec_date","prompt","label",
 "TD_velocity","TD_abs_velocity")
 file_path <- system.file("extdata", "it01.tsv", package = "rticulate")
 
-tongue <- read_aaa(file_path, columns, na_rm = TRUE)
+tongue <- read_aaa(file_path, knots = 42, column_names = columns)
 
 }

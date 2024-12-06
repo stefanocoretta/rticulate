@@ -4,20 +4,27 @@
 \alias{read_aaa_data}
 \title{Data import function.}
 \usage{
-read_aaa_data(file, column_names, fan_lines, coordinates, na_rm, format)
+read_aaa_data(
+  file,
+  coordinates = "cartesian",
+  format = "long",
+  na_rm = TRUE,
+  knots = NULL,
+  column_names = NULL
+)
 }
 \arguments{
 \item{file}{The file or files with AAA data.}
 
-\item{column_names}{The names of the columns without including the splines columns.}
-
-\item{fan_lines}{The number of fan lines.}
-
 \item{coordinates}{A string specifying the coordinate system. Possible values are \code{"cartesian"} and \code{"polar"}.}
+
+\item{format}{A string specifying the data format. Possible values are \code{"long"} and \code{"wide"} (the default is \code{"long"}).}
 
 \item{na_rm}{Remove NAs.}
 
-\item{format}{A string specifying the data format. Possible values are \code{"long"} and \code{"wide"} (the default is \code{"long"}).}
+\item{knots}{The number of spline knots.}
+
+\item{column_names}{The names of the columns without including the splines columns.}
 }
 \value{
 An object of class \code{\link[tibble]{tbl_df-class}} (a tibble).

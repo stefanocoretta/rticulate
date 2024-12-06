@@ -55,7 +55,7 @@ Now we can use `read_aaa()` to import the spline data as a tibble. The function 
 # read_aaa("~/Desktop/splines.tsv", columns)
 file_path <- system.file("extdata", "it01.tsv", package = "rticulate")
 
-tongue <- read_aaa(file_path, columns)
+tongue <- read_aaa(file_path, knots = 42, column_names = columns)
 ```
 
 To check the head of the tibble, just do:
@@ -114,7 +114,7 @@ plot_tongue(tongue, geom = "point", alpha = 0.5) +
 Finally, if you want to plot the palate profile, you can do so by specifying a data frame with the coordinates for the palate spline.
 
 ```{r plot-palate}
-palate <- read_aaa(system.file("extdata", "it01-palate.tsv", package = "rticulate"), columns)
+palate <- read_aaa(system.file("extdata", "it01-palate.tsv", package = "rticulate"), knots = 42, column_names = columns)
 
 filter(tongue, label == "max_TD") %>%
     plot_tongue(palate = palate, alpha = 0.5) + aes(group = rec_date)
@@ -127,10 +127,10 @@ To import multiple files with AAA data, simply use a list of paths with `read_aa
 ```{r read-multiple}
 tongue2 <- list.files(
     path = system.file("extdata", package = "rticulate"),
-    pattern = "*\\d.tsv",
+    pattern = "*\\d{2}.tsv",
     full.names = TRUE
     ) %>%
-    read_aaa(., columns)
+    read_aaa(., knots = 42, column_names = columns)
 ```
 
 We can now plot splines for both speakers.
