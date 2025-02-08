@@ -4,136 +4,105 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Inform modern browsers that this page supports both dark and light color schemes,
-  and the page author prefers light. --><meta name="color-scheme" content="dark light">
-<script>
-  // If `prefers-color-scheme` is not supported, fall back to light mode.
-  // i.e. In this case, inject the `light` CSS before the others, with
-  // no media filter so that it will be downloaded with highest priority.
-  if (window.matchMedia("(prefers-color-scheme: dark)").media === "not all") {
-    document.documentElement.style.display = "none";
-    document.head.insertAdjacentHTML(
-      "beforeend",
-      "<link id=\"css\" rel=\"stylesheet\" href=\"https://bootswatch.com/3/flatly/bootstrap.css\" onload=\"document.documentElement.style.display = ''\">"
-    );
-  }
-</script><title>Import and plot spline data from AAA • rticulate</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Import and plot spline data from AAA • rticulate</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
-<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Import and plot spline data from AAA">
-<meta property="og:description" content="rticulate">
-<meta property="og:image" content="/logo.png">
-<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]--><!-- Flatly Theme - Light  --><link id="css-light" rel="stylesheet" href="https://bootswatch.com/3/flatly/bootstrap.css" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)">
-<!-- Darkly Theme - Dark --><link id="css-dark" rel="stylesheet" href="https://bootswatch.com/3/darkly/bootstrap.css" media="(prefers-color-scheme: dark)">
-<!-- preferably CSS --><link rel="stylesheet" href="../preferably.css">
-<link id="css-code-light" rel="stylesheet" href="../code-color-scheme-light.css" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)">
-<link id="css-code-dark" rel="stylesheet" href="../code-color-scheme-dark.css" media="(prefers-color-scheme: dark)">
+<script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Import and plot spline data from AAA">
 </head>
-<body data-spy="scroll" data-target="#toc">
-    
+<body>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
-    <div class="container template-article">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">rticulate</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.3</span>
-      </span>
-    </div>
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../articles/overview.html">Package overview</a>
-    </li>
-    <li>
-      <a href="../articles/polar-gams.html">Using generalised additive models (GAM) with polar coordinates for assessing tongue contours</a>
-    </li>
-    <li>
-      <a href="../articles/tongue-imaging.html">Import and plot spline data from AAA</a>
-    </li>
-    <li>
-      <a href="../articles/transform-coord.html">Transform spline coordinates between cartesian and polar</a>
-    </li>
+    <nav class="navbar navbar-expand-lg fixed-top " aria-label="Site navigation"><div class="container">
+
+    <a class="navbar-brand me-2" href="../index.html">rticulate</a>
+
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.0</small>
+
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-3">
+      <ul class="navbar-nav me-auto">
+<li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+<li class="active nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="../articles/filter-signals.html">Filter signals</a></li>
+    <li><a class="dropdown-item" href="../articles/kinematics.html">Kinematics and gestural landmarks</a></li>
+    <li><a class="dropdown-item" href="../articles/overview.html">Package overview</a></li>
+    <li><a class="dropdown-item" href="../articles/polar-gams.html">Using generalised additive models (GAM) with polar coordinates for assessing tongue contours</a></li>
+    <li><a class="dropdown-item" href="../articles/tongue-imaging.html">Import and plot spline data from AAA</a></li>
+    <li><a class="dropdown-item" href="../articles/transform-coord.html">Transform spline coordinates between cartesian and polar</a></li>
   </ul>
 </li>
-<li>
-  <a href="../news/index.html">Changelog</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/stefanocoretta/rticulate/" class="external-link">
-    <span class="fab fa-github fa-lg"></span>
-     
-  </a>
+<ul class="navbar-nav">
+<li class="nav-item"><form class="form-inline" role="search">
+ <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
+</form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/stefanocoretta/rticulate/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-lightswitch">
+<li><button class="dropdown-item" data-bs-theme-value="light"><span class="fa fa-sun"></span> Light</button></li>
+    <li><button class="dropdown-item" data-bs-theme-value="dark"><span class="fa fa-moon"></span> Dark</button></li>
+    <li><button class="dropdown-item" data-bs-theme-value="auto"><span class="fa fa-adjust"></span> Auto</button></li>
+  </ul>
 </li>
-        
-        
-
-
       </ul>
 </div>
-<!--/.nav-collapse -->
+
+
   </div>
-<!--/.container -->
-</div>
-<!--/.navbar -->
+</nav><div class="container template-article">
 
-      
 
-      </header><script src="tongue-imaging_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
-  <div class="col-md-9 contents">
-    <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Import and plot spline data from AAA</h1>
-                        <h4 data-toc-skip class="author">Stefano Coretta</h4>
+
+
+<div class="row">
+  <main id="main" class="col-md-9"><div class="page-header">
+      <img src="../logo.png" class="logo" alt=""><h1>Import and plot spline data from AAA</h1>
+                        <h4 data-toc-skip class="author">Stefano
+Coretta</h4>
             
-            <h4 data-toc-skip class="date">2022-09-04</h4>
+            <h4 data-toc-skip class="date">2025-02-08</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/stefanocoretta/rticulate/blob/HEAD/vignettes/tongue-imaging.Rmd" class="external-link"><code>vignettes/tongue-imaging.Rmd</code></a></small>
-      <div class="hidden name"><code>tongue-imaging.Rmd</code></div>
-
+      <small class="dont-index">Source: <a href="https://github.com/stefanocoretta/rticulate/blob/main/vignettes/tongue-imaging.Rmd" class="external-link"><code>vignettes/tongue-imaging.Rmd</code></a></small>
+      <div class="d-none name"><code>tongue-imaging.Rmd</code></div>
     </div>
 
     
     
-<p>The package <code>rticulate</code> facilitates UTI data import and plotting with spline data exported from Articulate Assistant Advanced (AAA). To use the package, load it as usual.</p>
+<p>The package <code>rticulate</code> facilitates UTI data import and
+plotting with spline data exported from Articulate Assistant Advanced
+(AAA). To use the package, load it as usual.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/stefanocoretta/rticulate" class="external-link">rticulate</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="import-spline-data">Import spline data<a class="anchor" aria-label="anchor" href="#import-spline-data"></a>
 </h2>
-<p>The function <code><a href="../reference/read_aaa.html">read_aaa()</a></code> can quickly import spline data and transform it into the long format (where each observation is a point on a fan line and the coordinates values are two variables, <code>X</code> and <code>Y</code>, see <code><a href="../reference/tongue.html">?tongue</a></code> for more details).</p>
-<p>To correctly import AAA data, it is required that the file exported from AAA does not contain the header. This must be supplied as an argument to the <code><a href="../reference/read_aaa.html">read_aaa()</a></code> function. We thus create a character vector with a concatenation of column names as strings.</p>
+<p>The function <code><a href="../reference/read_aaa.html">read_aaa()</a></code> can quickly import spline data
+and transform it into the long format (where each observation is a point
+on a fan line and the coordinates values are two variables,
+<code>X</code> and <code>Y</code>, see <code><a href="../reference/tongue.html">?tongue</a></code> for more
+details).</p>
+<p>To correctly import AAA data, it is required that the file exported
+from AAA does not contain the header. This must be supplied as an
+argument to the <code><a href="../reference/read_aaa.html">read_aaa()</a></code> function. We thus create a
+character vector with a concatenation of column names as strings.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">columns</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
 <span>    <span class="st">"speaker"</span>,</span>
@@ -148,14 +117,16 @@
 <span>    <span class="st">"TD_velocity"</span>,</span>
 <span>    <span class="st">"TD_abs_velocity"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p>Now we can use <code><a href="../reference/read_aaa.html">read_aaa()</a></code> to import the spline data as a tibble. The function requires a string with the file path and name, and a vector with the names of the columns.</p>
+<p>Now we can use <code><a href="../reference/read_aaa.html">read_aaa()</a></code> to import the spline data as a
+tibble. The function requires a string with the file path and name, and
+a vector with the names of the columns.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># system.file() is needed here because the example files reside in the package.</span></span>
 <span><span class="co"># You can just include the file path directly in read_aaa, like </span></span>
 <span><span class="co"># read_aaa("~/Desktop/splines.tsv", columns)</span></span>
 <span><span class="va">file_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"it01.tsv"</span>, package <span class="op">=</span> <span class="st">"rticulate"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">tongue</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_aaa.html">read_aaa</a></span><span class="op">(</span><span class="va">file_path</span>, <span class="va">columns</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">tongue</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_aaa.html">read_aaa</a></span><span class="op">(</span><span class="va">file_path</span>, knots <span class="op">=</span> <span class="fl">42</span>, column_names <span class="op">=</span> <span class="va">columns</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">11</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">95</span></span></span>
 <span><span class="co">## <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">## <span style="font-weight: bold;">Delimiter:</span> "\t"</span></span>
@@ -163,30 +134,35 @@
 <span><span class="co">## <span style="color: #00BB00;">dbl</span> (91): seconds, TT_displacement, TT_velocity, TT_abs_velocity, TD_displac...</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
-<span><span class="co">## <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span></code></pre>
+<span><span class="co">## <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
+<span><span class="co">## <span style="color: #BBBB00;">!</span> Column `Date Time of recording` not found. Did not create a `displ_id` column.</span></span>
+<span><span class="co">## We recommend to include `Date Time of recording` when exporting data from AAA.</span></span></code></pre>
 <p>To check the head of the tibble, just do:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tongue</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 462 × 15</span></span></span>
-<span><span class="co">##    speaker seconds rec_date prompt label TT_di…¹ TT_ve…² TT_ab…³ TD_di…⁴ TD_ve…⁵</span></span>
-<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> it01       1.20 29/11/2… Dico … max_…    77.9   -<span style="color: #BB0000;">7.73</span>    5.10    67.3   -<span style="color: #BB0000;">34.3</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> it01       1.20 29/11/2… Dico … max_…    77.9   -<span style="color: #BB0000;">7.73</span>    5.10    67.3   -<span style="color: #BB0000;">34.3</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> it01       1.20 29/11/2… Dico … max_…    77.9   -<span style="color: #BB0000;">7.73</span>    5.10    67.3   -<span style="color: #BB0000;">34.3</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> it01       1.20 29/11/2… Dico … max_…    77.9   -<span style="color: #BB0000;">7.73</span>    5.10    67.3   -<span style="color: #BB0000;">34.3</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> it01       1.20 29/11/2… Dico … max_…    77.9   -<span style="color: #BB0000;">7.73</span>    5.10    67.3   -<span style="color: #BB0000;">34.3</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> it01       1.20 29/11/2… Dico … max_…    77.9   -<span style="color: #BB0000;">7.73</span>    5.10    67.3   -<span style="color: #BB0000;">34.3</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> it01       1.20 29/11/2… Dico … max_…    77.9   -<span style="color: #BB0000;">7.73</span>    5.10    67.3   -<span style="color: #BB0000;">34.3</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> it01       1.20 29/11/2… Dico … max_…    77.9   -<span style="color: #BB0000;">7.73</span>    5.10    67.3   -<span style="color: #BB0000;">34.3</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> it01       1.20 29/11/2… Dico … max_…    77.9   -<span style="color: #BB0000;">7.73</span>    5.10    67.3   -<span style="color: #BB0000;">34.3</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> it01       1.20 29/11/2… Dico … max_…    77.9   -<span style="color: #BB0000;">7.73</span>    5.10    67.3   -<span style="color: #BB0000;">34.3</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 452 more rows, 5 more variables: TD_abs_velocity &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   fan_line &lt;int&gt;, X &lt;dbl&gt;, Y &lt;dbl&gt;, .index &lt;int&gt;, and abbreviated variable</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   names ¹​TT_displacement, ²​TT_velocity, ³​TT_abs_velocity, ⁴​TD_displacement,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   ⁵​TD_velocity</span></span></span></code></pre>
-<p>Sometimes is useful to add extra information for each prompt (like vowel, consonant place, phonation, etc.). We can do so by using functions from the <code>dplyr</code> package (<code>word()</code> is from the <code>stringr</code> package).</p>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 462 × 16</span></span></span>
+<span><span class="co">##    speaker seconds rec_date            prompt  label TT_displacement TT_velocity</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> it01       1.20 29/11/2016 15:11:03 Dico p… max_…            77.9       -<span style="color: #BB0000;">7.73</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> it01       1.20 29/11/2016 15:11:03 Dico p… max_…            77.9       -<span style="color: #BB0000;">7.73</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> it01       1.20 29/11/2016 15:11:03 Dico p… max_…            77.9       -<span style="color: #BB0000;">7.73</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> it01       1.20 29/11/2016 15:11:03 Dico p… max_…            77.9       -<span style="color: #BB0000;">7.73</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> it01       1.20 29/11/2016 15:11:03 Dico p… max_…            77.9       -<span style="color: #BB0000;">7.73</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> it01       1.20 29/11/2016 15:11:03 Dico p… max_…            77.9       -<span style="color: #BB0000;">7.73</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> it01       1.20 29/11/2016 15:11:03 Dico p… max_…            77.9       -<span style="color: #BB0000;">7.73</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> it01       1.20 29/11/2016 15:11:03 Dico p… max_…            77.9       -<span style="color: #BB0000;">7.73</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> it01       1.20 29/11/2016 15:11:03 Dico p… max_…            77.9       -<span style="color: #BB0000;">7.73</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> it01       1.20 29/11/2016 15:11:03 Dico p… max_…            77.9       -<span style="color: #BB0000;">7.73</span></span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 452 more rows</span></span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 9 more variables: TT_abs_velocity &lt;dbl&gt;, TD_displacement &lt;dbl&gt;,</span></span></span>
+<span><span class="co">## <span style="color: #949494;">#   TD_velocity &lt;dbl&gt;, TD_abs_velocity &lt;dbl&gt;, knot &lt;dbl&gt;, spline &lt;chr&gt;,</span></span></span>
+<span><span class="co">## <span style="color: #949494;">#   X &lt;dbl&gt;, Y &lt;dbl&gt;, frame_id &lt;int&gt;</span></span></span></code></pre>
+<p>Sometimes is useful to add extra information for each prompt (like
+vowel, consonant place, phonation, etc.). We can do so by using
+functions from the <code>dplyr</code> package (<code><a href="https://stringr.tidyverse.org/reference/word.html" class="external-link">word()</a></code> is
+from the <code>stringr</code> package).</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">stimuli</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"stimuli.csv"</span>, package <span class="op">=</span> <span class="st">"rticulate"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">stimuli</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"stimuli.csv"</span>, package <span class="op">=</span> <span class="st">"rticulate"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">12</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">11</span></span></span>
 <span><span class="co">## <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">## <span style="font-weight: bold;">Delimiter:</span> ","</span></span>
@@ -196,92 +172,112 @@
 <span><span class="co">## <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
 <span><span class="co">## <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span></code></pre>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">tongue</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="va">tongue</span>, word <span class="op">=</span> <span class="fu">word</span><span class="op">(</span><span class="va">prompt</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">tongue</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="va">tongue</span>, word <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/word.html" class="external-link">word</a></span><span class="op">(</span><span class="va">prompt</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">stimuli</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_if</a></span><span class="op">(</span><span class="va">is.character</span>, <span class="va">as.factor</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Joining, by = "word"</span></span></code></pre>
+<pre><code><span><span class="co">## Joining with `by = join_by(word)`</span></span></code></pre>
 <p>Let’s check <code>tongue</code> again.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tongue</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 462 × 26</span></span></span>
-<span><span class="co">##    speaker seconds rec_date prompt label TT_di…¹ TT_ve…² TT_ab…³ TD_di…⁴ TD_ve…⁵</span></span>
-<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> it01       1.20 29/11/2… Dico … max_…    77.9   -<span style="color: #BB0000;">7.73</span>    5.10    67.3   -<span style="color: #BB0000;">34.3</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> it01       1.20 29/11/2… Dico … max_…    77.9   -<span style="color: #BB0000;">7.73</span>    5.10    67.3   -<span style="color: #BB0000;">34.3</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> it01       1.20 29/11/2… Dico … max_…    77.9   -<span style="color: #BB0000;">7.73</span>    5.10    67.3   -<span style="color: #BB0000;">34.3</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> it01       1.20 29/11/2… Dico … max_…    77.9   -<span style="color: #BB0000;">7.73</span>    5.10    67.3   -<span style="color: #BB0000;">34.3</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> it01       1.20 29/11/2… Dico … max_…    77.9   -<span style="color: #BB0000;">7.73</span>    5.10    67.3   -<span style="color: #BB0000;">34.3</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> it01       1.20 29/11/2… Dico … max_…    77.9   -<span style="color: #BB0000;">7.73</span>    5.10    67.3   -<span style="color: #BB0000;">34.3</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> it01       1.20 29/11/2… Dico … max_…    77.9   -<span style="color: #BB0000;">7.73</span>    5.10    67.3   -<span style="color: #BB0000;">34.3</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> it01       1.20 29/11/2… Dico … max_…    77.9   -<span style="color: #BB0000;">7.73</span>    5.10    67.3   -<span style="color: #BB0000;">34.3</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> it01       1.20 29/11/2… Dico … max_…    77.9   -<span style="color: #BB0000;">7.73</span>    5.10    67.3   -<span style="color: #BB0000;">34.3</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> it01       1.20 29/11/2… Dico … max_…    77.9   -<span style="color: #BB0000;">7.73</span>    5.10    67.3   -<span style="color: #BB0000;">34.3</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 452 more rows, 16 more variables: TD_abs_velocity &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   fan_line &lt;int&gt;, X &lt;dbl&gt;, Y &lt;dbl&gt;, .index &lt;int&gt;, word &lt;fct&gt;, item &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   ipa &lt;fct&gt;, c1 &lt;fct&gt;, c1_phonation &lt;fct&gt;, vowel &lt;fct&gt;, anteropost &lt;fct&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   height &lt;fct&gt;, c2 &lt;fct&gt;, c2_phonation &lt;fct&gt;, c2_place &lt;fct&gt;, and abbreviated</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   variable names ¹​TT_displacement, ²​TT_velocity, ³​TT_abs_velocity,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   ⁴​TD_displacement, ⁵​TD_velocity</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 462 × 27</span></span></span>
+<span><span class="co">##    speaker seconds rec_date            prompt  label TT_displacement TT_velocity</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> it01       1.20 29/11/2016 15:11:03 Dico p… max_…            77.9       -<span style="color: #BB0000;">7.73</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> it01       1.20 29/11/2016 15:11:03 Dico p… max_…            77.9       -<span style="color: #BB0000;">7.73</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> it01       1.20 29/11/2016 15:11:03 Dico p… max_…            77.9       -<span style="color: #BB0000;">7.73</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> it01       1.20 29/11/2016 15:11:03 Dico p… max_…            77.9       -<span style="color: #BB0000;">7.73</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> it01       1.20 29/11/2016 15:11:03 Dico p… max_…            77.9       -<span style="color: #BB0000;">7.73</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> it01       1.20 29/11/2016 15:11:03 Dico p… max_…            77.9       -<span style="color: #BB0000;">7.73</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> it01       1.20 29/11/2016 15:11:03 Dico p… max_…            77.9       -<span style="color: #BB0000;">7.73</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> it01       1.20 29/11/2016 15:11:03 Dico p… max_…            77.9       -<span style="color: #BB0000;">7.73</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> it01       1.20 29/11/2016 15:11:03 Dico p… max_…            77.9       -<span style="color: #BB0000;">7.73</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> it01       1.20 29/11/2016 15:11:03 Dico p… max_…            77.9       -<span style="color: #BB0000;">7.73</span></span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 452 more rows</span></span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 20 more variables: TT_abs_velocity &lt;dbl&gt;, TD_displacement &lt;dbl&gt;,</span></span></span>
+<span><span class="co">## <span style="color: #949494;">#   TD_velocity &lt;dbl&gt;, TD_abs_velocity &lt;dbl&gt;, knot &lt;dbl&gt;, spline &lt;fct&gt;,</span></span></span>
+<span><span class="co">## <span style="color: #949494;">#   X &lt;dbl&gt;, Y &lt;dbl&gt;, frame_id &lt;int&gt;, word &lt;fct&gt;, item &lt;dbl&gt;, ipa &lt;fct&gt;,</span></span></span>
+<span><span class="co">## <span style="color: #949494;">#   c1 &lt;fct&gt;, c1_phonation &lt;fct&gt;, vowel &lt;fct&gt;, anteropost &lt;fct&gt;, height &lt;fct&gt;,</span></span></span>
+<span><span class="co">## <span style="color: #949494;">#   c2 &lt;fct&gt;, c2_phonation &lt;fct&gt;, c2_place &lt;fct&gt;</span></span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="plot-splines">Plot splines<a class="anchor" aria-label="anchor" href="#plot-splines"></a>
 </h2>
-<p>To plot splines from a spline data frame, use <code><a href="../reference/plot_tongue.html">plot_tongue()</a></code>. This function is a wrapper of a <code>ggplot</code> call (from the <code>ggplot2</code> package). The coordinates must be in two variables named <code>X</code> and <code>Y</code>. <code><a href="../reference/read_aaa.html">read_aaa()</a></code> creates them automatically while importing the raw data.</p>
+<p>To plot splines from a spline data frame, use
+<code><a href="../reference/plot_tongue.html">plot_tongue()</a></code>. This function is a wrapper of a
+<code>ggplot</code> call (from the <code>ggplot2</code> package). The
+coordinates must be in two variables named <code>X</code> and
+<code>Y</code>. <code><a href="../reference/read_aaa.html">read_aaa()</a></code> creates them automatically while
+importing the raw data.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_tongue.html">plot_tongue</a></span><span class="op">(</span><span class="va">tongue</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></span></code></pre>
+<pre><code><span><span class="co">## `geom_smooth()` using formula = 'y ~ x'</span></span></code></pre>
 <p><img src="tongue-imaging_files/figure-html/plot-splines-1.png" width="300px" style="display: block; margin: auto;"></p>
-<p>You can also easily filter the tibble with the <code><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter()</a></code> function from <code>dplyr</code>.</p>
+<p>You can also easily filter the tibble with the <code><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter()</a></code>
+function from <code>dplyr</code>.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">tongue</span>, <span class="va">label</span> <span class="op">==</span> <span class="st">"max_TD"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="../reference/plot_tongue.html">plot_tongue</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></span></code></pre>
+<pre><code><span><span class="co">## `geom_smooth()` using formula = 'y ~ x'</span></span></code></pre>
 <p><img src="tongue-imaging_files/figure-html/filter-plot-1.png" width="300px" style="display: block; margin: auto;"></p>
-<p>You can specify <code>geom</code> options and aesthetics in the usual <code>ggplot</code> way (remember to load the package with <code><a href="https://ggplot2.tidyverse.org" class="external-link">library(ggplot2)</a></code> if you need this). <code>geom</code> options are arguments of <code><a href="../reference/plot_tongue.html">plot_tongue()</a></code>, while aesthetics can be called with <code>aes()</code>.</p>
+<p>You can specify <code>geom</code> options and aesthetics in the usual
+<code>ggplot</code> way (remember to load the package with
+<code><a href="https://ggplot2.tidyverse.org" class="external-link">library(ggplot2)</a></code> if you need this). <code>geom</code>
+options are arguments of <code><a href="../reference/plot_tongue.html">plot_tongue()</a></code>, while aesthetics
+can be called with <code><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes()</a></code>.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_tongue.html">plot_tongue</a></span><span class="op">(</span><span class="va">tongue</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu">aes</span><span class="op">(</span>group <span class="op">=</span> <span class="va">rec_date</span>, colour <span class="op">=</span> <span class="va">c2_place</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></span></code></pre>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="va">rec_date</span>, colour <span class="op">=</span> <span class="va">c2_place</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## `geom_smooth()` using formula = 'y ~ x'</span></span></code></pre>
 <p><img src="tongue-imaging_files/figure-html/plot-options-1.png" width="300px" style="display: block; margin: auto;"></p>
-<p>To plot points instead of splines, use <code>plot_tongue(geom = "point")</code>.</p>
+<p>To plot points instead of splines, use
+<code>plot_tongue(geom = "point")</code>.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_tongue.html">plot_tongue</a></span><span class="op">(</span><span class="va">tongue</span>, geom <span class="op">=</span> <span class="st">"point"</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu">aes</span><span class="op">(</span>group <span class="op">=</span> <span class="va">rec_date</span>, colour <span class="op">=</span> <span class="va">c2_place</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span></code></pre></div>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="va">rec_date</span>, colour <span class="op">=</span> <span class="va">c2_place</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="tongue-imaging_files/figure-html/plot-geom-1.png" width="300px" style="display: block; margin: auto;"></p>
-<p>Finally, if you want to plot the palate profile, you can do so by specifying a data frame with the coordinates for the palate spline.</p>
+<p>Finally, if you want to plot the palate profile, you can do so by
+specifying a data frame with the coordinates for the palate spline.</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">palate</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_aaa.html">read_aaa</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"it01-palate.tsv"</span>, package <span class="op">=</span> <span class="st">"rticulate"</span><span class="op">)</span>, <span class="va">columns</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Warning: One or more parsing issues, see `problems()` for details</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">palate</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_aaa.html">read_aaa</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"it01-palate.tsv"</span>, package <span class="op">=</span> <span class="st">"rticulate"</span><span class="op">)</span>, knots <span class="op">=</span> <span class="fl">42</span>, column_names <span class="op">=</span> <span class="va">columns</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Warning: One or more parsing issues, call `problems()` on your data frame for details,</span></span>
+<span><span class="co">## e.g.:</span></span>
+<span><span class="co">##   dat &lt;- vroom(...)</span></span>
+<span><span class="co">##   problems(dat)</span></span></code></pre>
 <pre><code><span><span class="co">## <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">1</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">95</span></span></span>
 <span><span class="co">## <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">## <span style="font-weight: bold;">Delimiter:</span> "\t"</span></span>
 <span><span class="co">## <span style="color: #BB0000;">chr</span>  (3): speaker, rec_date, prompt</span></span>
 <span><span class="co">## <span style="color: #00BB00;">dbl</span> (55): seconds, TT_displacement, TT_velocity, TT_abs_velocity, TD_displac...</span></span>
-<span><span class="co">## <span style="color: #BBBB00;">lgl</span> (37): label, X_1, Y_1, X_2, Y_2, X_3, Y_3, X_4, Y_4, X_5, Y_5, X_6, Y_6,...</span></span>
+<span><span class="co">## <span style="color: #BBBB00;">lgl</span> (37): label, X1 NA, Y1 NA, X2 NA, Y2 NA, X3 NA, Y3 NA, X4 NA, Y4 NA, X5 ...</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
-<span><span class="co">## <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span></code></pre>
+<span><span class="co">## <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
+<span><span class="co">## <span style="color: #BBBB00;">!</span> Column `Date Time of recording` not found. Did not create a `displ_id` column.</span></span>
+<span><span class="co">## We recommend to include `Date Time of recording` when exporting data from AAA.</span></span></code></pre>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">tongue</span>, <span class="va">label</span> <span class="op">==</span> <span class="st">"max_TD"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>    <span class="fu"><a href="../reference/plot_tongue.html">plot_tongue</a></span><span class="op">(</span>palate <span class="op">=</span> <span class="va">palate</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span> <span class="fu">aes</span><span class="op">(</span>group <span class="op">=</span> <span class="va">rec_date</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></span>
-<span><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></span></code></pre>
-<pre><code><span><span class="co">## Warning: Removed 18 rows containing non-finite values (stat_smooth).</span></span></code></pre>
+<span>    <span class="fu"><a href="../reference/plot_tongue.html">plot_tongue</a></span><span class="op">(</span>palate <span class="op">=</span> <span class="va">palate</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="va">rec_date</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## `geom_smooth()` using formula = 'y ~ x'</span></span>
+<span><span class="co">## `geom_smooth()` using formula = 'y ~ x'</span></span></code></pre>
+<pre><code><span><span class="co">## Warning: Removed 18 rows containing non-finite outside the scale range</span></span>
+<span><span class="co">## (`stat_smooth()`).</span></span></code></pre>
 <p><img src="tongue-imaging_files/figure-html/plot-palate-1.png" width="300px" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level2">
 <h2 id="import-multiple-files">Import multiple files<a class="anchor" aria-label="anchor" href="#import-multiple-files"></a>
 </h2>
-<p>To import multiple files with AAA data, simply use a list of paths with <code>read_aaa</code>, for example using <code>list.files</code>.</p>
+<p>To import multiple files with AAA data, simply use a list of paths
+with <code>read_aaa</code>, for example using
+<code>list.files</code>.</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tongue2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span></span>
 <span>    path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, package <span class="op">=</span> <span class="st">"rticulate"</span><span class="op">)</span>,</span>
-<span>    pattern <span class="op">=</span> <span class="st">"*\\d.tsv"</span>,</span>
+<span>    pattern <span class="op">=</span> <span class="st">"*\\d{2}.tsv"</span>,</span>
 <span>    full.names <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span>    <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>    <span class="fu"><a href="../reference/read_aaa.html">read_aaa</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">columns</span><span class="op">)</span></span></code></pre></div>
+<span>    <span class="fu"><a href="../reference/read_aaa.html">read_aaa</a></span><span class="op">(</span><span class="va">.</span>, knots <span class="op">=</span> <span class="fl">42</span>, column_names <span class="op">=</span> <span class="va">columns</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">11</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">95</span></span></span>
 <span><span class="co">## <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">## <span style="font-weight: bold;">Delimiter:</span> "\t"</span></span>
@@ -290,6 +286,9 @@
 <span><span class="co">## </span></span>
 <span><span class="co">## <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
 <span><span class="co">## <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
+<span><span class="co">## <span style="color: #BBBB00;">!</span> Column `Date Time of recording` not found. Did not create a `displ_id` column.</span></span>
+<span><span class="co">## We recommend to include `Date Time of recording` when exporting data from AAA.</span></span>
+<span><span class="co">## </span></span>
 <span><span class="co">## <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">8</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">95</span></span></span>
 <span><span class="co">## <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">## <span style="font-weight: bold;">Delimiter:</span> "\t"</span></span>
@@ -297,45 +296,37 @@
 <span><span class="co">## <span style="color: #00BB00;">dbl</span> (91): seconds, TT_displacement, TT_velocity, TT_abs_velocity, TD_displac...</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
-<span><span class="co">## <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span></code></pre>
+<span><span class="co">## <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
+<span><span class="co">## <span style="color: #BBBB00;">!</span> Column `Date Time of recording` not found. Did not create a `displ_id` column.</span></span>
+<span><span class="co">## We recommend to include `Date Time of recording` when exporting data from AAA.</span></span></code></pre>
 <p>We can now plot splines for both speakers.</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_tongue.html">plot_tongue</a></span><span class="op">(</span><span class="va">tongue2</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu">aes</span><span class="op">(</span>group <span class="op">=</span> <span class="va">rec_date</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu">facet_grid</span><span class="op">(</span><span class="va">.</span> <span class="op">~</span> <span class="va">speaker</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></span></code></pre>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="va">rec_date</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html" class="external-link">facet_grid</a></span><span class="op">(</span><span class="va">.</span> <span class="op">~</span> <span class="va">speaker</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## `geom_smooth()` using formula = 'y ~ x'</span></span></code></pre>
 <p><img src="tongue-imaging_files/figure-html/plot-speakers-1.png" width="300px" style="display: block; margin: auto;"></p>
 </div>
-  </div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
-
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
 
-      <footer><div class="copyright">
-  <p></p>
-<p>Developed by Stefano Coretta.</p>
+    <footer><div class="pkgdown-footer-left">
+  <p>Developed by Stefano Coretta.</p>
 </div>
 
-<div class="pkgdown">
-  <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
-  <p class="preferably">Using <a href="https://preferably.amirmasoudabdol.name/?source=footer" class="external-link">preferably</a> template.</p>
+<div class="pkgdown-footer-right">
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
-      </footer>
+    </footer>
 </div>
 
-  
 
 
-  
+
 
   </body>
 </html>

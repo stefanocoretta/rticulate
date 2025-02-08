@@ -1,84 +1,38 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/404.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>/articles/overview.html</loc>
-  </url>
-  <url>
-    <loc>/articles/polar-gams.html</loc>
-  </url>
-  <url>
-    <loc>/articles/tongue-imaging.html</loc>
-  </url>
-  <url>
-    <loc>/articles/transform-coord.html</loc>
-  </url>
-  <url>
-    <loc>/authors.html</loc>
-  </url>
-  <url>
-    <loc>/index.html</loc>
-  </url>
-  <url>
-    <loc>/news/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/geom_polar_ci-deprecated.html</loc>
-  </url>
-  <url>
-    <loc>/reference/get_origin.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/palate.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plot_polar_smooths.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plot_tongue.html</loc>
-  </url>
-  <url>
-    <loc>/reference/polar_gam.html</loc>
-  </url>
-  <url>
-    <loc>/reference/predict_polar_gam.html</loc>
-  </url>
-  <url>
-    <loc>/reference/read_aaa.html</loc>
-  </url>
-  <url>
-    <loc>/reference/read_aaa_data.html</loc>
-  </url>
-  <url>
-    <loc>/reference/rticulate-deprecated.html</loc>
-  </url>
-  <url>
-    <loc>/reference/rticulate-package.html</loc>
-  </url>
-  <url>
-    <loc>/reference/stimuli.html</loc>
-  </url>
-  <url>
-    <loc>/reference/tongue.html</loc>
-  </url>
-  <url>
-    <loc>/reference/transform_ci.html</loc>
-  </url>
-  <url>
-    <loc>/reference/transform_coord.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://stefanocoretta.github.io/rticulate/404.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/LICENSE-text.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/LICENSE.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/articles/filter-signals.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/articles/index.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/articles/kinematics.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/articles/overview.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/articles/polar-gams.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/articles/tongue-imaging.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/articles/transform-coord.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/authors.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/index.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/news/index.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/reference/filter_signal.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/reference/geom_polar_ci-deprecated.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/reference/get_acceleration.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/reference/get_landmarks.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/reference/get_origin.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/reference/get_velocity.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/reference/index.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/reference/palate.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/reference/plot_polar_smooths-deprecated.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/reference/plot_tongue.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/reference/polar_gam.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/reference/predict_polar_gam.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/reference/read_aaa.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/reference/read_aaa_data.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/reference/read_ag500_pos.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/reference/resample_signal.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/reference/rticulate-deprecated.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/reference/rticulate-package.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/reference/stimuli.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/reference/tongue.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/reference/transform_ci.html</loc></url>
+<url><loc>https://stefanocoretta.github.io/rticulate/reference/transform_coord.html</loc></url>
 </urlset>
+
