@@ -26,7 +26,7 @@ Imports: dplyr,
     rlang,
     stats,
     tibble,
-    tidymv,
+    tidygam,
     tidyr,
     tidyselect
 RoxygenNote: 7.2.1
