@@ -52,10 +52,7 @@ polar_gam <- function(formula, data, origin = NULL, fan_lines = c(10, 25), AR_st
 #'
 #' It returns a tibble with the predictions from all the terms in a \link[rticulate]{polar_gam} model.
 #'
-#' The function behaves like \link[tidymv]{predict_gam} but it converts the
-#' coordinates from polar to cartesian automatically. Check
-#' \code{vignette("predict-gam", package = "tidymv")} to an overview of the
-#' predict method.
+#' The function converts the coordinates from polar to cartesian automatically.
 #'
 #' To see an example of plotting, see the examples in \link[rticulate]{geom_polar_ci}.
 #'

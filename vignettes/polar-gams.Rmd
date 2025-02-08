@@ -53,16 +53,6 @@ summary(polar_place)
 
 The output model is in polar coordinates but it contains the origin coordinates so that plotting can be done in cartesian coordinates.
 
-We can now plot the results from the model with `plot_polar_smooths()`.
-
-```{r plot-smooths}
-plot_polar_smooths(
-  polar_place,
-  X,
-  c2_place
-) +
-  theme(legend.position = "top")
-```
 
 # Multiple predictors
 
@@ -80,18 +70,6 @@ polar_multi <- polar_gam(
 summary(polar_multi)
 ```
 
-Th argument `facet_terms` can be used to specify the terms for the facets.
-If you desire to facet by more then one term, just add multiple terms separated by `+` (for example, `facet_terms = vowel + voicing`; only terms that have been included in the model can be used for faceting, for more examples see the vignettes of the tidymv package).
-
-```{r plot-smooths-2}
-plot_polar_smooths(
-  polar_multi,
-  X,
-  c2_place,
-  facet_terms = vowel
-) +
-  theme(legend.position = "top")
-```
 
 # Extract all predicted values
 
