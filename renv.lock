@@ -1034,6 +1034,18 @@
       ],
       "Hash": "5a76da345ed4f3e6430517e08441edaf"
     },
+    "hunspell": {
+      "Package": "hunspell",
+      "Version": "3.0.5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "Rcpp",
+        "digest"
+      ],
+      "Hash": "e58f80d4c5b4f0bab1456956d6ca6aad"
+    },
     "ids": {
       "Package": "ids",
       "Version": "1.0.1",
@@ -1936,6 +1948,19 @@
         "utils"
       ],
       "Hash": "1229a01b4ec059e9f2396724f2ec9010"
+    },
+    "spelling": {
+      "Package": "spelling",
+      "Version": "2.3.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "commonmark",
+        "hunspell",
+        "knitr",
+        "xml2"
+      ],
+      "Hash": "e167300a047e21d28c754b00cbfc55ef"
     },
     "stringi": {
       "Package": "stringi",

@@ -22,7 +22,7 @@ It returns the Cartesian \code{x, y} coordinates of the virtual origin of the
 ultrasonic waves/probe surface (see Details).
 }
 \details{
-The function estimates the origin of the ultrasond waves from the probe using
+The function estimates the origin of the ultrasound waves from the probe using
 the spline data and the provided fan lines. The estimation method is based on
 Heyne, Matthias & Donald Derrick (2015) Using a radial ultrasound probe's
 virtual origin to compute midsagittal smoothing splines in polar coordinates.
