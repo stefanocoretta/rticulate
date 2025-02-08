@@ -1,4 +1,4 @@
-# rticulate v1.7.3.9000
+# rticulate v2.0.0
 
 ## BREAKING
 
@@ -10,6 +10,8 @@
 
   * The order of the arguments has changed.
   * The argument `fan_line` doesn't have a default any more, so it has to be specified.
+  
+* `plot_polar_smooths()` has been deprecated due to removal of tidymv and it now does not do anything. An alternative will soon be added. For the time being, you can extract predictions with `tidygam::predict_gam()` and convert to Cartesian coordinates manually.
 
 ## Added
 
