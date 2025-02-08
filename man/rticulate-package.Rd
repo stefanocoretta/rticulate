@@ -14,6 +14,7 @@ A tool for processing Articulate Assistant Advanced™ (AAA) export files and pl
 Useful links:
 \itemize{
   \item \url{https://github.com/stefanocoretta/rticulate}
+  \item \url{https://stefanocoretta.github.io/rticulate/}
   \item Report bugs at \url{https://github.com/stefanocoretta/rticulate/issues}
 }
 

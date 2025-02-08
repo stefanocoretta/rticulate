@@ -7,10 +7,10 @@
 
 [![](https://www.r-pkg.org/badges/version/rticulate?color=blue)](https://cran.r-project.org/package=rticulate)
 [![CRAN
-checks](https://cranchecks.info/badges/summary/rticulate)](https://cran.r-project.org/web/checks/check_results_rticulate.html)
+checks](https://badges.cranchecks.info/summary/rticulate.svg)](https://cran.r-project.org/web/checks/check_results_rticulate.html)
 [![R build
-status](https://github.com/stefanocoretta/rticulate/workflows/R-CMD-check/badge.svg)](https://github.com/stefanocoretta/rticulate/actions)
-[![](https://img.shields.io/badge/devel%20version-1.7.3-orange.svg)](https://github.com/stefanocoretta/rticulate)
+status](https://github.com/stefanocoretta/rticulate/workflows/R-hub/badge.svg)](https://github.com/stefanocoretta/rticulate/actions)
+[![](https://img.shields.io/badge/devel%20version-2.0.0-orange.svg)](https://github.com/stefanocoretta/rticulate)
 [![](https://img.shields.io/badge/doi-10.5281/zenodo.1469038-blue.svg)](https://doi.org/10.5281/zenodo.1469038)
 <!-- badges: end -->
 

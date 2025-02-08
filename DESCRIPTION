@@ -11,7 +11,7 @@ Maintainer: Stefano Coretta <stefano.coretta@gmail.com>
 Description: A tool for processing Articulate
     Assistant Advanced™ (AAA) export files and plot tongue contour data from any
     system.
-URL: https://github.com/stefanocoretta/rticulate
+URL: https://github.com/stefanocoretta/rticulate, https://stefanocoretta.github.io/rticulate/
 BugReports: https://github.com/stefanocoretta/rticulate/issues
 Depends: R (>= 4.1.0)
 Encoding: UTF-8

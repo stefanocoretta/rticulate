@@ -1,2 +1,5 @@
+url: https://stefanocoretta.github.io/rticulate/
 template:
-  package: preferably
+  bootstrap: 5
+  light-switch: true
+
