@@ -10,7 +10,8 @@ read_aaa_data(
   format = "long",
   na_rm = TRUE,
   knots = NULL,
-  column_names = NULL
+  column_names = NULL,
+  fan_lines = NULL
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ read_aaa_data(
 \item{knots}{The number of spline knots.}
 
 \item{column_names}{The names of the columns without including the splines columns.}
+
+\item{fan_lines}{The number of fan lines in legacy fan-line data.}
 }
 \value{
 An object of class \code{\link[tibble]{tbl_df-class}} (a tibble).

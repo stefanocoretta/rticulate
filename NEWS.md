@@ -1,3 +1,8 @@
+# rticulate v2.0.0.9000
+
+## Changed
+
+* `read_aaa()` has a `knot` and `fan_lines` argument for users to specify the number of DLC knots or fan-lines depending on whether they are reading DLC or legacy fan-line data with no header.
 # rticulate v2.0.0
 
 ## BREAKING
