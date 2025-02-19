@@ -3,6 +3,11 @@
 ## Changed
 
 * `read_aaa()` has a `knot` and `fan_lines` argument for users to specify the number of DLC knots or fan-lines depending on whether they are reading DLC or legacy fan-line data with no header.
+
+* The vignette `tongue-imaging` has been updated to show how to read DLC data.
+
+
+
 # rticulate v2.0.0
 
 ## BREAKING
