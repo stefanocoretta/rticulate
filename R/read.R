@@ -11,6 +11,7 @@
 #' @param na_rm Remove NAs.
 #' @param format A string specifying the data format. Possible values are \code{"long"} and \code{"wide"} (the default is \code{"long"}).
 #' @param column_names The names of the columns without including the splines columns.
+#' @param fan_lines The number of fan lines in legacy fan-line data.
 #'
 #' @return An object of class \code{\link[tibble]{tbl_df-class}} (a tibble).
 #'
@@ -22,7 +23,8 @@ read_aaa_data <- function(
     format = "long",
     na_rm = TRUE,
     knots = NULL,
-    column_names = NULL) {
+    column_names = NULL,
+    fan_lines = NULL) {
   if (is.null(column_names)) {
     aaa_data <- readr::read_tsv(file, na = "*", trim_ws = TRUE)
 
@@ -30,6 +32,12 @@ read_aaa_data <- function(
       stop("Column header not detected. Please provide column names for all columns except the X/Y coordinates columns.")
     }
   } else {
+    if (is.null(knots)) {
+      knots <- fan_lines
+    }
+    if (is.null(knots)) {
+      stop("Specify the number of knots or fan lines.")
+    }
     if (coordinates == "cartesian") {
         coord_names <- paste0(
             rep(c("X", "Y"), knots),
@@ -119,6 +127,7 @@ read_aaa_data <- function(
 #' @param na_rm Remove NAs (the default is \code{FALSE}).
 #' @param knots The number of spline knots or fan lines.
 #' @param column_names The names of the columns without including the splines columns.
+#' @param fan_lines The number of fan lines in legacy fan-line data.
 #'
 #' @return A tibble.
 #'
@@ -131,14 +140,14 @@ read_aaa_data <- function(
 #' tongue <- read_aaa(file_path, knots = 42, column_names = columns)
 #'
 #' @export
-read_aaa <- function(file, coordinates = "cartesian", format = "long", na_rm = FALSE, knots = NULL, column_names = NULL) {
+read_aaa <- function(file, coordinates = "cartesian", format = "long", na_rm = FALSE, knots = NULL, column_names = NULL, fan_lines = NULL) {
     if (!coordinates %in% c("cartesian", "polar")) {
         stop("The chosen coordinate system is not supported. Possible values are cartesian or polar.")
     }
 
     if (length(file) == 1) {
-        read_aaa_data(file, coordinates = coordinates, format = format, na_rm = na_rm, knots = knots, column_names = column_names)
+        read_aaa_data(file, coordinates = coordinates, format = format, na_rm = na_rm, knots = knots, column_names = column_names, fan_lines = fan_lines)
     } else {
-        purrr::map_df(.x = file, .f = ~read_aaa_data(.x, coordinates = coordinates, format = format, na_rm = na_rm, knots = knots, column_names = column_names))
+        purrr::map_df(.x = file, .f = ~read_aaa_data(.x, coordinates = coordinates, format = format, na_rm = na_rm, knots = knots, column_names = column_names, fan_lines = fan_lines))
     }
 }
