@@ -1,10 +1,10 @@
 ---
-title: "Import and plot spline data from AAA"
+title: "Import and plot UTI and EMA data"
 author: "Stefano Coretta"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Import and plot spline data from AAA}
+  %\VignetteIndexEntry{Import and plot UTI and EMA data}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -21,11 +21,11 @@ library(rticulate)
 
 The package `rticulate` facilitates import in R of the following data:
 
-- (Legacy) fan-line spline data from [Articulate Assistant Advanced™](https://www.articulateinstruments.com/aaa/).
-
 - Deep Lab Cut (DLC) spline data from Articulate Assistant Advanced™. [Paper](https://www.mdpi.com/1424-8220/22/3/1133)
 
-- `.pos` files from Carstens the AG500 electro-magnetic-articulographer.
+- `.pos` files from the Carstens AG500 electro-magnetic-articulographer.
+
+- (Legacy) fan-line spline data from [Articulate Assistant Advanced™](https://www.articulateinstruments.com/aaa/).
 
 To use the package, attach it as usual.
 
@@ -53,7 +53,6 @@ dlc <- read_aaa(file_path, format = "wide")
 dlc
 ```
 
-
 For plotting and analysis, it is useful to have the data in a long format. By default, `read_aaa()` pivots the data from wide to long. The resulting tibble has X and Y coordinates for each knot of each spline in each row. DLC knots are numbered from 0, as they are in the exported data. A further column, `displ_id`, indexes a knot displacement trajectory in time if multiple time points are exported.
 
 ```{r dlc-2}
@@ -79,6 +78,48 @@ dlc |>
   geom_path(alpha = 0.1, linewidth = 0.1) +
   coord_fixed()
 ```
+
+You can also plot the X or Y displacement of the knots along time.
+
+```{r dlc-displ, fig.asp=2}
+dlc |> 
+  filter(
+    `Date Time of recording` == "29/11/2016 15:10:52",
+    spline == "DLC_Tongue"
+  ) |> 
+  ggplot(aes(`Time of sample in annot`, Y, group = displ_id)) +
+  geom_path() +
+  facet_grid(rows = vars(knot), scales = "free_y")
+```
+
+Check out `vignette("kinematics", package = "rticulate")` and `vignette("filter-signals", package = "rticulate")`.
+
+# Import `.pos` files from the Carstens AG500 EMA
+
+You can import binary `.pos` files from the Carstens AG500 electro-magnetic articulographer using the `read_ag500_pos()` function. In most contexts, the defaults of the function will suffice. Due to CRAN not accepting binary files, the following code is not run, but you can test it by downloading the `.pos` file provided here: <https://github.com/stefanocoretta/rticulate/blob/vignettes/data-raw/ema/0025.pos>.
+
+```{r ema, eval=FALSE}
+ema <- read_ag500_pos("0025.pos")
+```
+
+You can plot the antero-posterior and vertical displacement of a sensor (here the tongue tip sensor, channel 5).
+
+```{r ema-plot, eval=FALSE}
+ema |> 
+  filter(chn == 5) |> 
+  ggplot(aes(x, z)) +
+  geom_point(size = 0.1)
+```
+
+Or, for example, just the vertical displacement along time.
+
+```{r ema-plot-2, eval=FALSE}
+ema |> 
+  filter(chn == 5) |> 
+  ggplot(aes(time, z)) +
+  geom_point(size = 0.1)
+```
+
 
 
 # (LEGACY) Import fan-line spline data from AAA
@@ -148,5 +189,5 @@ tongue2 <- list.files(
     pattern = "*\\d{2}.tsv",
     full.names = TRUE
     ) %>%
-    read_aaa(., knots = 42, column_names = columns)
+    read_aaa(., fan_lines = 42, column_names = columns)
 ```

@@ -1,6 +1,6 @@
 Package: rticulate
 Type: Package
-Title: Ultrasound Tongue Imaging
+Title: Articulatory Data Processing In R
 Version: 2.0.0.9000
 Date: 2025-02-08
 Authors@R: c(person(given = "Stefano",
@@ -9,8 +9,7 @@ Authors@R: c(person(given = "Stefano",
                     role = c("aut", "cre")))
 Maintainer: Stefano Coretta <stefano.coretta@gmail.com>
 Description: A tool for processing Articulate
-    Assistant Advanced™ (AAA) export files and plot tongue contour data from any
-    system.
+    Assistant Advanced™ (AAA) UTI data and Carstens AG500/1 EMA data.
 URL: https://github.com/stefanocoretta/rticulate, https://stefanocoretta.github.io/rticulate/
 BugReports: https://github.com/stefanocoretta/rticulate/issues
 Depends: R (>= 4.1.0)
