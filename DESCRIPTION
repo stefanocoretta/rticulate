@@ -9,7 +9,7 @@ Authors@R: c(person(given = "Stefano",
                     role = c("aut", "cre")))
 Maintainer: Stefano Coretta <stefano.coretta@gmail.com>
 Description: A tool for processing Articulate
-    Assistant Advanced™ (AAA) UTI data and Carstens AG500/1 EMA data.
+    Assistant Advanced™ (AAA) ultrasound tongue imaging data and Carstens AG500/1 electro-magnetic articulographic data.
 URL: https://github.com/stefanocoretta/rticulate, https://stefanocoretta.github.io/rticulate/
 BugReports: https://github.com/stefanocoretta/rticulate/issues
 Depends: R (>= 4.1.0)

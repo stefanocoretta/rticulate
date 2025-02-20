@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-A tool for processing Articulate Assistant Advanced™ (AAA) UTI data and Carstens AG500/1 EMA data.
+A tool for processing Articulate Assistant Advanced™ (AAA) ultrasound tongue imaging data and Carstens AG500/1 electro-magnetic articulographic data.
 }
 \seealso{
 Useful links:
