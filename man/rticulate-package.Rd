@@ -4,7 +4,7 @@
 \name{rticulate-package}
 \alias{rticulate}
 \alias{rticulate-package}
-\title{rticulate: Articulatory Data Processing In R}
+\title{rticulate: Articulatory Data Processing in R}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
