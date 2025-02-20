@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">rticulate</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,7 +22,7 @@
     <li><a class="dropdown-item" href="../articles/kinematics.html">Kinematics and gestural landmarks</a></li>
     <li><a class="dropdown-item" href="../articles/overview.html">Package overview</a></li>
     <li><a class="dropdown-item" href="../articles/polar-gams.html">Using generalised additive models (GAM) with polar coordinates for assessing tongue contours</a></li>
-    <li><a class="dropdown-item" href="../articles/tongue-imaging.html">Import and plot spline data from AAA</a></li>
+    <li><a class="dropdown-item" href="../articles/tongue-imaging.html">Import and plot UTI and EMA data</a></li>
     <li><a class="dropdown-item" href="../articles/transform-coord.html">Transform spline coordinates between cartesian and polar</a></li>
   </ul></li>
 <li class="active nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -43,11 +43,19 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Changelog</h1>
-      <small>Source: <a href="https://github.com/stefanocoretta/rticulate/blob/v2.0.0/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
+      <small>Source: <a href="https://github.com/stefanocoretta/rticulate/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="2.0.0" id="rticulate-v200">rticulate v2.0.0<a class="anchor" aria-label="anchor" href="#rticulate-v200"></a></h2>
+<h2 class="pkg-version" data-toc-text="2.0.1" id="rticulate-v201">rticulate v2.0.1<a class="anchor" aria-label="anchor" href="#rticulate-v201"></a></h2>
+<div class="section level3">
+<h3 id="changed-2-0-1">Changed<a class="anchor" aria-label="anchor" href="#changed-2-0-1"></a></h3>
+<ul><li><p><code><a href="../reference/read_aaa.html">read_aaa()</a></code> has a <code>knot</code> and <code>fan_lines</code> argument for users to specify the number of DLC knots or fan-lines depending on whether they are reading DLC or legacy fan-line data with no header.</p></li>
+<li><p>The vignette <code>tongue-imaging</code> has been updated to show how to read DLC and EMA data.</p></li>
+</ul></div>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="2.0.0" id="rticulate-v200">rticulate v2.0.0<a class="anchor" aria-label="anchor" href="#rticulate-v200"></a></h2><p class="text-muted">CRAN release: 2025-02-08</p>
 <div class="section level3">
 <h3 id="breaking-2-0-0">BREAKING<a class="anchor" aria-label="anchor" href="#breaking-2-0-0"></a></h3>
 <ul><li>

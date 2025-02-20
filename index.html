@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Ultrasound Tongue Imaging • rticulate</title>
+<title>Articulatory Data Processing in R • rticulate</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
@@ -16,9 +16,9 @@
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Ultrasound Tongue Imaging">
-<meta name="description" content="A tool for processing Articulate Assistant Advanced™ (AAA) export files and plot tongue contour data from any system.">
-<meta property="og:description" content="A tool for processing Articulate Assistant Advanced™ (AAA) export files and plot tongue contour data from any system.">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Articulatory Data Processing in R">
+<meta name="description" content="A tool for processing Articulate Assistant Advanced™ (AAA) ultrasound tongue imaging data and Carstens AG500/1 electro-magnetic articulographic data.">
+<meta property="og:description" content="A tool for processing Articulate Assistant Advanced™ (AAA) ultrasound tongue imaging data and Carstens AG500/1 electro-magnetic articulographic data.">
 <meta property="og:image" content="https://stefanocoretta.github.io/rticulate/logo.png">
 </head>
 <body>
@@ -29,7 +29,7 @@
 
     <a class="navbar-brand me-2" href="index.html">rticulate</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,7 +46,7 @@
     <li><a class="dropdown-item" href="articles/kinematics.html">Kinematics and gestural landmarks</a></li>
     <li><a class="dropdown-item" href="articles/overview.html">Package overview</a></li>
     <li><a class="dropdown-item" href="articles/polar-gams.html">Using generalised additive models (GAM) with polar coordinates for assessing tongue contours</a></li>
-    <li><a class="dropdown-item" href="articles/tongue-imaging.html">Import and plot spline data from AAA</a></li>
+    <li><a class="dropdown-item" href="articles/tongue-imaging.html">Import and plot UTI and EMA data</a></li>
     <li><a class="dropdown-item" href="articles/transform-coord.html">Transform spline coordinates between cartesian and polar</a></li>
   </ul>
 </li>
@@ -74,12 +74,12 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header">
-<img src="logo.png" class="logo" alt=""><h1 id="rticulate-ultrasound-tongue-imaging-in-r-">rticulate: Ultrasound Tongue Imaging in R <a class="anchor" aria-label="anchor" href="#rticulate-ultrasound-tongue-imaging-in-r-"></a>
+<img src="logo.png" class="logo" alt=""><h1 id="rticulate-articulatory-data-processing-in-r-">rticulate: Articulatory data processing in R <a class="anchor" aria-label="anchor" href="#rticulate-articulatory-data-processing-in-r-"></a>
 </h1>
 </div>
 <!-- badges: start -->
 
-<p>This is the repository of the R package <code>rticulate</code>. This package provides two functions for importing UTI data from Articulate Assistant Advanced and plotting UTI data from any source.</p>
+<p>This is the repository of the R package <code>rticulate</code>. This package provides two functions for importing UTI data from Articulate Assistant Advanced™ (both Deep Lab Cut and legacy fan-line spline data) and electro-magnetic articulographic data from a Carstens AG500.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -100,7 +100,7 @@
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
-<p>To learn the basic use of the package, run <code><a href="articles/tongue-imaging.html">vignette("tongue-imaging", package = "rticulate")</a></code> after the installation.</p>
+<p>For an overview of the package functionalities covered in the vignettes, run <code><a href="articles/overview.html">vignette("overview", package = "rticulate")</a></code> after the installation.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -141,7 +141,7 @@
 <li><a href="https://cran.r-project.org/package=rticulate" class="external-link"><img src="https://www.r-pkg.org/badges/version/rticulate?color=blue"></a></li>
 <li><a href="https://cran.r-project.org/web/checks/check_results_rticulate.html" class="external-link"><img src="https://badges.cranchecks.info/summary/rticulate.svg" alt="CRAN checks"></a></li>
 <li><a href="https://github.com/stefanocoretta/rticulate/actions" class="external-link"><img src="https://github.com/stefanocoretta/rticulate/workflows/R-hub/badge.svg" alt="R build status"></a></li>
-<li><a href="https://github.com/stefanocoretta/rticulate" class="external-link"><img src="https://img.shields.io/badge/devel%20version-2.0.0-orange.svg"></a></li>
+<li><a href="https://github.com/stefanocoretta/rticulate" class="external-link"><img src="https://img.shields.io/badge/devel%20version-2.0.0.9000-orange.svg"></a></li>
 <li><a href="https://doi.org/10.5281/zenodo.1469038" class="external-link"><img src="https://img.shields.io/badge/doi-10.5281/zenodo.1469038-blue.svg"></a></li>
 </ul>
 </div>

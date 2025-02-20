@@ -26,7 +26,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">rticulate</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,7 +43,7 @@
     <li><a class="dropdown-item" href="../articles/kinematics.html">Kinematics and gestural landmarks</a></li>
     <li><a class="dropdown-item" href="../articles/overview.html">Package overview</a></li>
     <li><a class="dropdown-item" href="../articles/polar-gams.html">Using generalised additive models (GAM) with polar coordinates for assessing tongue contours</a></li>
-    <li><a class="dropdown-item" href="../articles/tongue-imaging.html">Import and plot spline data from AAA</a></li>
+    <li><a class="dropdown-item" href="../articles/tongue-imaging.html">Import and plot UTI and EMA data</a></li>
     <li><a class="dropdown-item" href="../articles/transform-coord.html">Transform spline coordinates between cartesian and polar</a></li>
   </ul>
 </li>
@@ -78,9 +78,9 @@
                         <h4 data-toc-skip class="author">Stefano
 Coretta</h4>
             
-            <h4 data-toc-skip class="date">2025-02-08</h4>
+            <h4 data-toc-skip class="date">2025-02-20</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/stefanocoretta/rticulate/blob/v2.0.0/vignettes/overview.Rmd" class="external-link"><code>vignettes/overview.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/stefanocoretta/rticulate/blob/main/vignettes/overview.Rmd" class="external-link"><code>vignettes/overview.Rmd</code></a></small>
       <div class="d-none name"><code>overview.Rmd</code></div>
     </div>
 
@@ -93,8 +93,7 @@ other systems.</p>
 <ul>
 <li>
 <code><a href="../articles/tongue-imaging.html">vignette("tongue-imaging", package = "rticulate")</a></code>: You
-should start here to learn how to import UTI data and plot tongue
-contours.</li>
+should start here to learn how to import AAA and EMA data.</li>
 <li>
 <code><a href="../articles/polar-gams.html">vignette("polar-gams", package = "rticulate")</a></code>: This
 vignette describes the function <code><a href="../reference/polar_gam.html">polar_gam()</a></code> which can be
@@ -104,6 +103,12 @@ used to model tongue contours with GAMs using polar coordinates.</li>
 most cases, you won’t need to convert to polar coordinates explicitly,
 but in case you want to do that, you can look at this vignette to learn
 how to use <code><a href="../reference/transform_coord.html">transform_coord()</a></code>.</li>
+<li>
+<code><a href="../articles/filter-signals.html">vignette("filter-signals", package = "rticulate")</a></code>
+illustrates the filtering capabilities of the package.</li>
+<li>`<code><a href="../articles/kinematics.html">vignette("kinematics", package = "rticulate")</a></code> shows
+examples of how to detect gestural landmarks from articulator
+displacement signals.</li>
 </ul></main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
 </div>
