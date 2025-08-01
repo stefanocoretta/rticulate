@@ -1,3 +1,11 @@
+# rticulate v2.1.0
+
+## Fixed
+
+* `transform_coordinates()` added `pi` when calculating polar coordinates which is not necessary. Thanks to Michele Gubian for spotting this.
+
+
+
 # rticulate v2.0.1
 
 ## Changed

@@ -35,7 +35,11 @@ transform_coord <- function(data, to = "polar", origin = NULL, fan_lines = c(10,
             transformed_data <- data %>%
                 dplyr::mutate(
                     radius = sqrt((X - origin[1]) ^ 2 + (Y - origin[2]) ^ 2),
-                    angle = pi + atan2(Y - origin[2], X - origin[1])
+                    angle = atan2(Y - origin[2], X - origin[1]),
+                    angle = dplyr::case_when(
+                      angle < 0 ~ 2 * pi + angle,
+                      TRUE ~ angle
+                    )
                 )
         } else {
             transformed_data <- data %>%
@@ -48,8 +52,12 @@ transform_coord <- function(data, to = "polar", origin = NULL, fan_lines = c(10,
         if (to == "polar") {
             transformed_data <- data %>%
                 dplyr::mutate(
-                    X_new = pi + atan2(Y - origin[2], X - origin[1]),
-                    Y_new = sqrt((X - origin[1]) ^ 2 + (Y - origin[2]) ^ 2)
+                    X_new = atan2(Y - origin[2], X - origin[1]),
+                    Y_new = sqrt((X - origin[1]) ^ 2 + (Y - origin[2]) ^ 2),
+                    X_new = dplyr::case_when(
+                      X_new < 0 ~ 2 * pi + X_new,
+                      TRUE ~ X_new
+                    )
                 ) %>%
                 dplyr::select(-X, -Y) %>%
                 dplyr::rename(

@@ -2,7 +2,7 @@ Package: rticulate
 Type: Package
 Title: Articulatory Data Processing in R
 Version: 2.0.1.9000
-Date: 2025-02-20
+Date: 2025-08-01
 Authors@R: c(person(given = "Stefano",
                     family = "Coretta",
                     email = paste0("stefano.coretta", "@", "gmail.com"),

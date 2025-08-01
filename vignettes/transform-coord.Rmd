@@ -13,7 +13,7 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  out.width = "300px", fig.align = "center", dpi = 300
+  out.width = "500px", fig.align = "center", dpi = 300
 )
 library(dplyr)
 library(ggplot2)
@@ -40,7 +40,7 @@ If you have imported data using `read_aaa()`, the defaults will work, so you can
 
 ```{r}
 polar <- tongue %>%
-    filter(speaker == "it01") %>%
+    filter(speaker == "it01", X < 40) %>%
     transform_coord()
 ```
 
@@ -60,16 +60,20 @@ polar %>%
     theme(legend.position = "top")
 ```
 
-Plotting in polar coordinates gives a sense of the actual shape of the tongue, but it is a bit trickier and it does not look very nice... (the tip is again on the left).
+Plotting in polar coordinates gives a sense of the actual shape of the tongue, but it is a bit trickier and it does not look very nice... (the tip is again on the left). (Thanks to Michele Gubian who has suggested a fix to the code).
 
 ```{r}
 polar %>%
-    ggplot(aes(angle, radius, colour = c2_place)) +
-    geom_point(alpha = 0.5) +
+    ggplot(aes(angle, radius, colour = c2_place, group = rec_date)) +
+    geom_path() +
     scale_colour_discrete(name = "Place of C2") +
-    coord_polar(start = pi) +
-    xlim(min(polar$angle) - pi / 2, max(polar$angle) + pi / 2) +
-    ylim(0, max(polar$radius)) +
-    theme_void() +
-    theme(legend.position = "top")
+    coord_radial(theta = "x",
+             start = -0.5 * pi, end = 0.5 * pi, 
+             direction = -1, expand = FALSE) +
+    scale_x_continuous(breaks = pi/4 * (0:4),
+                     labels = expression(0, pi/4, pi/2, 3/4*pi, pi),
+                     limits = c(0, pi)) +
+    ylim(0, 100) +
+    theme(legend.position = "top", axis.title = element_blank(),
+        panel.border = element_blank())
 ```
