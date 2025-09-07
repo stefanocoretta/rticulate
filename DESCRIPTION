@@ -1,7 +1,7 @@
 Package: rticulate
 Type: Package
 Title: Articulatory Data Processing in R
-Version: 2.1.0
+Version: 2.2.0
 Date: 2025-09-07
 Authors@R: c(person(given = "Stefano",
                     family = "Coretta",

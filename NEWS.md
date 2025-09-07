@@ -1,3 +1,7 @@
+# rticulate v2.2.0
+
+- Bump version for CRAN.
+
 # rticulate v2.1.0
 
 ## Fixed
